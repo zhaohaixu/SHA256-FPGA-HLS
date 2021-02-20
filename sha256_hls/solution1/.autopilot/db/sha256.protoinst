@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"sha256": {
+			"proto_instances": {
+			}
+		}
+	}
+}

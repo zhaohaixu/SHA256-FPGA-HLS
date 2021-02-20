@@ -1,0 +1,154 @@
+
+
+================================================================
+== Vivado HLS Report for 'p_word'
+================================================================
+* Date:           Sat Feb 20 20:53:43 2021
+
+* Version:        2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)
+* Project:        sha256_hls
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     4.147|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+----------+
+    |  Latency  |  Interval | Pipeline |
+    | min | max | min | max |   Type   |
+    +-----+-----+-----+-----+----------+
+    |    2|    2|    2|    2| function |
+    +-----+-----+-----+-----+----------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 0
+IsPipeline: 1
+IsRtlPipelined: 1
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 2, depth = 3
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 3
+* Pipeline : 1
+  Pipeline-0 : II = 2, D = 3, States = { 1 2 3 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	3  / true
+3 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 4.14>
+ST_1 : Operation 4 [1/1] (0.00ns)   --->   "%c_offset_read = call i7 @_ssdm_op_Read.ap_auto.i7(i7 %c_offset)"   --->   Operation 4 'read' 'c_offset_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 5 [1/1] (0.00ns)   --->   "%c_offset_cast3 = zext i7 %c_offset_read to i64"   --->   Operation 5 'zext' 'c_offset_cast3' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 6 [1/1] (0.00ns)   --->   "%c_addr = getelementptr [64 x i8]* %c, i64 0, i64 %c_offset_cast3" [src/sha256.c:61]   --->   Operation 6 'getelementptr' 'c_addr' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 7 [2/2] (2.32ns)   --->   "%c_load = load i8* %c_addr, align 1" [src/sha256.c:63]   --->   Operation 7 'load' 'c_load' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 64> <RAM>
+ST_1 : Operation 8 [1/1] (0.00ns)   --->   "%tmp = trunc i7 %c_offset_read to i6" [src/sha256.c:63]   --->   Operation 8 'trunc' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 9 [1/1] (1.82ns)   --->   "%sum = add i6 1, %tmp" [src/sha256.c:63]   --->   Operation 9 'add' 'sum' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.82> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 10 [1/1] (0.00ns)   --->   "%sum_cast = zext i6 %sum to i64" [src/sha256.c:63]   --->   Operation 10 'zext' 'sum_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 11 [1/1] (0.00ns)   --->   "%c_addr_1 = getelementptr [64 x i8]* %c, i64 0, i64 %sum_cast" [src/sha256.c:63]   --->   Operation 11 'getelementptr' 'c_addr_1' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 12 [2/2] (2.32ns)   --->   "%c_load_1 = load i8* %c_addr_1, align 1" [src/sha256.c:63]   --->   Operation 12 'load' 'c_load_1' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 64> <RAM>
+
+State 2 <SV = 1> <Delay = 4.14>
+ST_2 : Operation 13 [1/2] (2.32ns)   --->   "%c_load = load i8* %c_addr, align 1" [src/sha256.c:63]   --->   Operation 13 'load' 'c_load' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 64> <RAM>
+ST_2 : Operation 14 [1/2] (2.32ns)   --->   "%c_load_1 = load i8* %c_addr_1, align 1" [src/sha256.c:63]   --->   Operation 14 'load' 'c_load_1' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 64> <RAM>
+ST_2 : Operation 15 [1/1] (1.82ns)   --->   "%sum2 = add i6 2, %tmp" [src/sha256.c:63]   --->   Operation 15 'add' 'sum2' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.82> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 16 [1/1] (0.00ns)   --->   "%sum2_cast = zext i6 %sum2 to i64" [src/sha256.c:63]   --->   Operation 16 'zext' 'sum2_cast' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 17 [1/1] (0.00ns)   --->   "%c_addr_2 = getelementptr [64 x i8]* %c, i64 0, i64 %sum2_cast" [src/sha256.c:63]   --->   Operation 17 'getelementptr' 'c_addr_2' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 18 [2/2] (2.32ns)   --->   "%c_load_2 = load i8* %c_addr_2, align 1" [src/sha256.c:63]   --->   Operation 18 'load' 'c_load_2' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 64> <RAM>
+ST_2 : Operation 19 [1/1] (1.82ns)   --->   "%sum4 = add i6 3, %tmp" [src/sha256.c:63]   --->   Operation 19 'add' 'sum4' <Predicate = true> <Delay = 1.82> <Core = "AddSub">   --->   Core 14 'AddSub' <Latency = 0> <II = 1> <Delay = 1.82> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 20 [1/1] (0.00ns)   --->   "%sum4_cast = zext i6 %sum4 to i64" [src/sha256.c:63]   --->   Operation 20 'zext' 'sum4_cast' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 21 [1/1] (0.00ns)   --->   "%c_addr_3 = getelementptr [64 x i8]* %c, i64 0, i64 %sum4_cast" [src/sha256.c:63]   --->   Operation 21 'getelementptr' 'c_addr_3' <Predicate = true> <Delay = 0.00>
+ST_2 : Operation 22 [2/2] (2.32ns)   --->   "%c_load_3 = load i8* %c_addr_3, align 1" [src/sha256.c:63]   --->   Operation 22 'load' 'c_load_3' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 64> <RAM>
+
+State 3 <SV = 2> <Delay = 2.32>
+ST_3 : Operation 23 [1/2] (2.32ns)   --->   "%c_load_2 = load i8* %c_addr_2, align 1" [src/sha256.c:63]   --->   Operation 23 'load' 'c_load_2' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 64> <RAM>
+ST_3 : Operation 24 [1/2] (2.32ns)   --->   "%c_load_3 = load i8* %c_addr_3, align 1" [src/sha256.c:63]   --->   Operation 24 'load' 'c_load_3' <Predicate = true> <Delay = 2.32> <Core = "RAM">   --->   Core 37 'RAM' <Latency = 1> <II = 1> <Delay = 2.32> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 64> <RAM>
+ST_3 : Operation 25 [1/1] (0.00ns)   --->   "%tmp_24 = call i32 @_ssdm_op_BitConcatenate.i32.i8.i8.i8.i8(i8 %c_load, i8 %c_load_1, i8 %c_load_2, i8 %c_load_3)" [src/sha256.c:63]   --->   Operation 25 'bitconcatenate' 'tmp_24' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 26 [1/1] (0.00ns)   --->   "ret i32 %tmp_24" [src/sha256.c:63]   --->   Operation 26 'ret' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ <State 1>: 4.15ns
+The critical path consists of the following:
+	wire read on port 'c_offset' [3]  (0 ns)
+	'add' operation ('sum', src/sha256.c:63) [8]  (1.83 ns)
+	'getelementptr' operation ('c_addr_1', src/sha256.c:63) [10]  (0 ns)
+	'load' operation ('c_load_1', src/sha256.c:63) on array 'c' [11]  (2.32 ns)
+
+ <State 2>: 4.15ns
+The critical path consists of the following:
+	'add' operation ('sum2', src/sha256.c:63) [12]  (1.83 ns)
+	'getelementptr' operation ('c_addr_2', src/sha256.c:63) [14]  (0 ns)
+	'load' operation ('c_load_2', src/sha256.c:63) on array 'c' [15]  (2.32 ns)
+
+ <State 3>: 2.32ns
+The critical path consists of the following:
+	'load' operation ('c_load_2', src/sha256.c:63) on array 'c' [15]  (2.32 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

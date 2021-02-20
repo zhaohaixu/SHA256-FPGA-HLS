@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="sha256.c" path="E:\My_File\study\SHA256-FPGA-HLS\src\sha256.c"/>
+  </source>
+  <testbench>
+    <originFiles name="sha256_test.c" path="E:\My_File\study\SHA256-FPGA-HLS\src\sha256_test.c"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

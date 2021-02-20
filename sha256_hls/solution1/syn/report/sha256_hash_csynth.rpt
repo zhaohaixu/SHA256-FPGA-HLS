@@ -1,0 +1,205 @@
+
+
+================================================================
+== Vivado HLS Report for 'sha256_hash'
+================================================================
+* Date:           Sat Feb 20 20:54:09 2021
+
+* Version:        2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)
+* Project:        sha256_hls
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.742|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+------+-----+------+---------+
+    |   Latency  |  Interval  | Pipeline|
+    | min |  max | min |  max |   Type  |
+    +-----+------+-----+------+---------+
+    |    2|  6402|    2|  6402|   none  |
+    +-----+------+-----+------+---------+
+
+    + Detail: 
+        * Instance: 
+        +-------------------+--------+-----+-----+-----+-----+----------+
+        |                   |        |  Latency  |  Interval | Pipeline |
+        |      Instance     | Module | min | max | min | max |   Type   |
+        +-------------------+--------+-----+-----+-----+-----+----------+
+        |grp_p_hash_fu_146  |p_hash  |   98|   98|   48|   48| function |
+        +-------------------+--------+-----+-----+-----+-----+----------+
+
+        * Loop: 
+        +----------------------+-----+------+----------+-----------+-----------+--------+----------+
+        |                      |   Latency  | Iteration|  Initiation Interval  |  Trip  |          |
+        |       Loop Name      | min |  max |  Latency |  achieved |   target  |  Count | Pipelined|
+        +----------------------+-----+------+----------+-----------+-----------+--------+----------+
+        |- sha256_hash_label2  |    0|  6400|       101|        100|          1| 0 ~ 64 |    yes   |
+        +----------------------+-----+------+----------+-----------+-----------+--------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|DSP              |        -|      -|       -|      -|
+|Expression       |        -|      -|       0|    246|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |        0|      -|   10190|  21443|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|    618|
+|Register         |        -|      -|     523|      -|
++-----------------+---------+-------+--------+-------+
+|Total            |        0|      0|   10713|  22307|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        0|      0|      10|     41|
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    +-------------------+--------+---------+-------+-------+-------+
+    |      Instance     | Module | BRAM_18K| DSP48E|   FF  |  LUT  |
+    +-------------------+--------+---------+-------+-------+-------+
+    |grp_p_hash_fu_146  |p_hash  |        0|      0|  10190|  21443|
+    +-------------------+--------+---------+-------+-------+-------+
+    |Total              |        |        0|      0|  10190|  21443|
+    +-------------------+--------+---------+-------+-------+-------+
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------------------------+----------+-------+---+----+------------+------------+
+    |             Variable Name             | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------------------------+----------+-------+---+----+------------+------------+
+    |i_1_fu_261_p2                          |     +    |      0|  0|  39|          32|           1|
+    |sha256_bits_0_write_fu_346_p2          |     +    |      0|  0|  39|          32|           7|
+    |sl_fu_277_p2                           |     +    |      0|  0|  39|          32|           1|
+    |tmp_50_i_fu_332_p2                     |     +    |      0|  0|  39|          32|           1|
+    |ap_predicate_op153_call_state4_state3  |    and   |      0|  0|   2|           1|           1|
+    |exitcond_fu_256_p2                     |   icmp   |      0|  0|  18|          32|          32|
+    |tmp_3_fu_283_p2                        |   icmp   |      0|  0|  18|          32|           4|
+    |tmp_i_fu_326_p2                        |   icmp   |      0|  0|  18|          32|           8|
+    |tmp_93_read1_i_fu_338_p3               |  select  |      0|  0|  32|           1|          32|
+    |ap_enable_pp0                          |    xor   |      0|  0|   2|           1|           2|
+    +---------------------------------------+----------+-------+---+----+------------+------------+
+    |Total                                  |          |      0|  0| 246|         227|          89|
+    +---------------------------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +----------------------------+-----+-----------+-----+-----------+
+    |            Name            | LUT | Input Size| Bits| Total Bits|
+    +----------------------------+-----+-----------+-----+-----------+
+    |ap_NS_fsm                   |  453|        103|    1|        103|
+    |ap_enable_reg_pp0_iter1     |    9|          2|    1|          2|
+    |ap_phi_mux_i_phi_fu_139_p4  |    9|          2|   32|         64|
+    |i_reg_135                   |    9|          2|   32|         64|
+    |sha256_bits_0_read_s_fu_62  |    9|          2|   32|         64|
+    |sha256_bits_1_read_s_fu_98  |    9|          2|   32|         64|
+    |sha256_buf_address0         |   15|          3|    6|         18|
+    |sha256_buf_ce0              |   15|          3|    1|          3|
+    |sha256_buf_ce1              |    9|          2|    1|          2|
+    |sha256_len_0_write_s_fu_58  |    9|          2|   32|         64|
+    |sha256hash_1_fu_90          |    9|          2|   32|         64|
+    |sha256hash_2_fu_86          |    9|          2|   32|         64|
+    |sha256hash_3_fu_82          |    9|          2|   32|         64|
+    |sha256hash_4_fu_78          |    9|          2|   32|         64|
+    |sha256hash_5_fu_74          |    9|          2|   32|         64|
+    |sha256hash_6_fu_70          |    9|          2|   32|         64|
+    |sha256hash_7_fu_66          |    9|          2|   32|         64|
+    |sha256hash_fu_94            |    9|          2|   32|         64|
+    +----------------------------+-----+-----------+-----+-----------+
+    |Total                       |  618|        139|  426|        960|
+    +----------------------------+-----+-----------+-----+-----------+
+
+    * Register: 
+    +--------------------------------+-----+----+-----+-----------+
+    |              Name              |  FF | LUT| Bits| Const Bits|
+    +--------------------------------+-----+----+-----+-----------+
+    |ap_CS_fsm                       |  102|   0|  102|          0|
+    |ap_enable_reg_pp0_iter0         |    1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1         |    1|   0|    1|          0|
+    |exitcond_reg_550                |    1|   0|    1|          0|
+    |grp_p_hash_fu_146_ap_start_reg  |    1|   0|    1|          0|
+    |i_1_reg_554                     |   32|   0|   32|          0|
+    |i_reg_135                       |   32|   0|   32|          0|
+    |sha256_bits_0_read_s_fu_62      |   32|   0|   32|          0|
+    |sha256_bits_1_read_s_fu_98      |   32|   0|   32|          0|
+    |sha256_len_0_write_s_fu_58      |   32|   0|   32|          0|
+    |sha256hash_1_fu_90              |   32|   0|   32|          0|
+    |sha256hash_2_fu_86              |   32|   0|   32|          0|
+    |sha256hash_3_fu_82              |   32|   0|   32|          0|
+    |sha256hash_4_fu_78              |   32|   0|   32|          0|
+    |sha256hash_5_fu_74              |   32|   0|   32|          0|
+    |sha256hash_6_fu_70              |   32|   0|   32|          0|
+    |sha256hash_7_fu_66              |   32|   0|   32|          0|
+    |sha256hash_fu_94                |   32|   0|   32|          0|
+    |tmp_3_reg_564                   |    1|   0|    1|          0|
+    +--------------------------------+-----+----+-----+-----------+
+    |Total                           |  523|   0|  523|          0|
+    +--------------------------------+-----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------+-----+-----+------------+--------------+--------------+
+|      RTL Ports      | Dir | Bits|  Protocol  | Source Object|    C Type    |
++---------------------+-----+-----+------------+--------------+--------------+
+|ap_clk               |  in |    1| ap_ctrl_hs |  sha256_hash | return value |
+|ap_rst               |  in |    1| ap_ctrl_hs |  sha256_hash | return value |
+|ap_start             |  in |    1| ap_ctrl_hs |  sha256_hash | return value |
+|ap_done              | out |    1| ap_ctrl_hs |  sha256_hash | return value |
+|ap_idle              | out |    1| ap_ctrl_hs |  sha256_hash | return value |
+|ap_ready             | out |    1| ap_ctrl_hs |  sha256_hash | return value |
+|ap_return_0          | out |   32| ap_ctrl_hs |  sha256_hash | return value |
+|ap_return_1          | out |   32| ap_ctrl_hs |  sha256_hash | return value |
+|ap_return_2          | out |   32| ap_ctrl_hs |  sha256_hash | return value |
+|ap_return_3          | out |   32| ap_ctrl_hs |  sha256_hash | return value |
+|ap_return_4          | out |   32| ap_ctrl_hs |  sha256_hash | return value |
+|ap_return_5          | out |   32| ap_ctrl_hs |  sha256_hash | return value |
+|ap_return_6          | out |   32| ap_ctrl_hs |  sha256_hash | return value |
+|ap_return_7          | out |   32| ap_ctrl_hs |  sha256_hash | return value |
+|ap_return_8          | out |   32| ap_ctrl_hs |  sha256_hash | return value |
+|ap_return_9          | out |   32| ap_ctrl_hs |  sha256_hash | return value |
+|ap_return_10         | out |   32| ap_ctrl_hs |  sha256_hash | return value |
+|sha256_buf_address0  | out |    6|  ap_memory |  sha256_buf  |     array    |
+|sha256_buf_ce0       | out |    1|  ap_memory |  sha256_buf  |     array    |
+|sha256_buf_we0       | out |    1|  ap_memory |  sha256_buf  |     array    |
+|sha256_buf_d0        | out |    8|  ap_memory |  sha256_buf  |     array    |
+|sha256_buf_q0        |  in |    8|  ap_memory |  sha256_buf  |     array    |
+|sha256_buf_address1  | out |    6|  ap_memory |  sha256_buf  |     array    |
+|sha256_buf_ce1       | out |    1|  ap_memory |  sha256_buf  |     array    |
+|sha256_buf_q1        |  in |    8|  ap_memory |  sha256_buf  |     array    |
+|data_address0        | out |    6|  ap_memory |     data     |     array    |
+|data_ce0             | out |    1|  ap_memory |     data     |     array    |
+|data_q0              |  in |    8|  ap_memory |     data     |     array    |
+|len                  |  in |   32|   ap_none  |      len     |    scalar    |
++---------------------+-----+-----+------------+--------------+--------------+
+

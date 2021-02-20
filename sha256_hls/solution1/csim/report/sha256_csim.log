@@ -1,0 +1,50 @@
+INFO: [SIM 2] *************** CSIM start ***************
+INFO: [SIM 4] CSIM will launch GCC as the compiler.
+   Compiling(apcc) ../../../../src/sha256_test.c in release mode
+INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/apcc.exe'
+INFO: [HLS 200-10] For user '94881' on host 'desktop-nf1gups' (Windows NT_amd64 version 6.2) on Sat Feb 20 20:55:05 +0800 2021
+INFO: [HLS 200-10] In directory 'E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/csim/build'
+../../../../src/sha256_test.c:2:23: warning: redefinition of typedef 'uint8_t' is a C11 feature [-Wtypedef-redefinition]
+typedef unsigned char uint8_t;
+                      ^
+../../../../src/sha256.h:1:23: note: previous definition is here
+typedef unsigned char uint8_t;
+                      ^
+../../../../src/sha256_test.c:3:22: warning: redefinition of typedef 'uint32_t' is a C11 feature [-Wtypedef-redefinition]
+typedef unsigned int uint32_t;
+                     ^
+../../../../src/sha256.h:2:22: note: previous definition is here
+typedef unsigned int uint32_t;
+                     ^
+../../../../src/sha256_test.c:24:2: warning: implicitly declaring library function 'printf' with type 'int (const char *, ...)'
+        printf("[hashcat:");
+        ^
+../../../../src/sha256_test.c:24:2: note: please include the header <stdio.h> or explicitly provide a declaration for 'printf'
+3 warnings generated.
+../../../../src/sha256_test.c:2:23: warning: redefinition of typedef 'uint8_t' is a C11 feature [-Wtypedef-redefinition]
+typedef unsigned char uint8_t;
+                      ^
+../../../../src/sha256.h:1:23: note: previous definition is here
+typedef unsigned char uint8_t;
+                      ^
+../../../../src/sha256_test.c:3:22: warning: redefinition of typedef 'uint32_t' is a C11 feature [-Wtypedef-redefinition]
+typedef unsigned int uint32_t;
+                     ^
+../../../../src/sha256.h:2:22: note: previous definition is here
+typedef unsigned int uint32_t;
+                     ^
+../../../../src/sha256_test.c:24:2: warning: implicitly declaring library function 'printf' with type 'int (const char *, ...)'
+        printf("[hashcat:");
+        ^
+../../../../src/sha256_test.c:24:2: note: please include the header <stdio.h> or explicitly provide a declaration for 'printf'
+3 warnings generated.
+INFO: [APCC 202-1] APCC is done.
+   Compiling(apcc) ../../../../src/sha256.c in release mode
+INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/apcc.exe'
+INFO: [HLS 200-10] For user '94881' on host 'desktop-nf1gups' (Windows NT_amd64 version 6.2) on Sat Feb 20 20:55:12 +0800 2021
+INFO: [HLS 200-10] In directory 'E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/csim/build'
+INFO: [APCC 202-1] APCC is done.
+   Generating csim.exe
+[hashcat:127e6fbfe24a750e72930c220a8e138275656b8e5d8f48a98c3c92df2caba935]
+INFO: [SIM 1] CSim done with 0 errors.
+INFO: [SIM 3] *************** CSIM finish ***************
