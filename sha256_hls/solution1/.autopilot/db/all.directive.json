@@ -17,13 +17,19 @@
           "functionName": "sha256_hash",
           "label": "sha256_hash_label2",
           "functionLabel": "",
-          "pragma": {"name": "PIPELINE"}
+          "pragma": {"name": "UNROLL"}
         },
         {
           "functionName": "sha256_done",
           "label": "sha256_done_label3",
           "functionLabel": "",
           "pragma": {"name": "UNROLL"}
+        },
+        {
+          "functionName": "sha256_done",
+          "label": "sha256_done_label0",
+          "functionLabel": "",
+          "pragma": {"name": "PIPELINE"}
         }
       ]
     }]}

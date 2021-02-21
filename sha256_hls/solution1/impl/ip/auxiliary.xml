@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="sha256" xd:componentRef="sha256" xd:initiationInterval="6763" xd:clockPeriod="10.000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
+<xd:acceleratorMap xmlns:xd="http://www.xilinx.com/xidane" xd:functionName="sha256" xd:componentRef="sha256" xd:initiationInterval="12679" xd:clockPeriod="10.000" xd:sequential="true" xd:hostMachine="64" xd:reset="control">
   <xd:controlReg xd:name="control" xd:interfaceRef="ap_ctrl" xd:busTypeRef="acc_handshake" xd:type="acc_handshake"/>
-  <xd:arg xd:name="len" xd:originalName="len" xd:direction="in" xd:interfaceRef="len" xd:busTypeRef="register" xd:handshakeRef="ap_none" xd:dataWidth="32"/>
-  <xd:arg xd:name="msg_q0" xd:originalName="msg_q0" xd:direction="in" xd:interfaceRef="msg_q0" xd:busTypeRef="ap_memory" xd:arraySize="64" xd:dataWidth="8"/>
-  <xd:arg xd:name="hash_d0" xd:originalName="hash_d0" xd:direction="out" xd:interfaceRef="hash_d0" xd:busTypeRef="ap_memory" xd:arraySize="32" xd:dataWidth="8"/>
-  <xd:latencyEstimates xd:best-case="191" xd:worst-case="6762" xd:average-case="3477"/>
-  <xd:resourceEstimates xd:LUT="46546" xd:FF="22135" xd:BRAM="1" xd:DSP="0"/>
+  <xd:arg xd:name="msg[]" xd:originalName="msg" xd:direction="inout" xd:interfaceRef="m_axi_INPUT_r" xd:busTypeRef="aximm" xd:arraySize="64" xd:dataWidth="8" xd:bufferDirection="in"/>
+  <xd:arg xd:name="*(hash)" xd:originalName="hash" xd:direction="inout" xd:interfaceRef="m_axi_OUTPUT_r" xd:busTypeRef="aximm" xd:arraySize="900000" xd:dataWidth="8" xd:bufferDirection="out"/>
+  <xd:arg xd:name="msg" xd:originalName="msg" xd:direction="in" xd:interfaceRef="s_axi_ctrl_bus" xd:busTypeRef="axilite" xd:aximmInterfaceRef="m_axi_INPUT_r" xd:dataWidth="32" xd:offset="0x10" xd:handshakeRef="ap_none"/>
+  <xd:arg xd:name="len" xd:originalName="len" xd:direction="in" xd:interfaceRef="s_axi_ctrl_bus" xd:busTypeRef="axilite" xd:dataWidth="32" xd:offset="0x18" xd:handshakeRef="ap_none"/>
+  <xd:arg xd:name="hash" xd:originalName="hash" xd:direction="in" xd:interfaceRef="s_axi_ctrl_bus" xd:busTypeRef="axilite" xd:aximmInterfaceRef="m_axi_OUTPUT_r" xd:dataWidth="32" xd:offset="0x20" xd:handshakeRef="ap_none"/>
+  <xd:latencyEstimates xd:best-case="308" xd:worst-case="12678" xd:average-case="3517"/>
+  <xd:resourceEstimates xd:LUT="8774" xd:FF="5058" xd:BRAM="12" xd:DSP="0"/>
 </xd:acceleratorMap>

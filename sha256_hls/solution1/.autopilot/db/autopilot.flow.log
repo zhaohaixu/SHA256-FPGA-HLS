@@ -1,4 +1,4 @@
-INFO-FLOW: Workspace E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1 opened at Sat Feb 20 20:53:30 +0800 2021
+INFO-FLOW: Workspace E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1 opened at Sun Feb 21 21:04:07 +0800 2021
 Execute     config_clock -quiet -name default -period 10 -default=false 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
 Execute     open_platform DefaultPlatform 
@@ -46,12 +46,12 @@ Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interf
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/dds_compiler.gen 
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/util.gen 
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfft.gen 
-Command           ap_source done; 0.167 sec.
+Command           ap_source done; 0.193 sec.
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfir.gen 
-Command         ap_source done; 0.236 sec.
+Command         ap_source done; 0.275 sec.
 Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/dsp48.gen 
-Command       ap_source done; 0.241 sec.
-Command     ap_source done; 0.242 sec.
+Command       ap_source done; 0.281 sec.
+Command     ap_source done; 0.281 sec.
 Execute     open_platform DefaultPlatform 
 Execute     import_lib D:/Xilinx/Vivado/2018.3/common/technology/xilinx/zynq/zynq_fpv6 
 Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx_fpv7.lib 
@@ -78,11 +78,12 @@ Execute       add_library xilinx/zynq/zynq_fpv6
 Execute         get_default_platform 
 INFO: [HLS 200-10] Setting target device to 'xc7z020clg400-1'
 Execute       get_default_platform 
-Command     set_part done; 0.119 sec.
 Execute     get_default_platform 
 Execute     config_chip_info -quiet -resource  {SLICE 13300}  {LUT 53200}     {FF 106400} {DSP48E 220}   {BRAM 280}  
 Execute     config_chip_info -quiet -speed slow 
-Command   open_solution done; 0.471 sec.
+Execute     config_export -format=ip_catalog 
+Execute     config_export -rtl=verilog 
+Command   open_solution done; 0.479 sec.
 Execute   set_part xc7z020clg400-1 -tool vivado 
 Execute     add_library xilinx/zynq/zynq:xc7z020:clg400:-1 
 Execute       get_default_platform 
@@ -95,21 +96,28 @@ Execute     add_library xilinx/zynq/zynq_fpv6
 Execute       get_default_platform 
 Execute     get_default_platform 
 Execute   create_clock -period 10 -name default 
+Execute   config_export -format ip_catalog -rtl verilog 
 Execute   source ./sha256_hls/solution1/directives.tcl 
 Execute     set_directive_pipeline _hash/_hash_label0 
 INFO-FLOW: Setting directive 'PIPELINE' 
 Execute     set_directive_pipeline _hash/_hash_label1 
 INFO-FLOW: Setting directive 'PIPELINE' 
 INFO-FLOW: Setting directive 'PIPELINE' 
-Execute     set_directive_pipeline sha256_hash/sha256_hash_label2 
-INFO-FLOW: Setting directive 'PIPELINE' 
-INFO-FLOW: Setting directive 'PIPELINE' 
-INFO-FLOW: Setting directive 'PIPELINE' 
-Execute     set_directive_unroll sha256_done/sha256_done_label3 
-INFO-FLOW: Setting directive 'PIPELINE' 
+Execute     set_directive_unroll sha256_hash/sha256_hash_label2 
 INFO-FLOW: Setting directive 'PIPELINE' 
 INFO-FLOW: Setting directive 'PIPELINE' 
 INFO-FLOW: Setting directive 'UNROLL' 
+Execute     set_directive_unroll sha256_done/sha256_done_label3 
+INFO-FLOW: Setting directive 'PIPELINE' 
+INFO-FLOW: Setting directive 'PIPELINE' 
+INFO-FLOW: Setting directive 'UNROLL' 
+INFO-FLOW: Setting directive 'UNROLL' 
+Execute     set_directive_pipeline sha256_done/sha256_done_label0 
+INFO-FLOW: Setting directive 'PIPELINE' 
+INFO-FLOW: Setting directive 'PIPELINE' 
+INFO-FLOW: Setting directive 'UNROLL' 
+INFO-FLOW: Setting directive 'UNROLL' 
+INFO-FLOW: Setting directive 'PIPELINE' 
 Execute   csynth_design 
 Execute     get_config_compile -effort 
 Execute     get_config_compile -enable_clang39 
@@ -136,59 +144,66 @@ INFO-FLOW: Running: GCC PP
 INFO-FLOW: Source preprocessing
 Execute       clang  -fno-limit-debug-info -gcc-toolchain "D:/Xilinx/Vivado/2018.3/msys" -hls  -fno-exceptions  -D__llvm__  -E "src/sha256.c"     -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -std=gnu89   -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "D:/Xilinx/Vivado/2018.3/common/technology/autopilot" -I "D:/Xilinx/Vivado/2018.3/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -D__cdecl=  -o "E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c" 
 INFO-FLOW: exec D:/Xilinx/Vivado/2018.3/win64/tools/clang/bin/clang -fno-limit-debug-info -gcc-toolchain D:/Xilinx/Vivado/2018.3/msys -hls -fno-exceptions -D__llvm__ -E src/sha256.c -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -std=gnu89 -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I D:/Xilinx/Vivado/2018.3/common/technology/autopilot -I D:/Xilinx/Vivado/2018.3/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -D__cdecl= -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c
-Command       clang done; 0.982 sec.
+Command       clang done; 1.275 sec.
 Execute       tidy_31 xilinx-xfmat-array-geometry E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c std=gnu89 
 INFO-FLOW: exec D:/Xilinx/Vivado/2018.3/win64/tools/clang-3.9-csynth/bin/tidy-3.1 -header-filter=.* -checks=-*,xilinx-xfmat-array-geometry -quiet -fix E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c -- -std=gnu89 -fhls -ferror-limit=0
+Command       tidy_31 done; 0.114 sec.
 INFO-FLOW: Syntax Checking before pre-processing...
 Execute       clang -syntaxcheck -src E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c  -fno-limit-debug-info -gcc-toolchain "D:/Xilinx/Vivado/2018.3/msys" -hls    -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -std=gnu89   -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "D:/Xilinx/Vivado/2018.3/common/technology/autopilot" -I "D:/Xilinx/Vivado/2018.3/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -D__cdecl=  "E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c"  -o "E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/useless.bc"  
 INFO-FLOW: exec D:/Xilinx/Vivado/2018.3/win64/tools/clang/bin/clang -fno-limit-debug-info -gcc-toolchain D:/Xilinx/Vivado/2018.3/msys -hls -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -std=gnu89 -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I D:/Xilinx/Vivado/2018.3/common/technology/autopilot -I D:/Xilinx/Vivado/2018.3/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -D__cdecl= E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/useless.bc
-Command       clang done; 0.97 sec.
-INFO-FLOW: Done: GCC PP time: 2 seconds per iteration
+Command       clang done; 1.288 sec.
+INFO-FLOW: Done: GCC PP time: 2.7 seconds per iteration
 INFO-FLOW: Setting directive 'PIPELINE' 
 INFO-FLOW: Setting directive 'PIPELINE' 
-INFO-FLOW: Setting directive 'PIPELINE' 
+INFO-FLOW: Setting directive 'UNROLL' 
 INFO-FLOW: Setting directive 'UNROLL' 
 INFO-FLOW: Setting directive 'PIPELINE' 
 INFO-FLOW: Setting directive 'PIPELINE' 
 INFO-FLOW: Setting directive 'PIPELINE' 
 INFO-FLOW: Setting directive 'UNROLL' 
+INFO-FLOW: Setting directive 'UNROLL' 
+INFO-FLOW: Setting directive 'PIPELINE' 
 Execute       list_core -type functional_unit 
 Execute       tidy_31 xilinx-systemc-detector E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c std=gnu89 -directive=E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/.systemc_flag 
 INFO-FLOW: exec D:/Xilinx/Vivado/2018.3/win64/tools/clang-3.9-csynth/bin/tidy-3.1 -header-filter=.* -checks=-*,xilinx-systemc-detector -import-directive=E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/.systemc_flag -quiet -fix-errors E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c -- -std=gnu89 -fhls -ferror-limit=0
 INFO-FLOW: Running: tidy-3.1 CDT preprocess
 Execute       tidy_31 xilinx-directive2pragma E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c std=gnu89 -directive=E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/all.directive.json 
 INFO-FLOW: exec D:/Xilinx/Vivado/2018.3/win64/tools/clang-3.9-csynth/bin/tidy-3.1 -header-filter=.* -checks=-*,xilinx-directive2pragma -import-directive=E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/all.directive.json -quiet -fix-errors E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c -- -std=gnu89 -fhls -ferror-limit=0
+Command       tidy_31 done; 0.129 sec.
 Execute       get_config_dataflow -strict_mode 
 Execute       ap_eval exec -ignorestderr D:/Xilinx/Vivado/2018.3/win64/tools/clang-3.9-csynth/bin/xilinx-dataflow-lawyer -export-fixes=E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/xilinx-dataflow-lawyer.sha256.pp.0.c.diag.yml E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c -- -std=gnu99 -fhls -ferror-limit=0 -fstrict-dataflow > E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/xilinx-dataflow-lawyer.sha256.pp.0.c.out.log 2> E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/xilinx-dataflow-lawyer.sha256.pp.0.c.err.log 
 Execute       tidy_31 -errorcheck xilinx-constantarray-param,xilinx-resource-pragma-transformer,xilinx-xfmat-array-geometry E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c std=gnu89 
 Execute         ap_eval exec -ignorestderr D:/Xilinx/Vivado/2018.3/win64/tools/clang-3.9-csynth/bin/tidy-3.1 -export-fixes=E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/tidy-3.1.sha256.pp.0.c.diag.yml -header-filter=.* -checks=-*,xilinx-constantarray-param,xilinx-resource-pragma-transformer,xilinx-xfmat-array-geometry -quiet -fix-errors E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c -- -std=gnu89 -fhls -ferror-limit=0 > E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/tidy-3.1.sha256.pp.0.c.out.log 2> E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/tidy-3.1.sha256.pp.0.c.err.log 
+Command         ap_eval done; 0.13 sec.
 Execute         ap_eval exec -ignorestderr D:/Xilinx/Vivado/2018.3/win64/tools/clang-3.9-csynth/bin/xilinx-legacy-rewriter E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pp.0.c -- -std=gnu89 -fhls -ferror-limit=0 > E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/xilinx-legacy-rewriter.sha256.pp.0.c.out.log 2> E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/xilinx-legacy-rewriter.sha256.pp.0.c.err.log 
-Command       tidy_31 done; 0.176 sec.
-INFO-FLOW: Done: tidy-3.1 CDT preprocess time: 0.3 seconds per iteration
+Command         ap_eval done; 0.106 sec.
+Command       tidy_31 done; 0.267 sec.
+INFO-FLOW: Done: tidy-3.1 CDT preprocess time: 0.5 seconds per iteration
 INFO-FLOW: Pragma Handling...
 Execute       tidy_31 xilinx-ssdm-intrinsics-arguments E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pragma.1.c std=gnu89 
 INFO-FLOW: exec D:/Xilinx/Vivado/2018.3/win64/tools/clang-3.9-csynth/bin/tidy-3.1 -header-filter=.* -checks=-*,xilinx-ssdm-intrinsics-arguments -quiet -fix-errors E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pragma.1.c -- -std=gnu89 -fhls -ferror-limit=0
+Command       tidy_31 done; 0.124 sec.
 Execute       get_default_platform 
 INFO-FLOW: Processing labels
 Execute       clang -src E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pragma.2.c  -fno-limit-debug-info -gcc-toolchain D:/Xilinx/Vivado/2018.3/msys -hls -hls-analyze-label -hls-analyze-pragma -fno-exceptions  -D__llvm__  -w  "E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pragma.2.c"    -fno-math-errno -c -emit-llvm -O0  -mllvm -disable-llvm-optzns -std=gnu89  -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I "D:/Xilinx/Vivado/2018.3/common/technology/autopilot" -I "D:/Xilinx/Vivado/2018.3/common/technology/autopilot/ap_sysc" -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -g -o "E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.bc" 
 INFO-FLOW: exec D:/Xilinx/Vivado/2018.3/win64/tools/clang/bin/clang -fno-limit-debug-info -gcc-toolchain D:/Xilinx/Vivado/2018.3/msys -hls -hls-analyze-label -hls-analyze-pragma -fno-exceptions -D__llvm__ -w E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.pragma.2.c -fno-math-errno -c -emit-llvm -O0 -mllvm -disable-llvm-optzns -std=gnu89 -DAESL_SYN -D__SYNTHESIS__ -D__HLS_SYN__ -I D:/Xilinx/Vivado/2018.3/common/technology/autopilot -I D:/Xilinx/Vivado/2018.3/common/technology/autopilot/ap_sysc -include etc/autopilot_ssdm_op.h -D__DSP48E1__ -g -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.bc
-Command       clang done; 1.111 sec.
+Command       clang done; 1.266 sec.
 INFO-FLOW: Linking Debug ...
 Execute       llvm-ld E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.g.bc -hls-opt -except-internalize sha256 -LD:/Xilinx/Vivado/2018.3/win64/lib -lhlsm -lhlsmc++ -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.g 
-Command       llvm-ld done; 1.312 sec.
-INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 102.793 ; gain = 17.445
-INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 102.793 ; gain = 17.445
+Command       llvm-ld done; 2.349 sec.
+INFO: [HLS 200-111] Finished Linking Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 103.156 ; gain = 18.246
+INFO: [HLS 200-111] Finished Checking Pragmas Time (s): cpu = 00:00:01 ; elapsed = 00:00:09 . Memory (MB): peak = 103.156 ; gain = 18.246
 Execute       get_config_sdx -target 
 Execute       opt_and_import_c a -opt_level=2 -skip_syncheck=0 -ng=0 -keep_printf=0 
 Execute         cleanup_all_models 
 INFO: [HLS 200-10] Starting code transformations ...
 Execute         transform -promote-dbg-pointer E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.pp.bc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.pp.0.bc -f 
 Execute         llvm-ld E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.pp.0.bc -disable-opt -LD:/Xilinx/Vivado/2018.3/win64/lib -lfloatconversion -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.g.0 
-Command         llvm-ld done; 0.614 sec.
+Command         llvm-ld done; 0.751 sec.
 INFO-FLOW: Running Standard Transforms...
 Execute         transform -hls -share-std-xform -demangle-name -inline-byval-memcpy -always-inline -promote-dbg-pointer -interface-preproc -mem2reg -lower-blackbox -scalarrepl -mem2reg -keep-read-access -instcombine -dce -promote-dbg-pointer -bitop-raise -loop-simplify -indvarspre -indvars -loop-simplify -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -basicaa -simplifycfg -mem2reg -globalopt -global-constprop -deadargelim -instcombine -simplifycfg -prune-eh -simplifycfg -scalarrepl -instcombine -reassociate -licm -simplifycfg -loop-simplify -indvars -instcombine -simplifycfg -mem2reg -loop-simplify -indvars -instcombine -gvn -gvn -instcombine -adce -break-crit-edges -simplifycfg -loop-delete -global-array-opt -dce -dse -adce -find-syn-modules -top sha256 -deadargelim -mem2reg -instcombine -dce -presyn-prepare -auto-rom-infer -interface-preproc -syn-check -check-rec-only -find-region -simplifycfg -func-extr -function-inline -globaldce -mem2reg -instcombine -dce -gvn -globaldce -adce -adse -constprop -instcombine -bit-constprop -instcombine -dce -simplifycfg -bitop-raise -simplifycfg -dce -loop-delete -reassociate -globalopt -global-privatize -mem2reg -dce -global-constprop -pointer-simplify -constprop -dce -func-inst -deadargelim -auto-shift-reg-idiom -promote-dbg-pointer -norm-name E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.g.0.bc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.g.1.bc -f -phase std-opt 
-Command         transform done; 0.103 sec.
-INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 105.168 ; gain = 19.820
+Command         transform done; 0.172 sec.
+INFO: [HLS 200-111] Finished Standard Transforms Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 105.160 ; gain = 20.250
 INFO: [HLS 200-10] Checking synthesizability ...
 INFO-FLOW: Checking Synthesizability 1/2..
 Execute         transform -hls -syn-check -check-rec-only -disaggr -scalarrepl -norm-name -dce -mem2reg -instcombine -function-uniquify -directive-preproc -mem2reg -dse -dce -auto-rom-infer -dce -pag -array-normalize -instcombine -dce -warn-fifo-pointer -array-seg-normalize -instcombine -dce -array-flatten -instcombine -dce -array-burst -dce -deadargelim -promote-global-argument -simplifycfg -mem2reg -globaldce -resolve-double-ptr -dce -deadargelim -dce -instcombine -function-inline -globaldce -dce -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -dse -adse -instcombine -ptrLegalization -simplifycfg -dce -instcombine -pointer-simplify -ptrArgReplace -dce -instcombine -disaggr -scalarrepl -norm-name -dce -mem2reg -instcombine -ptrLegalization -simplifycfg -deadargelim -instcombine -dce -inst-simplify -function-uniquify -directive-preproc -mem2reg -dse -dce -globaldce -check-dspbuiltin E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.g.1.bc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.g.2.prechk.bc -f 
@@ -209,26 +224,21 @@ INFO: [XFORM 203-602] Inlining function '_G0' into '_hash' (src/sha256.c:126) au
 INFO: [XFORM 203-602] Inlining function '_addbits' into 'sha256_hash' (src/sha256.c:162) automatically.
 INFO: [XFORM 203-602] Inlining function '_addbits' into 'sha256_done' (src/sha256.c:189) automatically.
 INFO: [XFORM 203-602] Inlining function '_shb' into 'sha256_done' (src/sha256.c:190) automatically.
-Command         transform done; 0.173 sec.
+Command         transform done; 0.276 sec.
 INFO-FLOW: Checking Synthesizability 2/2..
 Execute         transform -syn-check E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.g.2.prechk.bc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.g.2.bc -f -phase syn-check 
-INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:07 . Memory (MB): peak = 105.809 ; gain = 20.461
+INFO: [HLS 200-111] Finished Checking Synthesizability Time (s): cpu = 00:00:01 ; elapsed = 00:00:10 . Memory (MB): peak = 106.043 ; gain = 21.133
 INFO-FLOW: Compiler optimizing ...
 INFO-FLOW: Share syncheck's 1.bc for syn flow: copy E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.g.1.bc to E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.o.1.bc
 INFO-FLOW: Presyn 1...
 Execute         transform -hls -tmp E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db -interface-port-rename -type-info -function-uniquify -directive-preproc -mem2reg -dse -dce -disaggr -scalarrepl -norm-name -deadargelim -mem2reg -instcombine -dce -simplifycfg -auto-rom-infer -dce -function-uniquify -resource-proc -simplifycfg -mem2reg -globaldce -resolve-double-ptr -dce -deadargelim -dce -instcombine -clib-intrinsic-prepare -dce -func-buffer -dce -pag -array-normalize -func-legal -instcombine -gvn -constprop -dce -ptrArgReplace -mem2reg -instcombine -dce -array-seg-normalize -deadargelim -instcombine -dce -pointer-simplify -dce -port-alignment -dce -interface-preproc -data-pack -instcombine -dce -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -loop-simplify -indvars -instcombine -gvn -loop-simplify -mem2reg -dce -find-region -instcombine -auto-loop-pipeline -inst-simplify -interface-preproc -cfgopt -instcombine -indvars -auto-loop-unroll -loop-simplify -loop-bound -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -clean-region -attach-range -gvn -inst-simplify -constprop -simplifycfg -dce -pointer-simplify -dce -globalopt -constprop -dce -array-promote -constprop -instcombine -dce -ptrArgReplace -mem2reg -instcombine -simplifycfg -dce -auto-par -instcombine -dce -array-transform-check -array-reshape -instcombine -simplifycfg -dce -ptrArgReplace -deadargelim -mem2reg -instcombine -simplifycfg -dce -indvars -loop-simplify -loop-bound -xunroll -constprop -instcombine -simplifycfg -indvars -simplifycfg -dce -globaldce -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -duplicate-dataflow-processes -globaldce -instcombine -array-partition -instcombine -simplifycfg -dce -ptrArgReplace -global-constprop -deadargelim -mem2reg -func-legal -instcombine -dce -global-constprop -deadargelim -mem2reg -instcombine -simplifycfg -dce -merge-param -deadargelim -globalopt -constprop -dce -array-promote -constprop -instcombine -dce -ptrArgReplace -mem2reg -instcombine -simplifycfg -dce -mem-intrinsic-preproc -dce -global-internalize -global-privatize -mem2reg -globaldce -promote-global-argument -ptrArgReplace -mem2reg -instcombine -dce -globalopt -mergereturn -simplify-global-access -mem2reg -dce -pointer-simplify -dce -functionattrs -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -inst-simplify -dce -norm-name -function-inline -globaldce -func-inst -constprop -instcombine -simplifycfg -dce -func-legal -dce -loop-bound -arraycheck -bitwidthmin -on-by-dataflow -loop-delete -instcombine -simplifycfg -globaldce -dce -gvn -deadargelim -dce -loop-simplify -clean-region -simplifycfg -propagate-stable-arguments -loop-stream -instcombine -simplifycfg -dce -globaldce -duplicate-dataflow-processes -stream-intrinsic-preproc -dce -check-ap-stream -loop-simplify -eliminate-keepreads -extract-dataflow-in-loop -loop-simplify -dce -gvn -deadargelim -dse -check-dataflow-syntax -legalize-stream-variable -legalize-global -extract-subproc -dce -dead-channel-elimination -canonicalize-gep -globaldce -dce -gvn -deadargelim -annotate-dataflow-channels -scalar-propagation -deadargelim -globaldce -mem2reg -check-dataflow-channels -function-stream -dce -globaldce -prop-fifo-spec -internal-stream-gen -canonicalize-gep -globaldce -dce -gvn -deadargelim -mergereturn -indvars -loop-simplify -instcombine -array-stream -array-seg-normalize -array-partition -func-legal -instcombine -simplifycfg -dce -bundle-memfifo-ops -deadargelim -function-uniquify -directive-preproc -mem2reg -dse -dce -group-axi-access -licm -simplifycfg -dce -loop-delete -norm-name E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.o.1.bc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.o.1.tmp.bc -f 
-INFO: [XFORM 203-502] Unrolling all loops for pipelining in function '_hash' (src/sha256.c:75).
-WARNING: [XFORM 203-505] Ignored pipeline directive for loop '_hash_label0' (src/sha256.c:94) because its parent loop or function is pipelined.
-WARNING: [XFORM 203-505] Ignored pipeline directive for loop '_hash_label1' (src/sha256.c:125) because its parent loop or function is pipelined.
 WARNING: [XFORM 203-561] Updating loop upper bound from 64 to 8 for loop 'sha256_done_label4' (src/sha256.c:185:1) in function 'sha256_done'.
 WARNING: [XFORM 203-561] Updating loop lower bound from 0 to 8 for loop 'sha256_done_label4' (src/sha256.c:185:1) in function 'sha256_done'.
 WARNING: [XFORM 203-503] Cannot unroll loop 'sha256_done_label3' (src/sha256.c:178) in function 'sha256_done' completely: variable loop bound.
-INFO: [HLS 200-489] Unrolling loop '_hash_label0' (src/sha256.c:94) in function '_hash' completely with a factor of 16.
-INFO: [HLS 200-489] Unrolling loop '_hash_label1' (src/sha256.c:125) in function '_hash' completely with a factor of 48.
-INFO: [XFORM 203-102] Partitioning array 'W' (src/sha256.c:82) automatically.
-INFO: [XFORM 203-102] Partitioning array 'sha256hash' (src/sha256.c:229) automatically.
-INFO: [XFORM 203-102] Partitioning array 'sha256_bits' (src/sha256.c:230) automatically.
-INFO: [XFORM 203-102] Partitioning array 'sha256_len' (src/sha256.c:231) automatically.
+WARNING: [XFORM 203-503] Cannot unroll loop 'sha256_hash_label2' (src/sha256.c:156) in function 'sha256_hash': cannot completely unroll a loop with a variable trip count.
+INFO: [XFORM 203-102] Partitioning array 'sha256hash' (src/sha256.c:238) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sha256_bits' (src/sha256.c:239) automatically.
+INFO: [XFORM 203-102] Partitioning array 'sha256_len' (src/sha256.c:240) automatically.
 INFO: [XFORM 203-602] Inlining function '_shw' into '_word' (src/sha256.c:63) automatically.
 INFO: [XFORM 203-602] Inlining function '_shw' into '_r' (src/sha256.c:21) automatically.
 INFO: [XFORM 203-602] Inlining function '_r' into '_S1' (src/sha256.c:45) automatically.
@@ -236,70 +246,44 @@ INFO: [XFORM 203-602] Inlining function '_r' into '_S0' (src/sha256.c:39) automa
 INFO: [XFORM 203-602] Inlining function '_r' into '_G1' (src/sha256.c:57) automatically.
 INFO: [XFORM 203-602] Inlining function '_r' into '_G0' (src/sha256.c:51) automatically.
 INFO: [XFORM 203-602] Inlining function '_shw' into '_hash' (src/sha256.c:112) automatically.
+INFO: [XFORM 203-602] Inlining function '_word' into '_hash' (src/sha256.c:112) automatically.
+INFO: [XFORM 203-602] Inlining function '_S1' into '_hash' (src/sha256.c:113) automatically.
+INFO: [XFORM 203-602] Inlining function '_Ch' into '_hash' (src/sha256.c:113) automatically.
+INFO: [XFORM 203-602] Inlining function '_S0' into '_hash' (src/sha256.c:114) automatically.
+INFO: [XFORM 203-602] Inlining function '_Ma' into '_hash' (src/sha256.c:114) automatically.
+INFO: [XFORM 203-602] Inlining function '_G1' into '_hash' (src/sha256.c:126) automatically.
+INFO: [XFORM 203-602] Inlining function '_G0' into '_hash' (src/sha256.c:126) automatically.
 INFO: [XFORM 203-602] Inlining function '_addbits' into 'sha256_hash' (src/sha256.c:162) automatically.
 INFO: [XFORM 203-602] Inlining function '_addbits' into 'sha256_done' (src/sha256.c:189) automatically.
 INFO: [XFORM 203-602] Inlining function '_shb' into 'sha256_done' (src/sha256.c:190) automatically.
-Command         transform done; 1.882 sec.
+Command         transform done; 1.311 sec.
 INFO-FLOW: Presyn 2...
 Execute         transform -hls -keep-callgraph -scalarrepl -mem2reg -port-alignment -attach-range -dce -pipe-mux-gen -indvars -loop-bound -inst-simplify -instcombine -dce -merge-array-access -mem2reg -dce -clean-region -mergereturn -if-conv -instcombine -dce -constprop -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -gvn -gvn -basicaa -aggr-aa -aggrmodref-aa -aggr-aa -dse -adse -adce -scalarrepl -mem2reg -global-constprop -deadargelim -deadargelim -instcombine -dce -simplifycfg -ptrArgReplace -mem2reg -function-inline -globaldce -mem2reg -instcombine -dce -expr-balance -instcombine -dce -bitwidthmin -interface-preproc -directive-preproc -inst-rectify -instcombine -dce -functionattrs -constprop -instcombine -bit-constprop -simplify-global-access -globalopt -globaldce -inst-simplify -instcombine -elimdeaddata -dce -loop-delete -simplifycfg -loop-simplify -auto-burst -norm-name E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.o.1.tmp.bc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.o.2.bc -f -phase presyn 
-INFO: [XFORM 203-11] Balancing expressions in function '_hash' (src/sha256.c:75)...601 expression(s) balanced.
-Command         transform done; 1.239 sec.
-INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:04 ; elapsed = 00:00:11 . Memory (MB): peak = 130.176 ; gain = 44.828
+INFO: [XFORM 203-11] Balancing expressions in function '_hash' (src/sha256.c:75)...17 expression(s) balanced.
+Command         transform done; 0.424 sec.
+INFO: [HLS 200-111] Finished Pre-synthesis Time (s): cpu = 00:00:03 ; elapsed = 00:00:12 . Memory (MB): peak = 127.074 ; gain = 42.164
 INFO-FLOW: Building ssdm...
 Execute         transform -hls -function-uniquify -auto-function-inline -globaldce -ptrArgReplace -mem2reg -instcombine -dce -reset-lda -loop-simplify -indvars -licm -loop-dep -loop-bound -licm -loop-simplify -flattenloopnest -array-flatten -gvn -instcombine -dce -array-map -dce -func-legal -gvn -adce -instcombine -cfgopt -simplifycfg -loop-simplify -array-burst -promote-global-argument -dce -axi4-lower -array-seg-normalize -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -gvn -gvn -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -dse -adse -adce -licm -inst-simplify -dce -globaldce -instcombine -array-stream -eliminate-keepreads -instcombine -dce -deadargelim -doublePtrSimplify -doublePtrElim -dce -doublePtrSimplify -promote-dbg-pointer -dce -scalarrepl -mem2reg -disaggr -norm-name -mem2reg -instcombine -dse -adse -adce -ptrLegalization -dce -auto-rom-infer -array-flatten -dce -instcombine -check-doubleptr -loop-rot -constprop -cfgopt -simplifycfg -loop-simplify -indvars -pointer-simplify -dce -loop-bound -loop-simplify -loop-preproc -constprop -global-constprop -gvn -mem2reg -instcombine -dce -loop-bound -loop-merge -dce -bitwidthmin -deadargelim -dce -canonicalize-dataflow -dce -scalar-propagation -deadargelim -globaldce -mem2reg -read-loop-dep -interface-preproc -directive-preproc -interface-gen -bram-byte-enable -deadargelim -inst-simplify -dce -gvn -mem2reg -instcombine -dce -adse -loop-bound -instcombine -cfgopt -simplifycfg -loop-simplify -clean-region -io-protocol -find-region -mem2reg -bitop-raise -inst-simplify -inst-rectify -instcombine -adce -deadargelim -loop-simplify -phi-opt -bitop-raise -cfgopt -simplifycfg -strip-dead-prototypes -interface-lower -bitop-lower -intrinsic-lower -auto-function-inline -basicaa -aggrmodref-aa -globalsmodref-aa -aggr-aa -inst-simplify -simplifycfg -loop-simplify -mergereturn -inst-simplify -inst-rectify -dce -load-elim -bitop-lower -loop-rewind -pointer-simplify -dce -cfgopt -dce -bitwidth -loop-bound -loop-dep -read-loop-dep -dce -check-stream -norm-name -legalize -validate-dataflow -inst-clarity -cdfg-build E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.o.2.bc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/a.o.3.bc -f -phase build-ssdm 
-Command         transform done; 3.179 sec.
-INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 223.172 ; gain = 137.824
+INFO: [HLS 200-444] Inferring multiple bus burst write of a total cumulative length 32 on port 'hash' (src/sha256.c:214:3). These data requests might be further partitioned to multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.
+INFO: [HLS 200-444] Inferring multiple bus burst read of variable length on port 'data' (src/sha256.c:158:2). These data requests might be further partitioned to multiple requests during RTL generation, based on max_read_burst_length or max_write_burst_length settings.
+Command         transform done; 1.262 sec.
+INFO: [HLS 200-111] Finished Architecture Synthesis Time (s): cpu = 00:00:04 ; elapsed = 00:00:13 . Memory (MB): peak = 151.355 ; gain = 66.445
 INFO-FLOW: Finish building internal data model.
-Command       opt_and_import_c done; 7.242 sec.
-Command     elaborate done; 12.25 sec.
+Command       opt_and_import_c done; 4.329 sec.
+Command     elaborate done; 11.436 sec.
 Execute     autosyn -from_csynth_design=1 
 INFO: [HLS 200-10] Starting hardware synthesis ...
 INFO-FLOW: Synthesizing C/C++ design ...
 INFO: [HLS 200-10] Synthesizing 'sha256' ...
 Execute       ap_set_top_model sha256 
-WARNING: [SYN 201-103] Legalizing function name '_word' to 'p_word'.
-WARNING: [SYN 201-103] Legalizing function name '_S1' to 'p_S1'.
-WARNING: [SYN 201-103] Legalizing function name '_Ch' to 'p_Ch'.
-WARNING: [SYN 201-103] Legalizing function name '_S0' to 'p_S0'.
-WARNING: [SYN 201-103] Legalizing function name '_Ma' to 'p_Ma'.
-WARNING: [SYN 201-103] Legalizing function name '_G1' to 'p_G1'.
-WARNING: [SYN 201-103] Legalizing function name '_G0' to 'p_G0'.
 WARNING: [SYN 201-103] Legalizing function name '_hash' to 'p_hash'.
 Execute       get_model_list sha256 -filter all-wo-channel -topdown 
 Execute       preproc_iomode -model sha256 
 Execute       preproc_iomode -model sha256_done 
 Execute       preproc_iomode -model sha256_hash 
 Execute       preproc_iomode -model _hash 
-Execute       preproc_iomode -model _G0 
-Execute       preproc_iomode -model _G1 
-Execute       preproc_iomode -model _Ma 
-Execute       preproc_iomode -model _S0 
-Execute       preproc_iomode -model _Ch 
-Execute       preproc_iomode -model _S1 
-Execute       preproc_iomode -model _word 
 Execute       get_model_list sha256 -filter all-wo-channel 
-INFO-FLOW: Model list for configure: _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256
-INFO-FLOW: Configuring Module : _word ...
-Execute       set_default_model _word 
-Execute       apply_spec_resource_limit _word 
-INFO-FLOW: Configuring Module : _S1 ...
-Execute       set_default_model _S1 
-Execute       apply_spec_resource_limit _S1 
-INFO-FLOW: Configuring Module : _Ch ...
-Execute       set_default_model _Ch 
-Execute       apply_spec_resource_limit _Ch 
-INFO-FLOW: Configuring Module : _S0 ...
-Execute       set_default_model _S0 
-Execute       apply_spec_resource_limit _S0 
-INFO-FLOW: Configuring Module : _Ma ...
-Execute       set_default_model _Ma 
-Execute       apply_spec_resource_limit _Ma 
-INFO-FLOW: Configuring Module : _G1 ...
-Execute       set_default_model _G1 
-Execute       apply_spec_resource_limit _G1 
-INFO-FLOW: Configuring Module : _G0 ...
-Execute       set_default_model _G0 
-Execute       apply_spec_resource_limit _G0 
+INFO-FLOW: Model list for configure: _hash sha256_hash sha256_done sha256
 INFO-FLOW: Configuring Module : _hash ...
 Execute       set_default_model _hash 
 Execute       apply_spec_resource_limit _hash 
@@ -312,35 +296,7 @@ Execute       apply_spec_resource_limit sha256_done
 INFO-FLOW: Configuring Module : sha256 ...
 Execute       set_default_model sha256 
 Execute       apply_spec_resource_limit sha256 
-INFO-FLOW: Model list for preprocess: _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256
-INFO-FLOW: Preprocessing Module: _word ...
-Execute       set_default_model _word 
-Execute       cdfg_preprocess -model _word 
-Execute       rtl_gen_preprocess _word 
-INFO-FLOW: Preprocessing Module: _S1 ...
-Execute       set_default_model _S1 
-Execute       cdfg_preprocess -model _S1 
-Execute       rtl_gen_preprocess _S1 
-INFO-FLOW: Preprocessing Module: _Ch ...
-Execute       set_default_model _Ch 
-Execute       cdfg_preprocess -model _Ch 
-Execute       rtl_gen_preprocess _Ch 
-INFO-FLOW: Preprocessing Module: _S0 ...
-Execute       set_default_model _S0 
-Execute       cdfg_preprocess -model _S0 
-Execute       rtl_gen_preprocess _S0 
-INFO-FLOW: Preprocessing Module: _Ma ...
-Execute       set_default_model _Ma 
-Execute       cdfg_preprocess -model _Ma 
-Execute       rtl_gen_preprocess _Ma 
-INFO-FLOW: Preprocessing Module: _G1 ...
-Execute       set_default_model _G1 
-Execute       cdfg_preprocess -model _G1 
-Execute       rtl_gen_preprocess _G1 
-INFO-FLOW: Preprocessing Module: _G0 ...
-Execute       set_default_model _G0 
-Execute       cdfg_preprocess -model _G0 
-Execute       rtl_gen_preprocess _G0 
+INFO-FLOW: Model list for preprocess: _hash sha256_hash sha256_done sha256
 INFO-FLOW: Preprocessing Module: _hash ...
 Execute       set_default_model _hash 
 Execute       cdfg_preprocess -model _hash 
@@ -357,228 +313,31 @@ INFO-FLOW: Preprocessing Module: sha256 ...
 Execute       set_default_model sha256 
 Execute       cdfg_preprocess -model sha256 
 Execute       rtl_gen_preprocess sha256 
-INFO-FLOW: Model list for synthesis: _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'p_word' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-Execute       set_default_model _word 
-Execute       schedule -model _word 
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function '_word'.
-WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('c_load_2', src/sha256.c:63) on array 'c' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'c'.
-INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 3.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 13.957 seconds; current allocated memory: 181.295 MB.
-Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.verbose.sched.rpt -verbose -f 
-Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.sched.adb -f 
-INFO-FLOW: Finish scheduling _word.
-Execute       set_default_model _word 
-Execute       bind -model _word 
-BIND OPTION: fu_weight=[ 0.0 -- 1.0 ]
-BIND OPTION: model=_word
-BIND OPTION: reg_weight=[ 0.0 -- 1.0 ]
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.063 seconds; current allocated memory: 181.381 MB.
-Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.verbose.bind.rpt -verbose -f 
-Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.bind.adb -f 
-INFO-FLOW: Finish binding _word.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'p_S1' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-Execute       set_default_model _S1 
-Execute       schedule -model _S1 
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function '_S1'.
-INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.091 seconds; current allocated memory: 181.449 MB.
-Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.verbose.sched.rpt -verbose -f 
-Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.sched.adb -f 
-INFO-FLOW: Finish scheduling _S1.
-Execute       set_default_model _S1 
-Execute       bind -model _S1 
-BIND OPTION: fu_weight=[ 0.0 -- 1.0 ]
-BIND OPTION: model=_S1
-BIND OPTION: reg_weight=[ 0.0 -- 1.0 ]
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.051 seconds; current allocated memory: 181.512 MB.
-Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.verbose.bind.rpt -verbose -f 
-Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.bind.adb -f 
-INFO-FLOW: Finish binding _S1.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'p_Ch' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-Execute       set_default_model _Ch 
-Execute       schedule -model _Ch 
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function '_Ch'.
-INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.129 seconds; current allocated memory: 181.552 MB.
-Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.verbose.sched.rpt -verbose -f 
-Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.sched.adb -f 
-INFO-FLOW: Finish scheduling _Ch.
-Execute       set_default_model _Ch 
-Execute       bind -model _Ch 
-BIND OPTION: fu_weight=[ 0.0 -- 1.0 ]
-BIND OPTION: model=_Ch
-BIND OPTION: reg_weight=[ 0.0 -- 1.0 ]
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.064 seconds; current allocated memory: 181.596 MB.
-Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.verbose.bind.rpt -verbose -f 
-Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.bind.adb -f 
-INFO-FLOW: Finish binding _Ch.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'p_S0' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-Execute       set_default_model _S0 
-Execute       schedule -model _S0 
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function '_S0'.
-INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.094 seconds; current allocated memory: 181.632 MB.
-Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.verbose.sched.rpt -verbose -f 
-Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.sched.adb -f 
-INFO-FLOW: Finish scheduling _S0.
-Execute       set_default_model _S0 
-Execute       bind -model _S0 
-BIND OPTION: fu_weight=[ 0.0 -- 1.0 ]
-BIND OPTION: model=_S0
-BIND OPTION: reg_weight=[ 0.0 -- 1.0 ]
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.077 seconds; current allocated memory: 181.694 MB.
-Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.verbose.bind.rpt -verbose -f 
-Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.bind.adb -f 
-INFO-FLOW: Finish binding _S0.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'p_Ma' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-Execute       set_default_model _Ma 
-Execute       schedule -model _Ma 
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function '_Ma'.
-INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.096 seconds; current allocated memory: 181.717 MB.
-Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.verbose.sched.rpt -verbose -f 
-Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.sched.adb -f 
-INFO-FLOW: Finish scheduling _Ma.
-Execute       set_default_model _Ma 
-Execute       bind -model _Ma 
-BIND OPTION: fu_weight=[ 0.0 -- 1.0 ]
-BIND OPTION: model=_Ma
-BIND OPTION: reg_weight=[ 0.0 -- 1.0 ]
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.054 seconds; current allocated memory: 181.760 MB.
-Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.verbose.bind.rpt -verbose -f 
-Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.bind.adb -f 
-INFO-FLOW: Finish binding _Ma.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'p_G1' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-Execute       set_default_model _G1 
-Execute       schedule -model _G1 
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function '_G1'.
-INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.077 seconds; current allocated memory: 181.794 MB.
-Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.verbose.sched.rpt -verbose -f 
-Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.sched.adb -f 
-INFO-FLOW: Finish scheduling _G1.
-Execute       set_default_model _G1 
-Execute       bind -model _G1 
-BIND OPTION: fu_weight=[ 0.0 -- 1.0 ]
-BIND OPTION: model=_G1
-BIND OPTION: reg_weight=[ 0.0 -- 1.0 ]
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.058 seconds; current allocated memory: 181.853 MB.
-Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.verbose.bind.rpt -verbose -f 
-Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.bind.adb -f 
-INFO-FLOW: Finish binding _G1.
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-42] -- Implementing module 'p_G0' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-Execute       set_default_model _G0 
-Execute       schedule -model _G0 
-INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function '_G0'.
-INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 1.
-INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 0.091 seconds; current allocated memory: 181.902 MB.
-Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.verbose.sched.rpt -verbose -f 
-Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.sched.adb -f 
-INFO-FLOW: Finish scheduling _G0.
-Execute       set_default_model _G0 
-Execute       bind -model _G0 
-BIND OPTION: fu_weight=[ 0.0 -- 1.0 ]
-BIND OPTION: model=_G0
-BIND OPTION: reg_weight=[ 0.0 -- 1.0 ]
-INFO: [BIND 205-100] Starting micro-architecture generation ...
-INFO: [BIND 205-101] Performing variable lifetime analysis.
-INFO: [BIND 205-101] Exploring resource sharing.
-INFO: [BIND 205-101] Binding ...
-INFO: [BIND 205-100] Finished micro-architecture generation.
-INFO: [HLS 200-111]  Elapsed time: 0.065 seconds; current allocated memory: 181.961 MB.
-Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.verbose.bind.rpt -verbose -f 
-Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.bind.adb -f 
-INFO-FLOW: Finish binding _G0.
+WARNING: [SYN 201-107] Renaming port name 'sha256/INPUT' to 'sha256/INPUT_r' to avoid the conflict with HDL keywords or other object names.
+WARNING: [SYN 201-107] Renaming port name 'sha256/OUTPUT' to 'sha256/OUTPUT_r' to avoid the conflict with HDL keywords or other object names.
+INFO-FLOW: Model list for synthesis: _hash sha256_hash sha256_done sha256
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'p_hash' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 Execute       set_default_model _hash 
 Execute       schedule -model _hash 
 INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining function '_hash'.
-WARNING: [SCHED 204-68] The II Violation in module 'p_hash': Unable to enforce a carried dependence constraint (II = 2, distance = 1, offset = 1)
-   between 'call' operation ('W[1]', src/sha256.c:112) to '_word' and 'call' operation ('W[0]', src/sha256.c:112) to '_word'.
-WARNING: [SCHED 204-68] The II Violation in module 'p_hash': Unable to enforce a carried dependence constraint (II = 3, distance = 1, offset = 1)
-   between 'call' operation ('W[1]', src/sha256.c:112) to '_word' and 'call' operation ('W[0]', src/sha256.c:112) to '_word'.
-WARNING: [SCHED 204-68] The II Violation in module 'p_hash': Unable to enforce a carried dependence constraint (II = 4, distance = 1, offset = 1)
-   between 'call' operation ('W[1]', src/sha256.c:112) to '_word' and 'call' operation ('W[0]', src/sha256.c:112) to '_word'.
-WARNING: [SCHED 204-68] The II Violation in module 'p_hash': Unable to enforce a carried dependence constraint (II = 5, distance = 1, offset = 1)
-   between 'call' operation ('W[1]', src/sha256.c:112) to '_word' and 'call' operation ('W[0]', src/sha256.c:112) to '_word'.
-WARNING: [SCHED 204-68] The II Violation in module 'p_hash': Unable to enforce a carried dependence constraint (II = 36, distance = 1, offset = 1)
-   between 'call' operation ('W[12]', src/sha256.c:112) to '_word' and 'call' operation ('W[0]', src/sha256.c:112) to '_word'.
-WARNING: [SCHED 204-68] The II Violation in module 'p_hash': Unable to enforce a carried dependence constraint (II = 44, distance = 1, offset = 1)
-   between 'call' operation ('W[14]', src/sha256.c:112) to '_word' and 'call' operation ('W[0]', src/sha256.c:112) to '_word'.
-WARNING: [SCHED 204-68] The II Violation in module 'p_hash': Unable to enforce a carried dependence constraint (II = 46, distance = 1, offset = 1)
-   between 'call' operation ('W[15]', src/sha256.c:112) to '_word' and 'call' operation ('W[0]', src/sha256.c:112) to '_word'.
-WARNING: [SCHED 204-68] The II Violation in module 'p_hash': Unable to enforce a carried dependence constraint (II = 47, distance = 1, offset = 1)
-   between 'call' operation ('W[15]', src/sha256.c:112) to '_word' and 'call' operation ('W[0]', src/sha256.c:112) to '_word'.
-INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 48, Depth = 99.
+INFO: [SCHED 204-61] Pipelining loop '_hash_label0'.
+WARNING: [SCHED 204-69] Unable to schedule 'load' operation ('sha256_buf_load_2', src/sha256.c:63->src/sha256.c:112) on array 'sha256_buf' due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'sha256_buf'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 2, Depth = 4.
+INFO: [SCHED 204-61] Pipelining loop '_hash_label1'.
+WARNING: [SCHED 204-68] The II Violation in module 'p_hash': Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 0)
+   between 'add' operation ('e', src/sha256.c:132) and 'and' operation ('tmp_104_i1', src/sha256.c:27->src/sha256.c:127).
+WARNING: [SCHED 204-68] The II Violation in module 'p_hash': Unable to enforce a carried dependence constraint (II = 1, distance = 1, offset = 1)
+   between 'add' operation ('tmp_44', src/sha256.c:127) and 'xor' operation ('tmp_105_i1', src/sha256.c:27->src/sha256.c:127).
+WARNING: [SCHED 204-69] Unable to schedule 'store' operation (src/sha256.c:126) of variable 'tmp_40', src/sha256.c:126 on array 'W', src/sha256.c:82 due to limited memory ports. Please consider using a memory core with more ports or partitioning the array 'W'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 3, Depth = 6.
 INFO: [SCHED 204-11] Finished scheduling.
-Command       schedule done; 5.918 sec.
-INFO: [HLS 200-111]  Elapsed time: 5.972 seconds; current allocated memory: 184.221 MB.
+Command       schedule done; 0.955 sec.
+INFO: [HLS 200-111]  Elapsed time: 14.343 seconds; current allocated memory: 110.847 MB.
 Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.verbose.sched.rpt -verbose -f 
-Command       report done; 0.536 sec.
+Command       report done; 0.13 sec.
 Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.sched.adb -f 
-Command       db_write done; 0.383 sec.
 INFO-FLOW: Finish scheduling _hash.
 Execute       set_default_model _hash 
 Execute       bind -model _hash 
@@ -590,12 +349,12 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-Command       bind done; 1.33 sec.
-INFO: [HLS 200-111]  Elapsed time: 2.278 seconds; current allocated memory: 187.082 MB.
+Command       bind done; 0.105 sec.
+INFO: [HLS 200-111]  Elapsed time: 0.358 seconds; current allocated memory: 111.588 MB.
 Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.verbose.bind.rpt -verbose -f 
-Command       report done; 1.36 sec.
+Command       report done; 0.301 sec.
 Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.bind.adb -f 
-Command       db_write done; 0.359 sec.
+Command       db_write done; 0.117 sec.
 INFO-FLOW: Finish binding _hash.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'sha256_hash' 
@@ -603,67 +362,10 @@ INFO: [HLS 200-10] -------------------------------------------------------------
 Execute       set_default_model sha256_hash 
 Execute       schedule -model sha256_hash 
 INFO: [SCHED 204-11] Starting scheduling ...
-INFO: [SCHED 204-61] Pipelining loop 'sha256_hash_label2'.
-WARNING: [SCHED 204-68] The II Violation in module 'sha256_hash': Unable to enforce a carried dependence constraint (II = 48, distance = 1, offset = 1)
-   between 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash' and 'store' operation (src/sha256.c:158) of variable 'data_load', src/sha256.c:158 on array 'sha256_buf'.
-WARNING: [SCHED 204-62] II = 49 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 50 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 51 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 52 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 53 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 54 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 55 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 56 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 57 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 58 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 59 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 60 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 61 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 62 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 63 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 64 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 65 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 66 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 67 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 68 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 69 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 70 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 71 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 72 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 73 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 74 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 75 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 76 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 77 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 78 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 79 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 80 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 81 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 82 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 83 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 84 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 85 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 86 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 87 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 88 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 89 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 90 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 91 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 92 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 93 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 94 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 95 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-68] The II Violation in module 'sha256_hash': Unable to enforce a carried dependence constraint (II = 96, distance = 1, offset = 1)
-   between 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash' and 'store' operation (src/sha256.c:158) of variable 'data_load', src/sha256.c:158 on array 'sha256_buf'.
-WARNING: [SCHED 204-62] II = 97 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-62] II = 98 is infeasible due to multiple pipeline iteration latency = 99 and incompatible II = 48 of 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash'.
-WARNING: [SCHED 204-68] The II Violation in module 'sha256_hash': Unable to enforce a carried dependence constraint (II = 99, distance = 1, offset = 1)
-   between 'call' operation ('p_hash_ret', src/sha256.c:161) to '_hash' and 'store' operation (src/sha256.c:158) of variable 'data_load', src/sha256.c:158 on array 'sha256_buf'.
-INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 100, Depth = 101.
 INFO: [SCHED 204-11] Finished scheduling.
-Command       schedule done; 0.723 sec.
-INFO: [HLS 200-111]  Elapsed time: 2.5 seconds; current allocated memory: 187.738 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.558 seconds; current allocated memory: 111.848 MB.
 Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.verbose.sched.rpt -verbose -f 
+INFO: [HLS 200-434] Only 0 loops out of a total 1 loops have been pipelined in this design.
 Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.sched.adb -f 
 INFO-FLOW: Finish scheduling sha256_hash.
 Execute       set_default_model sha256_hash 
@@ -676,10 +378,10 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-Command       bind done; 0.379 sec.
-INFO: [HLS 200-111]  Elapsed time: 0.528 seconds; current allocated memory: 188.525 MB.
+Command       bind done; 0.106 sec.
+INFO: [HLS 200-111]  Elapsed time: 0.244 seconds; current allocated memory: 112.215 MB.
 Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.verbose.bind.rpt -verbose -f 
-Command       report done; 1.049 sec.
+Command       report done; 0.244 sec.
 Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.bind.adb -f 
 INFO-FLOW: Finish binding sha256_hash.
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -688,12 +390,13 @@ INFO: [HLS 200-10] -------------------------------------------------------------
 Execute       set_default_model sha256_done 
 Execute       schedule -model sha256_done 
 INFO: [SCHED 204-11] Starting scheduling ...
+INFO: [SCHED 204-61] Pipelining loop 'sha256_done_label0'.
+INFO: [SCHED 204-61] Pipelining result : Target II = 1, Final II = 1, Depth = 3.
 INFO: [SCHED 204-11] Finished scheduling.
-Command       schedule done; 0.244 sec.
-INFO: [HLS 200-111]  Elapsed time: 1.404 seconds; current allocated memory: 189.377 MB.
+Command       schedule done; 0.376 sec.
+INFO: [HLS 200-111]  Elapsed time: 0.713 seconds; current allocated memory: 112.751 MB.
 Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.verbose.sched.rpt -verbose -f 
-INFO: [HLS 200-434] Only 0 loops out of a total 3 loops have been pipelined in this design.
-Command       report done; 0.116 sec.
+Command       report done; 0.181 sec.
 Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.sched.adb -f 
 INFO-FLOW: Finish scheduling sha256_done.
 Execute       set_default_model sha256_done 
@@ -706,12 +409,12 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-Command       bind done; 0.502 sec.
-INFO: [HLS 200-111]  Elapsed time: 0.751 seconds; current allocated memory: 190.930 MB.
+Command       bind done; 0.228 sec.
+INFO: [HLS 200-111]  Elapsed time: 0.529 seconds; current allocated memory: 113.412 MB.
 Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.verbose.bind.rpt -verbose -f 
-Command       report done; 1.067 sec.
+Command       report done; 0.413 sec.
 Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.bind.adb -f 
-Command       db_write done; 0.13 sec.
+Command       db_write done; 0.12 sec.
 INFO-FLOW: Finish binding sha256_done.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-42] -- Implementing module 'sha256' 
@@ -720,7 +423,7 @@ Execute       set_default_model sha256
 Execute       schedule -model sha256 
 INFO: [SCHED 204-11] Starting scheduling ...
 INFO: [SCHED 204-11] Finished scheduling.
-INFO: [HLS 200-111]  Elapsed time: 1.28 seconds; current allocated memory: 191.183 MB.
+INFO: [HLS 200-111]  Elapsed time: 0.615 seconds; current allocated memory: 113.610 MB.
 Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.verbose.sched.rpt -verbose -f 
 Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.sched.adb -f 
 INFO-FLOW: Finish scheduling sha256.
@@ -734,145 +437,19 @@ INFO: [BIND 205-101] Performing variable lifetime analysis.
 INFO: [BIND 205-101] Exploring resource sharing.
 INFO: [BIND 205-101] Binding ...
 INFO: [BIND 205-100] Finished micro-architecture generation.
-Command       bind done; 1.273 sec.
-INFO: [HLS 200-111]  Elapsed time: 1.332 seconds; current allocated memory: 191.514 MB.
+Command       bind done; 0.404 sec.
+INFO: [HLS 200-111]  Elapsed time: 0.467 seconds; current allocated memory: 113.832 MB.
 Execute       report -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.verbose.bind.rpt -verbose -f 
-Command       report done; 1.912 sec.
+Command       report done; 0.548 sec.
 Execute       db_write -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.bind.adb -f 
 INFO-FLOW: Finish binding sha256.
 Execute       get_model_list sha256 -filter all-wo-channel 
 INFO-FLOW: Preprocessing for RTLGen ...
-Execute       rtl_gen_preprocess _word 
-Execute       rtl_gen_preprocess _S1 
-Execute       rtl_gen_preprocess _Ch 
-Execute       rtl_gen_preprocess _S0 
-Execute       rtl_gen_preprocess _Ma 
-Execute       rtl_gen_preprocess _G1 
-Execute       rtl_gen_preprocess _G0 
 Execute       rtl_gen_preprocess _hash 
 Execute       rtl_gen_preprocess sha256_hash 
 Execute       rtl_gen_preprocess sha256_done 
 Execute       rtl_gen_preprocess sha256 
-INFO-FLOW: Model list for RTL generation: _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'p_word' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-Execute       get_config_rtl -prefix 
-Execute       get_config_rtl -auto_prefix 
-Execute       create_rtl_model _word -vendor xilinx -mg_file E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.compgen.tcl 
-INFO: [RTGEN 206-100] Finished creating RTL model for 'p_word'.
-INFO: [HLS 200-111]  Elapsed time: 2.014 seconds; current allocated memory: 192.062 MB.
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.rtl_wrap.cfg.tcl 
-Execute       gen_rtl _word -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/p_word -synmodules _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256 
-Execute       gen_rtl _word -style xilinx -f -lang vhdl -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/vhdl/p_word 
-Execute       gen_rtl _word -style xilinx -f -lang vlog -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/verilog/p_word 
-Execute       gen_tb_info _word -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word -p E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db 
-Execute       report -model _word -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_word_csynth.rpt -f 
-Execute       report -model _word -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_word_csynth.xml -f -x 
-Execute       report -model _word -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.verbose.rpt -verbose -f 
-Execute       db_write -model _word -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.adb -f 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'p_S1' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-Execute       get_config_rtl -prefix 
-Execute       get_config_rtl -auto_prefix 
-Execute       create_rtl_model _S1 -vendor xilinx -mg_file E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.compgen.tcl 
-INFO: [RTGEN 206-100] Finished creating RTL model for 'p_S1'.
-INFO: [HLS 200-111]  Elapsed time: 0.208 seconds; current allocated memory: 192.236 MB.
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.rtl_wrap.cfg.tcl 
-Execute       gen_rtl _S1 -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/p_S1 -synmodules _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256 
-Execute       gen_rtl _S1 -style xilinx -f -lang vhdl -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/vhdl/p_S1 
-Execute       gen_rtl _S1 -style xilinx -f -lang vlog -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/verilog/p_S1 
-Execute       gen_tb_info _S1 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1 -p E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db 
-Execute       report -model _S1 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_S1_csynth.rpt -f 
-Execute       report -model _S1 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_S1_csynth.xml -f -x 
-Execute       report -model _S1 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.verbose.rpt -verbose -f 
-Execute       db_write -model _S1 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.adb -f 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'p_Ch' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-Execute       get_config_rtl -prefix 
-Execute       get_config_rtl -auto_prefix 
-Execute       create_rtl_model _Ch -vendor xilinx -mg_file E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.compgen.tcl 
-INFO: [RTGEN 206-100] Finished creating RTL model for 'p_Ch'.
-INFO: [HLS 200-111]  Elapsed time: 0.151 seconds; current allocated memory: 192.329 MB.
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.rtl_wrap.cfg.tcl 
-Execute       gen_rtl _Ch -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/p_Ch -synmodules _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256 
-Execute       gen_rtl _Ch -style xilinx -f -lang vhdl -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/vhdl/p_Ch 
-Execute       gen_rtl _Ch -style xilinx -f -lang vlog -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/verilog/p_Ch 
-Execute       gen_tb_info _Ch -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch -p E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db 
-Execute       report -model _Ch -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_Ch_csynth.rpt -f 
-Execute       report -model _Ch -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_Ch_csynth.xml -f -x 
-Execute       report -model _Ch -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.verbose.rpt -verbose -f 
-Execute       db_write -model _Ch -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.adb -f 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'p_S0' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-Execute       get_config_rtl -prefix 
-Execute       get_config_rtl -auto_prefix 
-Execute       create_rtl_model _S0 -vendor xilinx -mg_file E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.compgen.tcl 
-INFO: [RTGEN 206-100] Finished creating RTL model for 'p_S0'.
-INFO: [HLS 200-111]  Elapsed time: 0.154 seconds; current allocated memory: 192.480 MB.
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.rtl_wrap.cfg.tcl 
-Execute       gen_rtl _S0 -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/p_S0 -synmodules _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256 
-Execute       gen_rtl _S0 -style xilinx -f -lang vhdl -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/vhdl/p_S0 
-Execute       gen_rtl _S0 -style xilinx -f -lang vlog -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/verilog/p_S0 
-Execute       gen_tb_info _S0 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0 -p E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db 
-Execute       report -model _S0 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_S0_csynth.rpt -f 
-Execute       report -model _S0 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_S0_csynth.xml -f -x 
-Execute       report -model _S0 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.verbose.rpt -verbose -f 
-Execute       db_write -model _S0 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.adb -f 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'p_Ma' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-Execute       get_config_rtl -prefix 
-Execute       get_config_rtl -auto_prefix 
-Execute       create_rtl_model _Ma -vendor xilinx -mg_file E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.compgen.tcl 
-INFO: [RTGEN 206-100] Finished creating RTL model for 'p_Ma'.
-INFO: [HLS 200-111]  Elapsed time: 0.131 seconds; current allocated memory: 192.542 MB.
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.rtl_wrap.cfg.tcl 
-Execute       gen_rtl _Ma -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/p_Ma -synmodules _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256 
-Execute       gen_rtl _Ma -style xilinx -f -lang vhdl -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/vhdl/p_Ma 
-Execute       gen_rtl _Ma -style xilinx -f -lang vlog -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/verilog/p_Ma 
-Execute       gen_tb_info _Ma -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma -p E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db 
-Execute       report -model _Ma -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_Ma_csynth.rpt -f 
-Execute       report -model _Ma -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_Ma_csynth.xml -f -x 
-Execute       report -model _Ma -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.verbose.rpt -verbose -f 
-Execute       db_write -model _Ma -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.adb -f 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'p_G1' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-Execute       get_config_rtl -prefix 
-Execute       get_config_rtl -auto_prefix 
-Execute       create_rtl_model _G1 -vendor xilinx -mg_file E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.compgen.tcl 
-INFO: [RTGEN 206-100] Finished creating RTL model for 'p_G1'.
-INFO: [HLS 200-111]  Elapsed time: 0.145 seconds; current allocated memory: 192.667 MB.
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.rtl_wrap.cfg.tcl 
-Execute       gen_rtl _G1 -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/p_G1 -synmodules _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256 
-Execute       gen_rtl _G1 -style xilinx -f -lang vhdl -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/vhdl/p_G1 
-Execute       gen_rtl _G1 -style xilinx -f -lang vlog -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/verilog/p_G1 
-Execute       gen_tb_info _G1 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1 -p E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db 
-Execute       report -model _G1 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_G1_csynth.rpt -f 
-Execute       report -model _G1 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_G1_csynth.xml -f -x 
-Execute       report -model _G1 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.verbose.rpt -verbose -f 
-Execute       db_write -model _G1 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.adb -f 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-INFO: [HLS 200-10] -- Generating RTL for module 'p_G0' 
-INFO: [HLS 200-10] ----------------------------------------------------------------
-Execute       get_config_rtl -prefix 
-Execute       get_config_rtl -auto_prefix 
-Execute       create_rtl_model _G0 -vendor xilinx -mg_file E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.compgen.tcl 
-INFO: [RTGEN 206-100] Finished creating RTL model for 'p_G0'.
-INFO: [HLS 200-111]  Elapsed time: 0.164 seconds; current allocated memory: 192.754 MB.
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.rtl_wrap.cfg.tcl 
-Execute       gen_rtl _G0 -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/p_G0 -synmodules _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256 
-Execute       gen_rtl _G0 -style xilinx -f -lang vhdl -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/vhdl/p_G0 
-Execute       gen_rtl _G0 -style xilinx -f -lang vlog -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/verilog/p_G0 
-Execute       gen_tb_info _G0 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0 -p E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db 
-Execute       report -model _G0 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_G0_csynth.rpt -f 
-Execute       report -model _G0 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_G0_csynth.xml -f -x 
-Execute       report -model _G0 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.verbose.rpt -verbose -f 
-Execute       db_write -model _G0 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.adb -f 
+INFO-FLOW: Model list for RTL generation: _hash sha256_hash sha256_done sha256
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'p_hash' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -880,22 +457,19 @@ Execute       get_config_rtl -prefix
 Execute       get_config_rtl -auto_prefix 
 Execute       create_rtl_model _hash -vendor xilinx -mg_file E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.compgen.tcl 
 INFO: [RTGEN 206-100] Finished creating RTL model for 'p_hash'.
-Command       create_rtl_model done; 0.529 sec.
-INFO: [HLS 200-111]  Elapsed time: 0.676 seconds; current allocated memory: 198.662 MB.
+Command       create_rtl_model done; 0.168 sec.
+INFO: [HLS 200-111]  Elapsed time: 0.796 seconds; current allocated memory: 115.349 MB.
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.rtl_wrap.cfg.tcl 
-Execute       gen_rtl _hash -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/p_hash -synmodules _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256 
+Execute       gen_rtl _hash -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/p_hash -synmodules _hash sha256_hash sha256_done sha256 
 Execute       gen_rtl _hash -style xilinx -f -lang vhdl -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/vhdl/p_hash 
 Execute       gen_rtl _hash -style xilinx -f -lang vlog -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/verilog/p_hash 
 Execute       gen_tb_info _hash -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash -p E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db 
-Command       gen_tb_info done; 0.312 sec.
 Execute       report -model _hash -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_hash_csynth.rpt -f 
-Command       report done; 0.312 sec.
 Execute       report -model _hash -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/p_hash_csynth.xml -f -x 
-Command       report done; 0.3 sec.
 Execute       report -model _hash -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.verbose.rpt -verbose -f 
-Command       report done; 1.714 sec.
+Command       report done; 0.324 sec.
 Execute       db_write -model _hash -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.adb -f 
-Command       db_write done; 0.996 sec.
+Command       db_write done; 0.169 sec.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'sha256_hash' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
@@ -903,115 +477,107 @@ Execute       get_config_rtl -prefix
 Execute       get_config_rtl -auto_prefix 
 Execute       create_rtl_model sha256_hash -vendor xilinx -mg_file E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.compgen.tcl 
 INFO: [RTGEN 206-100] Finished creating RTL model for 'sha256_hash'.
-Command       create_rtl_model done; 0.172 sec.
-INFO: [HLS 200-111]  Elapsed time: 5.367 seconds; current allocated memory: 202.233 MB.
+INFO: [HLS 200-111]  Elapsed time: 1.119 seconds; current allocated memory: 116.671 MB.
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.rtl_wrap.cfg.tcl 
-Execute       gen_rtl sha256_hash -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/sha256_hash -synmodules _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256 
+Execute       gen_rtl sha256_hash -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/sha256_hash -synmodules _hash sha256_hash sha256_done sha256 
 Execute       gen_rtl sha256_hash -style xilinx -f -lang vhdl -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/vhdl/sha256_hash 
 Execute       gen_rtl sha256_hash -style xilinx -f -lang vlog -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/verilog/sha256_hash 
 Execute       gen_tb_info sha256_hash -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash -p E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db 
 Execute       report -model sha256_hash -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/sha256_hash_csynth.rpt -f 
 Execute       report -model sha256_hash -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/sha256_hash_csynth.xml -f -x 
 Execute       report -model sha256_hash -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.verbose.rpt -verbose -f 
-Command       report done; 0.982 sec.
+Command       report done; 0.205 sec.
 Execute       db_write -model sha256_hash -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.adb -f 
-Command       db_write done; 0.211 sec.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'sha256_done' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 Execute       get_config_rtl -prefix 
 Execute       get_config_rtl -auto_prefix 
 Execute       create_rtl_model sha256_done -vendor xilinx -mg_file E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.compgen.tcl 
+INFO: [SYN 201-210] Renamed object name 'sha256_done_hash_tmp' to 'sha256_done_hash_bkb' due to the length limit 20
 INFO: [RTGEN 206-100] Finished creating RTL model for 'sha256_done'.
-Command       create_rtl_model done; 0.33 sec.
-INFO: [HLS 200-111]  Elapsed time: 1.808 seconds; current allocated memory: 204.985 MB.
+Command       create_rtl_model done; 0.11 sec.
+INFO: [HLS 200-111]  Elapsed time: 0.634 seconds; current allocated memory: 118.065 MB.
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.rtl_wrap.cfg.tcl 
-Execute       gen_rtl sha256_done -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/sha256_done -synmodules _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256 
+Execute       gen_rtl sha256_done -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/sha256_done -synmodules _hash sha256_hash sha256_done sha256 
 Execute       gen_rtl sha256_done -style xilinx -f -lang vhdl -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/vhdl/sha256_done 
 Execute       gen_rtl sha256_done -style xilinx -f -lang vlog -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/verilog/sha256_done 
 Execute       gen_tb_info sha256_done -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done -p E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db 
 Execute       report -model sha256_done -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/sha256_done_csynth.rpt -f 
 Execute       report -model sha256_done -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/sha256_done_csynth.xml -f -x 
 Execute       report -model sha256_done -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.verbose.rpt -verbose -f 
-Command       report done; 1.07 sec.
+Command       report done; 0.365 sec.
 Execute       db_write -model sha256_done -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.adb -f 
-Command       db_write done; 0.314 sec.
+Command       db_write done; 0.166 sec.
 INFO: [HLS 200-10] ----------------------------------------------------------------
 INFO: [HLS 200-10] -- Generating RTL for module 'sha256' 
 INFO: [HLS 200-10] ----------------------------------------------------------------
 Execute       get_config_rtl -prefix 
 Execute       get_config_rtl -auto_prefix 
 Execute       create_rtl_model sha256 -vendor xilinx -mg_file E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.compgen.tcl 
-INFO: [RTGEN 206-500] Setting interface mode on port 'sha256/msg' to 'ap_memory'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'sha256/len' to 'ap_none'.
-INFO: [RTGEN 206-500] Setting interface mode on port 'sha256/hash' to 'ap_memory'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sha256/INPUT_r' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sha256/OUTPUT_r' to 'm_axi'.
+INFO: [RTGEN 206-500] Setting interface mode on port 'sha256/msg' to 's_axilite & ap_none' (register).
+INFO: [RTGEN 206-500] Setting interface mode on port 'sha256/len' to 's_axilite & ap_none' (register).
+INFO: [RTGEN 206-500] Setting interface mode on port 'sha256/hash' to 's_axilite & ap_none' (register).
 INFO: [RTGEN 206-500] Setting interface mode on function 'sha256' to 'ap_ctrl_hs'.
+INFO: [RTGEN 206-100] Bundling port 'msg', 'len' and 'hash' to AXI-Lite port ctrl_bus.
 INFO: [RTGEN 206-100] Finished creating RTL model for 'sha256'.
-INFO: [HLS 200-111]  Elapsed time: 1.944 seconds; current allocated memory: 205.761 MB.
+Command       create_rtl_model done; 0.118 sec.
+INFO: [HLS 200-111]  Elapsed time: 1.151 seconds; current allocated memory: 119.825 MB.
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.rtl_wrap.cfg.tcl 
-Execute       gen_rtl sha256 -istop -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/sha256 -synmodules _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256 
+Execute       gen_rtl sha256 -istop -style xilinx -tracefl mytrace -tracefmt vcd -traceopt all -f -lang sc -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/systemc/sha256 -synmodules _hash sha256_hash sha256_done sha256 
 Execute       gen_rtl sha256 -istop -style xilinx -f -lang vhdl -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/vhdl/sha256 
 Execute       gen_rtl sha256 -istop -style xilinx -f -lang vlog -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/verilog/sha256 
 Execute       export_constraint_db -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.constraint.tcl -f -tool general 
 Execute       report -model sha256 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.design.xml -verbose -f -dv 
-Command       report done; 0.782 sec.
+Command       report done; 0.306 sec.
 Execute       report -model sha256 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.sdaccel.xml -verbose -f -sdaccel 
 Execute       gen_tb_info sha256 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256 -p E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db 
 Execute       report -model sha256 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/sha256_csynth.rpt -f 
 Execute       report -model sha256 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/syn/report/sha256_csynth.xml -f -x 
 Execute       report -model sha256 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.verbose.rpt -verbose -f 
-Command       report done; 1.858 sec.
+Command       report done; 0.49 sec.
 Execute       db_write -model sha256 -o E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.adb -f 
-Command       db_write done; 0.185 sec.
 Execute       sc_get_clocks sha256 
 Execute       get_config_export -vivado_clock 
 Execute       sc_get_portdomain sha256 
-INFO-FLOW: Model list for RTL component generation: _word _S1 _Ch _S0 _Ma _G1 _G0 _hash sha256_hash sha256_done sha256
-INFO-FLOW: Handling components in module [p_word] ... 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.compgen.tcl 
-INFO-FLOW: Handling components in module [p_S1] ... 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.compgen.tcl 
-INFO-FLOW: Handling components in module [p_Ch] ... 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.compgen.tcl 
-INFO-FLOW: Handling components in module [p_S0] ... 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.compgen.tcl 
-INFO-FLOW: Handling components in module [p_Ma] ... 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.compgen.tcl 
-INFO-FLOW: Handling components in module [p_G1] ... 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.compgen.tcl 
-INFO-FLOW: Handling components in module [p_G0] ... 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.compgen.tcl 
+INFO-FLOW: Model list for RTL component generation: _hash sha256_hash sha256_done sha256
 INFO-FLOW: Handling components in module [p_hash] ... 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.compgen.tcl 
+INFO-FLOW: Found component p_hash_K.
+INFO-FLOW: Append model p_hash_K
+INFO-FLOW: Found component p_hash_W.
+INFO-FLOW: Append model p_hash_W
 INFO-FLOW: Handling components in module [sha256_hash] ... 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.compgen.tcl 
 INFO-FLOW: Handling components in module [sha256_done] ... 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.compgen.tcl 
+INFO-FLOW: Found component sha256_done_hash_bkb.
+INFO-FLOW: Append model sha256_done_hash_bkb
 INFO-FLOW: Handling components in module [sha256] ... 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.compgen.tcl 
 INFO-FLOW: Found component sha256_sha256_buf.
 INFO-FLOW: Append model sha256_sha256_buf
-INFO-FLOW: Append model p_word
-INFO-FLOW: Append model p_S1
-INFO-FLOW: Append model p_Ch
-INFO-FLOW: Append model p_S0
-INFO-FLOW: Append model p_Ma
-INFO-FLOW: Append model p_G1
-INFO-FLOW: Append model p_G0
+INFO-FLOW: Found component sha256_ctrl_bus_s_axi.
+INFO-FLOW: Append model sha256_ctrl_bus_s_axi
+INFO-FLOW: Found component sha256_INPUT_r_m_axi.
+INFO-FLOW: Append model sha256_INPUT_r_m_axi
+INFO-FLOW: Found component sha256_OUTPUT_r_m_axi.
+INFO-FLOW: Append model sha256_OUTPUT_r_m_axi
 INFO-FLOW: Append model p_hash
 INFO-FLOW: Append model sha256_hash
 INFO-FLOW: Append model sha256_done
 INFO-FLOW: Append model sha256
 INFO-FLOW: Generating RTL model list ...
-INFO-FLOW: All models in this session: sha256_sha256_buf p_word p_S1 p_Ch p_S0 p_Ma p_G1 p_G0 p_hash sha256_hash sha256_done sha256
+INFO-FLOW: All models in this session: p_hash_K p_hash_W sha256_done_hash_bkb sha256_sha256_buf sha256_ctrl_bus_s_axi sha256_INPUT_r_m_axi sha256_OUTPUT_r_m_axi p_hash sha256_hash sha256_done sha256
+INFO-FLOW: To file: write model p_hash_K
+INFO-FLOW: To file: write model p_hash_W
+INFO-FLOW: To file: write model sha256_done_hash_bkb
 INFO-FLOW: To file: write model sha256_sha256_buf
-INFO-FLOW: To file: write model p_word
-INFO-FLOW: To file: write model p_S1
-INFO-FLOW: To file: write model p_Ch
-INFO-FLOW: To file: write model p_S0
-INFO-FLOW: To file: write model p_Ma
-INFO-FLOW: To file: write model p_G1
-INFO-FLOW: To file: write model p_G0
+INFO-FLOW: To file: write model sha256_ctrl_bus_s_axi
+INFO-FLOW: To file: write model sha256_INPUT_r_m_axi
+INFO-FLOW: To file: write model sha256_OUTPUT_r_m_axi
 INFO-FLOW: To file: write model p_hash
 INFO-FLOW: To file: write model sha256_hash
 INFO-FLOW: To file: write model sha256_done
@@ -1046,12 +612,12 @@ Execute             source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/inte
 Execute             source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/dds_compiler.gen 
 Execute             source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/util.gen 
 Execute             source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfft.gen 
-Command             ap_source done; 0.153 sec.
+Command             ap_source done; 0.169 sec.
 Execute             source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfir.gen 
-Command           ap_source done; 0.218 sec.
+Command           ap_source done; 0.255 sec.
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/dsp48.gen 
-Command         ap_source done; 0.222 sec.
-Command       ap_source done; 0.222 sec.
+Command         ap_source done; 0.261 sec.
+Command       ap_source done; 0.262 sec.
 Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/zynq/zynq_fpv6.gen 
 Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx_fpv6.gen 
 INFO-FLOW: DBG:CMD:   using AESL_AUTOCG::g_clock_period=10.000 (was NA)
@@ -1059,18 +625,17 @@ INFO-FLOW: DBG:CMD:       generate_ip_cores sim=1 export=0 expOnly=0 dstVlogDir=
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.compgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.compgen.tcl 
+INFO: [RTMG 210-279] Implementing memory 'p_hash_K_rom' using auto ROMs.
+INFO: [RTMG 210-278] Implementing memory 'p_hash_W_ram (RAM)' using block RAMs.
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.compgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.compgen.tcl 
+INFO: [RTMG 210-278] Implementing memory 'sha256_done_hash_bkb_ram (RAM)' using block RAMs.
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.compgen.tcl 
 INFO: [RTMG 210-278] Implementing memory 'sha256_sha256_buf_ram (RAM)' using block RAMs.
+Execute         source ./ctrl_bus.slave.tcl 
+Execute         is_m_axi_addr64 
+Command       ap_source done; 0.251 sec.
 INFO-FLOW: DBG:CMD:     auto_generate -export -impltomg_flag -rtl both -tool Vivado -pcore_version 1.00.a -phase csynth_design -d E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
 INFO-FLOW: DBG:CMD: read_platform_lib E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl
@@ -1094,12 +659,12 @@ Execute             source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/inte
 Execute             source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/dds_compiler.gen 
 Execute             source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/util.gen 
 Execute             source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfft.gen 
-Command             ap_source done; 0.146 sec.
+Command             ap_source done; 0.16 sec.
 Execute             source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfir.gen 
-Command           ap_source done; 0.213 sec.
+Command           ap_source done; 0.238 sec.
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/dsp48.gen 
-Command         ap_source done; 0.217 sec.
-Command       ap_source done; 0.218 sec.
+Command         ap_source done; 0.243 sec.
+Command       ap_source done; 0.243 sec.
 Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/zynq/zynq_fpv6.gen 
 Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx_fpv6.gen 
 INFO-FLOW: DBG:CMD:       initCTypeInfo top_module=sha256 xml_exists=0
@@ -1111,41 +676,18 @@ Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.auto
 INFO-FLOW: DBG:CMD:       export_impl_rtl
 INFO-FLOW: DBG:CMD:       generate_ip_cores sim=0 export=0 expOnly=0 dstVlogDir=impl/.verilog
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.compgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.compgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.compgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.compgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.compgen.tcl 
 INFO-FLOW: DBG:CMD:       generate_ip_cores sim=0 export=1 expOnly=1 dstVlogDir=impl/.pcores/verilog
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.compgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.compgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.compgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.compgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.compgen.tcl 
-Execute         source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
-Execute         source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
 INFO-FLOW: DBG:CMD:       generate_ip_cores sim=0 export=0 expOnly=0 dstVlogDir=impl/.pcores/verilog_sim
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.compgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.compgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.compgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.compgen.tcl 
@@ -1153,11 +695,12 @@ Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.auto
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.constraint.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
-INFO-FLOW: DBG:CMD:       hasPcoreIpAdapter=false #gSsdmPorts=8
-INFO-FLOW: DBG:CMD: Skipping loadAnalyze_DB, #g_database=3
-INFO-FLOW: DBG:CMD:       generate_json is_phase_csynth=1 g_has_adaptors=false generate_bd_files=0 #modelList=12 #gSsdmPorts=8
+INFO-FLOW: DBG:CMD:       hasPcoreIpAdapter=false #gSsdmPorts=2
+INFO-FLOW: DBG:CMD: Skipping loadAnalyze_DB, #g_database=5
+INFO-FLOW: DBG:CMD:       generate_json is_phase_csynth=1 g_has_adaptors=false generate_bd_files=0 #modelList=11 #gSsdmPorts=2
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
+Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
 Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
@@ -1172,17 +715,17 @@ Execute       get_config_sdx -profile
 Execute       ::config_rtl 
 INFO-FLOW: DBG:CMD: add_json_sdx_info kernel file does not exist: E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/kernel.internal.xml
 INFO-FLOW: DBG:CMD:       delete-temp-dirs (skipped for debug)
-INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:36 ; elapsed = 00:00:48 . Memory (MB): peak = 281.285 ; gain = 195.938
+INFO: [HLS 200-111] Finished generating all RTL models Time (s): cpu = 00:00:12 ; elapsed = 00:00:25 . Memory (MB): peak = 179.875 ; gain = 94.965
 INFO: [SYSC 207-301] Generating SystemC RTL for sha256.
 INFO: [VHDL 208-304] Generating VHDL RTL for sha256.
 INFO: [VLOG 209-307] Generating Verilog RTL for sha256.
-Command     autosyn done; 34.533 sec.
+Command     autosyn done; 11.446 sec.
 Execute     get_part 
 Execute     get_config_export -sdx_tcl 
-Command   csynth_design done; 46.809 sec.
-Command ap_source done; 47.36 sec.
+Command   csynth_design done; 22.906 sec.
+Command ap_source done; 23.5 sec.
 Execute cleanup_all 
-INFO-FLOW: Workspace E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1 opened at Sat Feb 20 20:55:01 +0800 2021
+INFO-FLOW: Workspace E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1 opened at Sun Feb 21 21:43:15 +0800 2021
 Execute     config_clock -quiet -name default -period 10 -default=false 
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
 Execute     open_platform DefaultPlatform 
@@ -1230,12 +773,12 @@ Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interf
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/dds_compiler.gen 
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/util.gen 
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfft.gen 
-Command           ap_source done; 0.156 sec.
+Command           ap_source done; 0.18 sec.
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfir.gen 
-Command         ap_source done; 0.22 sec.
+Command         ap_source done; 0.265 sec.
 Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/dsp48.gen 
-Command       ap_source done; 0.225 sec.
-Command     ap_source done; 0.225 sec.
+Command       ap_source done; 0.27 sec.
+Command     ap_source done; 0.272 sec.
 Execute     open_platform DefaultPlatform 
 Execute     import_lib D:/Xilinx/Vivado/2018.3/common/technology/xilinx/zynq/zynq_fpv6 
 Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx_fpv7.lib 
@@ -1265,108 +808,9 @@ Execute       get_default_platform
 Execute     get_default_platform 
 Execute     config_chip_info -quiet -resource  {SLICE 13300}  {LUT 53200}     {FF 106400} {DSP48E 220}   {BRAM 280}  
 Execute     config_chip_info -quiet -speed slow 
-Command   open_solution done; 0.392 sec.
-Execute   csim_design -O -clean -quiet 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
-INFO: [SIM 211-2] *************** CSIM start ***************
-INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
-Execute     source csim/.lst_opt.tcl 
-Execute     is_encrypted E:/My_File/study/SHA256-FPGA-HLS/src/sha256_test.c 
-Execute     is_xip E:/My_File/study/SHA256-FPGA-HLS/src/sha256_test.c 
-Execute     is_encrypted E:/My_File/study/SHA256-FPGA-HLS/src/sha256.c 
-Execute     is_xip E:/My_File/study/SHA256-FPGA-HLS/src/sha256.c 
-Execute     get_default_platform 
-Execute     source run_sim.tcl 
-Command     ap_source done; 0.28 sec.
-INFO: [SIM 211-1] CSim done with 0 errors.
-INFO: [SIM 211-3] *************** CSIM finish ***************
-Command   csim_design done; 15.685 sec.
-Command ap_source done; 16.082 sec.
-Execute cleanup_all 
-INFO-FLOW: Workspace E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1 opened at Sat Feb 20 20:56:28 +0800 2021
-Execute     config_clock -quiet -name default -period 10 -default=false 
-INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
-Execute     open_platform DefaultPlatform 
-Execute     import_lib D:/Xilinx/Vivado/2018.3/common/technology/xilinx/zynq/zynq 
-Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx.lib 
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/xilinx_interface.lib 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/plb46.lib 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/fsl.lib 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/axi4.lib 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/maxi.lib 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/saxilite.lib 
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/dsp48.lib 
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/dds_compiler.lib 
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfft.lib 
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfir.lib 
-Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx_old.lib 
-Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx_vivado.lib 
-Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx.hlp 
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/target_info.tcl 
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/xilinx_interface.hlp 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/maxi.hlp 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/saxilite.hlp 
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/dsp48.hlp 
-Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/zynq/dsp48e1.hlp 
-Execute       get_default_platform 
-Execute       config_chip_info -quiet -resource  {SLICE 13300}  {LUT 53200}     {FF 106400} {DSP48E 220}   {BRAM 280}  
-Execute       config_chip_info -quiet -speed medium 
-Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx.hlp 
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/target_info.tcl 
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/xilinx_interface.hlp 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/maxi.hlp 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/saxilite.hlp 
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/dsp48.hlp 
-Execute     source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/zynq/zynq.gen 
-Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/virtex.gen 
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx.gen 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/plb46.gen 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/fsl.gen 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/axi4.gen 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/nativeAXI4.gen 
-Execute             source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/saxilite.gen 
-Execute             source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/maxi.gen 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/scripts/xilinxcoregen.gen 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/XilEDKCoreGen.gen 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/dds_compiler.gen 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/util.gen 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfft.gen 
-Command           ap_source done; 0.113 sec.
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfir.gen 
-Command         ap_source done; 0.164 sec.
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/dsp48.gen 
-Command       ap_source done; 0.167 sec.
-Command     ap_source done; 0.168 sec.
-Execute     open_platform DefaultPlatform 
-Execute     import_lib D:/Xilinx/Vivado/2018.3/common/technology/xilinx/zynq/zynq_fpv6 
-Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx_fpv7.lib 
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx_hp.lib 
-Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx_fpv.hlp 
-Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx.hlp 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/target_info.tcl 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/xilinx_interface.hlp 
-Execute             source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/maxi.hlp 
-Execute             source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interface/saxilite.hlp 
-Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/dsp48.hlp 
-Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/zynq/zynq_hp.hlp 
-Execute     source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/zynq/zynq_fpv6.gen 
-Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx_fpv6.gen 
-Execute     set_part xc7z020clg400-1 
-Execute       add_library xilinx/zynq/zynq:xc7z020:clg400:-1 
-Execute         get_default_platform 
-Execute         license_isbetapart xc7z020 
-Command         license_isbetapart done; error code: 1; 
-Execute         get_default_platform 
-Execute         config_chip_info -quiet -resource  {SLICE 13300}  {LUT 53200}     {FF 106400} {DSP48E 220}   {BRAM 280}  
-Execute         config_chip_info -quiet -speed slow 
-Execute       add_library xilinx/zynq/zynq_fpv6 
-Execute         get_default_platform 
-INFO: [HLS 200-10] Setting target device to 'xc7z020clg400-1'
-Execute       get_default_platform 
-Execute     get_default_platform 
-Execute     config_chip_info -quiet -resource  {SLICE 13300}  {LUT 53200}     {FF 106400} {DSP48E 220}   {BRAM 280}  
-Execute     config_chip_info -quiet -speed slow 
-Command   open_solution done; 0.295 sec.
+Execute     config_export -format=ip_catalog 
+Execute     config_export -rtl=verilog 
+Command   open_solution done; 0.501 sec.
 Execute   export_design -rtl verilog -format ip_catalog 
 Execute     get_config_export -acc 
 Execute     get_config_export -clock_margin 
@@ -1417,12 +861,12 @@ Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interf
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/dds_compiler.gen 
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/util.gen 
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfft.gen 
-Command           ap_source done; 0.106 sec.
+Command           ap_source done; 0.176 sec.
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfir.gen 
-Command         ap_source done; 0.167 sec.
+Command         ap_source done; 0.258 sec.
 Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/dsp48.gen 
-Command       ap_source done; 0.172 sec.
-Command     ap_source done; 0.173 sec.
+Command       ap_source done; 0.263 sec.
+Command     ap_source done; 0.265 sec.
 Execute     source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/zynq/zynq_fpv6.gen 
 Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx_fpv6.gen 
 INFO-FLOW: DBG:CMD:   using AESL_AUTOCG::g_clock_period=10.000 (was NA)
@@ -1453,12 +897,12 @@ Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interf
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/dds_compiler.gen 
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/util.gen 
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfft.gen 
-Command           ap_source done; 0.114 sec.
+Command           ap_source done; 0.173 sec.
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfir.gen 
-Command         ap_source done; 0.163 sec.
+Command         ap_source done; 0.25 sec.
 Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/dsp48.gen 
-Command       ap_source done; 0.167 sec.
-Command     ap_source done; 0.167 sec.
+Command       ap_source done; 0.254 sec.
+Command     ap_source done; 0.254 sec.
 Execute     source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/zynq/zynq_fpv6.gen 
 Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx_fpv6.gen 
 INFO-FLOW: DBG:CMD:       initCTypeInfo top_module=sha256 xml_exists=1
@@ -1470,41 +914,18 @@ Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopi
 INFO-FLOW: DBG:CMD:       export_impl_rtl
 INFO-FLOW: DBG:CMD:       generate_ip_cores sim=0 export=0 expOnly=0 dstVlogDir=impl/.verilog
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.compgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.compgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.compgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.compgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.compgen.tcl 
 INFO-FLOW: DBG:CMD:       generate_ip_cores sim=0 export=1 expOnly=1 dstVlogDir=impl/.pcores/verilog
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.compgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.compgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.compgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.compgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.compgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
-Execute       source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
 INFO-FLOW: DBG:CMD:       generate_ip_cores sim=0 export=0 expOnly=0 dstVlogDir=impl/.pcores/verilog_sim
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_word.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S1.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ch.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_S0.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_Ma.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G1.compgen.tcl 
-Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_G0.compgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/p_hash.compgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_hash.compgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256_done.compgen.tcl 
@@ -1512,8 +933,10 @@ Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopi
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.constraint.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
-INFO-FLOW: DBG:CMD:       hasPcoreIpAdapter=false #gSsdmPorts=8
-INFO-FLOW: DBG:CMD:       generate_ip_script #gSsdmPorts=8
+INFO-FLOW: DBG:CMD:       hasPcoreIpAdapter=false #gSsdmPorts=2
+INFO-FLOW: DBG:CMD:       copy ip_driver_dir 1_0 E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/driver
+INFO-FLOW: DBG:CMD:       generate_ip_script #gSsdmPorts=2
+Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
@@ -1534,6 +957,7 @@ Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopi
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.rtl_wrap.cfg.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
+Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.tbgen.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/global.setting.tcl 
 Execute     source E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/.autopilot/db/sha256.constraint.tcl 
@@ -1570,15 +994,15 @@ Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/interf
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/dds_compiler.gen 
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/util.gen 
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfft.gen 
-Command           ap_source done; 0.106 sec.
+Command           ap_source done; 0.168 sec.
 Execute           source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/ip/xfir.gen 
-Command         ap_source done; 0.153 sec.
+Command         ap_source done; 0.244 sec.
 Execute         source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/dsp48.gen 
-Command       ap_source done; 0.156 sec.
-Command     ap_source done; 0.157 sec.
+Command       ap_source done; 0.249 sec.
+Command     ap_source done; 0.25 sec.
 Execute     source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/zynq/zynq_fpv6.gen 
 Execute       source D:/Xilinx/Vivado/2018.3/common/technology/xilinx/common/xilinx_fpv6.gen 
 INFO-FLOW: DBG:CMD:     exec E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/impl/ip/pack.bat
-Command   export_design done; 37.789 sec.
-Command ap_source done; 38.09 sec.
+Command   export_design done; 19.994 sec.
+Command ap_source done; 20.504 sec.
 Execute cleanup_all 

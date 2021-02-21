@@ -2,8 +2,8 @@ set moduleName p_hash
 set isTaskLevelControl 1
 set isCombinational 0
 set isDatapathOnly 0
-set isPipelined 1
-set pipeline_type function
+set isPipelined 0
+set pipeline_type none
 set FunctionProtocol ap_ctrl_hs
 set isOneStateSeq 0
 set ProfileFlag 0
@@ -34,7 +34,7 @@ set C_modelArgMapList {[
  	{ "Name" : "sha256hash_7_read", "interface" : "wire", "bitwidth" : 32, "direction" : "READONLY"} , 
  	{ "Name" : "ap_return", "interface" : "wire", "bitwidth" : 256} ]}
 # RTL Port declarations: 
-set portNum 29
+set portNum 28
 set portList { 
 	{ ap_clk sc_in sc_logic 1 clock -1 } 
 	{ ap_rst sc_in sc_logic 1 reset -1 active_high_sync } 
@@ -42,7 +42,6 @@ set portList {
 	{ ap_done sc_out sc_logic 1 predone -1 } 
 	{ ap_idle sc_out sc_logic 1 done -1 } 
 	{ ap_ready sc_out sc_logic 1 ready -1 } 
-	{ ap_ce sc_in sc_logic 1 ce -1 } 
 	{ sha256_buf_address0 sc_out sc_lv 6 signal 0 } 
 	{ sha256_buf_ce0 sc_out sc_logic 1 signal 0 } 
 	{ sha256_buf_q0 sc_in sc_lv 8 signal 0 } 
@@ -73,7 +72,6 @@ set NewPortList {[
  	{ "name": "ap_done", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "predone", "bundle":{"name": "ap_done", "role": "default" }} , 
  	{ "name": "ap_idle", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "done", "bundle":{"name": "ap_idle", "role": "default" }} , 
  	{ "name": "ap_ready", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "ready", "bundle":{"name": "ap_ready", "role": "default" }} , 
- 	{ "name": "ap_ce", "direction": "in", "datatype": "sc_logic", "bitwidth":1, "type": "ce", "bundle":{"name": "ap_ce", "role": "default" }} , 
  	{ "name": "sha256_buf_address0", "direction": "out", "datatype": "sc_lv", "bitwidth":6, "type": "signal", "bundle":{"name": "sha256_buf", "role": "address0" }} , 
  	{ "name": "sha256_buf_ce0", "direction": "out", "datatype": "sc_logic", "bitwidth":1, "type": "signal", "bundle":{"name": "sha256_buf", "role": "ce0" }} , 
  	{ "name": "sha256_buf_q0", "direction": "in", "datatype": "sc_lv", "bitwidth":8, "type": "signal", "bundle":{"name": "sha256_buf", "role": "q0" }} , 
@@ -98,23 +96,21 @@ set NewPortList {[
  	{ "name": "ap_return_7", "direction": "out", "datatype": "sc_lv", "bitwidth":32, "type": "signal", "bundle":{"name": "ap_return_7", "role": "default" }}  ]}
 
 set RtlHierarchyInfo {[
-	{"ID" : "0", "Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "", "Child" : ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
+	{"ID" : "0", "Level" : "0", "Path" : "`AUTOTB_DUT_INST", "Parent" : "", "Child" : ["1", "2"],
 		"CDFG" : "p_hash",
 		"Protocol" : "ap_ctrl_hs",
 		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1",
-		"Pipeline" : "Aligned", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
-		"II" : "48",
-		"VariableLatency" : "0", "ExactLatency" : "98", "EstimateLatencyMin" : "98", "EstimateLatencyMax" : "98",
+		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
+		"II" : "0",
+		"VariableLatency" : "1", "ExactLatency" : "-1", "EstimateLatencyMin" : "185", "EstimateLatencyMax" : "185",
 		"Combinational" : "0",
 		"Datapath" : "0",
-		"ClockEnable" : "1",
+		"ClockEnable" : "0",
 		"HasSubDataflow" : "0",
 		"InDataflowNetwork" : "0",
 		"HasNonBlockingOperation" : "0",
 		"Port" : [
-			{"Name" : "sha256_buf", "Type" : "Memory", "Direction" : "I",
-				"SubConnect" : [
-					{"ID" : "1", "SubInstance" : "grp_p_word_fu_244", "Port" : "c"}]},
+			{"Name" : "sha256_buf", "Type" : "Memory", "Direction" : "I"},
 			{"Name" : "sha256hash_0_read", "Type" : "None", "Direction" : "I"},
 			{"Name" : "sha256hash_1_read", "Type" : "None", "Direction" : "I"},
 			{"Name" : "sha256hash_2_read", "Type" : "None", "Direction" : "I"},
@@ -122,235 +118,35 @@ set RtlHierarchyInfo {[
 			{"Name" : "sha256hash_4_read", "Type" : "None", "Direction" : "I"},
 			{"Name" : "sha256hash_5_read", "Type" : "None", "Direction" : "I"},
 			{"Name" : "sha256hash_6_read", "Type" : "None", "Direction" : "I"},
-			{"Name" : "sha256hash_7_read", "Type" : "None", "Direction" : "I"}]},
-	{"ID" : "1", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_p_word_fu_244", "Parent" : "0",
-		"CDFG" : "p_word",
-		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "1", "ap_start" : "1", "ap_ready" : "1", "ap_done" : "1", "ap_continue" : "0", "ap_idle" : "1",
-		"Pipeline" : "Aligned", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
-		"II" : "2",
-		"VariableLatency" : "0", "ExactLatency" : "2", "EstimateLatencyMin" : "2", "EstimateLatencyMax" : "2",
-		"Combinational" : "0",
-		"Datapath" : "0",
-		"ClockEnable" : "1",
-		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
-		"HasNonBlockingOperation" : "0",
-		"Port" : [
-			{"Name" : "c", "Type" : "Memory", "Direction" : "I"},
-			{"Name" : "c_offset", "Type" : "None", "Direction" : "I"}]},
-	{"ID" : "2", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_p_Ch_fu_267", "Parent" : "0",
-		"CDFG" : "p_Ch",
-		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "0", "ap_start" : "0", "ap_ready" : "1", "ap_done" : "0", "ap_continue" : "0", "ap_idle" : "0",
-		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
-		"II" : "1",
-		"VariableLatency" : "0", "ExactLatency" : "0", "EstimateLatencyMin" : "0", "EstimateLatencyMax" : "0",
-		"Combinational" : "1",
-		"Datapath" : "0",
-		"ClockEnable" : "0",
-		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
-		"HasNonBlockingOperation" : "0",
-		"Port" : [
-			{"Name" : "x", "Type" : "None", "Direction" : "I"},
-			{"Name" : "y", "Type" : "None", "Direction" : "I"},
-			{"Name" : "z", "Type" : "None", "Direction" : "I"}]},
-	{"ID" : "3", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_p_Ch_fu_277", "Parent" : "0",
-		"CDFG" : "p_Ch",
-		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "0", "ap_start" : "0", "ap_ready" : "1", "ap_done" : "0", "ap_continue" : "0", "ap_idle" : "0",
-		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
-		"II" : "1",
-		"VariableLatency" : "0", "ExactLatency" : "0", "EstimateLatencyMin" : "0", "EstimateLatencyMax" : "0",
-		"Combinational" : "1",
-		"Datapath" : "0",
-		"ClockEnable" : "0",
-		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
-		"HasNonBlockingOperation" : "0",
-		"Port" : [
-			{"Name" : "x", "Type" : "None", "Direction" : "I"},
-			{"Name" : "y", "Type" : "None", "Direction" : "I"},
-			{"Name" : "z", "Type" : "None", "Direction" : "I"}]},
-	{"ID" : "4", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_p_Ma_fu_284", "Parent" : "0",
-		"CDFG" : "p_Ma",
-		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "0", "ap_start" : "0", "ap_ready" : "1", "ap_done" : "0", "ap_continue" : "0", "ap_idle" : "0",
-		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
-		"II" : "1",
-		"VariableLatency" : "0", "ExactLatency" : "0", "EstimateLatencyMin" : "0", "EstimateLatencyMax" : "0",
-		"Combinational" : "1",
-		"Datapath" : "0",
-		"ClockEnable" : "0",
-		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
-		"HasNonBlockingOperation" : "0",
-		"Port" : [
-			{"Name" : "x", "Type" : "None", "Direction" : "I"},
-			{"Name" : "y", "Type" : "None", "Direction" : "I"},
-			{"Name" : "z", "Type" : "None", "Direction" : "I"}]},
-	{"ID" : "5", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_p_Ma_fu_294", "Parent" : "0",
-		"CDFG" : "p_Ma",
-		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "0", "ap_start" : "0", "ap_ready" : "1", "ap_done" : "0", "ap_continue" : "0", "ap_idle" : "0",
-		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
-		"II" : "1",
-		"VariableLatency" : "0", "ExactLatency" : "0", "EstimateLatencyMin" : "0", "EstimateLatencyMax" : "0",
-		"Combinational" : "1",
-		"Datapath" : "0",
-		"ClockEnable" : "0",
-		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
-		"HasNonBlockingOperation" : "0",
-		"Port" : [
-			{"Name" : "x", "Type" : "None", "Direction" : "I"},
-			{"Name" : "y", "Type" : "None", "Direction" : "I"},
-			{"Name" : "z", "Type" : "None", "Direction" : "I"}]},
-	{"ID" : "6", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_p_S1_fu_301", "Parent" : "0",
-		"CDFG" : "p_S1",
-		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "0", "ap_start" : "0", "ap_ready" : "1", "ap_done" : "0", "ap_continue" : "0", "ap_idle" : "0",
-		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
-		"II" : "1",
-		"VariableLatency" : "0", "ExactLatency" : "0", "EstimateLatencyMin" : "0", "EstimateLatencyMax" : "0",
-		"Combinational" : "1",
-		"Datapath" : "0",
-		"ClockEnable" : "0",
-		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
-		"HasNonBlockingOperation" : "0",
-		"Port" : [
-			{"Name" : "x", "Type" : "None", "Direction" : "I"}]},
-	{"ID" : "7", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_p_S1_fu_307", "Parent" : "0",
-		"CDFG" : "p_S1",
-		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "0", "ap_start" : "0", "ap_ready" : "1", "ap_done" : "0", "ap_continue" : "0", "ap_idle" : "0",
-		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
-		"II" : "1",
-		"VariableLatency" : "0", "ExactLatency" : "0", "EstimateLatencyMin" : "0", "EstimateLatencyMax" : "0",
-		"Combinational" : "1",
-		"Datapath" : "0",
-		"ClockEnable" : "0",
-		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
-		"HasNonBlockingOperation" : "0",
-		"Port" : [
-			{"Name" : "x", "Type" : "None", "Direction" : "I"}]},
-	{"ID" : "8", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_p_S0_fu_312", "Parent" : "0",
-		"CDFG" : "p_S0",
-		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "0", "ap_start" : "0", "ap_ready" : "1", "ap_done" : "0", "ap_continue" : "0", "ap_idle" : "0",
-		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
-		"II" : "1",
-		"VariableLatency" : "0", "ExactLatency" : "0", "EstimateLatencyMin" : "0", "EstimateLatencyMax" : "0",
-		"Combinational" : "1",
-		"Datapath" : "0",
-		"ClockEnable" : "0",
-		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
-		"HasNonBlockingOperation" : "0",
-		"Port" : [
-			{"Name" : "x", "Type" : "None", "Direction" : "I"}]},
-	{"ID" : "9", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_p_S0_fu_318", "Parent" : "0",
-		"CDFG" : "p_S0",
-		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "0", "ap_start" : "0", "ap_ready" : "1", "ap_done" : "0", "ap_continue" : "0", "ap_idle" : "0",
-		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
-		"II" : "1",
-		"VariableLatency" : "0", "ExactLatency" : "0", "EstimateLatencyMin" : "0", "EstimateLatencyMax" : "0",
-		"Combinational" : "1",
-		"Datapath" : "0",
-		"ClockEnable" : "0",
-		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
-		"HasNonBlockingOperation" : "0",
-		"Port" : [
-			{"Name" : "x", "Type" : "None", "Direction" : "I"}]},
-	{"ID" : "10", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_p_G0_fu_323", "Parent" : "0",
-		"CDFG" : "p_G0",
-		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "0", "ap_start" : "0", "ap_ready" : "1", "ap_done" : "0", "ap_continue" : "0", "ap_idle" : "0",
-		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
-		"II" : "1",
-		"VariableLatency" : "0", "ExactLatency" : "0", "EstimateLatencyMin" : "0", "EstimateLatencyMax" : "0",
-		"Combinational" : "1",
-		"Datapath" : "0",
-		"ClockEnable" : "0",
-		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
-		"HasNonBlockingOperation" : "0",
-		"Port" : [
-			{"Name" : "x", "Type" : "None", "Direction" : "I"}]},
-	{"ID" : "11", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.grp_p_G1_fu_329", "Parent" : "0",
-		"CDFG" : "p_G1",
-		"Protocol" : "ap_ctrl_hs",
-		"ControlExist" : "0", "ap_start" : "0", "ap_ready" : "1", "ap_done" : "0", "ap_continue" : "0", "ap_idle" : "0",
-		"Pipeline" : "None", "UnalignedPipeline" : "0", "RewindPipeline" : "0", "ProcessNetwork" : "0",
-		"II" : "1",
-		"VariableLatency" : "0", "ExactLatency" : "0", "EstimateLatencyMin" : "0", "EstimateLatencyMax" : "0",
-		"Combinational" : "1",
-		"Datapath" : "0",
-		"ClockEnable" : "0",
-		"HasSubDataflow" : "0",
-		"InDataflowNetwork" : "0",
-		"HasNonBlockingOperation" : "0",
-		"Port" : [
-			{"Name" : "x", "Type" : "None", "Direction" : "I"}]}]}
+			{"Name" : "sha256hash_7_read", "Type" : "None", "Direction" : "I"},
+			{"Name" : "K", "Type" : "Memory", "Direction" : "I"}]},
+	{"ID" : "1", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.K_U", "Parent" : "0"},
+	{"ID" : "2", "Level" : "1", "Path" : "`AUTOTB_DUT_INST.W_U", "Parent" : "0"}]}
 
 
 set ArgLastReadFirstWriteLatency {
 	p_hash {
-		sha256_buf {Type I LastRead 2 FirstWrite -1}
+		sha256_buf {Type I LastRead 3 FirstWrite -1}
 		sha256hash_0_read {Type I LastRead 0 FirstWrite -1}
 		sha256hash_1_read {Type I LastRead 0 FirstWrite -1}
 		sha256hash_2_read {Type I LastRead 0 FirstWrite -1}
-		sha256hash_3_read {Type I LastRead 3 FirstWrite -1}
+		sha256hash_3_read {Type I LastRead 0 FirstWrite -1}
 		sha256hash_4_read {Type I LastRead 0 FirstWrite -1}
 		sha256hash_5_read {Type I LastRead 0 FirstWrite -1}
 		sha256hash_6_read {Type I LastRead 0 FirstWrite -1}
-		sha256hash_7_read {Type I LastRead 2 FirstWrite -1}}
-	p_word {
-		c {Type I LastRead 2 FirstWrite -1}
-		c_offset {Type I LastRead 0 FirstWrite -1}}
-	p_Ch {
-		x {Type I LastRead 0 FirstWrite -1}
-		y {Type I LastRead 0 FirstWrite -1}
-		z {Type I LastRead 0 FirstWrite -1}}
-	p_Ch {
-		x {Type I LastRead 0 FirstWrite -1}
-		y {Type I LastRead 0 FirstWrite -1}
-		z {Type I LastRead 0 FirstWrite -1}}
-	p_Ma {
-		x {Type I LastRead 0 FirstWrite -1}
-		y {Type I LastRead 0 FirstWrite -1}
-		z {Type I LastRead 0 FirstWrite -1}}
-	p_Ma {
-		x {Type I LastRead 0 FirstWrite -1}
-		y {Type I LastRead 0 FirstWrite -1}
-		z {Type I LastRead 0 FirstWrite -1}}
-	p_S1 {
-		x {Type I LastRead 0 FirstWrite -1}}
-	p_S1 {
-		x {Type I LastRead 0 FirstWrite -1}}
-	p_S0 {
-		x {Type I LastRead 0 FirstWrite -1}}
-	p_S0 {
-		x {Type I LastRead 0 FirstWrite -1}}
-	p_G0 {
-		x {Type I LastRead 0 FirstWrite -1}}
-	p_G1 {
-		x {Type I LastRead 0 FirstWrite -1}}}
+		sha256hash_7_read {Type I LastRead 0 FirstWrite -1}
+		K {Type I LastRead -1 FirstWrite -1}}}
 
 set hasDtUnsupportedChannel 0
 
 set PerformanceInfo {[
-	{"Name" : "Latency", "Min" : "98", "Max" : "98"}
-	, {"Name" : "Interval", "Min" : "48", "Max" : "48"}
+	{"Name" : "Latency", "Min" : "185", "Max" : "185"}
+	, {"Name" : "Interval", "Min" : "185", "Max" : "185"}
 ]}
 
 set PipelineEnableSignalInfo {[
 	{"Pipeline" : "0", "EnableSignal" : "ap_enable_pp0"}
+	{"Pipeline" : "1", "EnableSignal" : "ap_enable_pp1"}
 ]}
 
 set Spec2ImplPortList { 

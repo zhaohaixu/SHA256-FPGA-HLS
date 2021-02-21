@@ -14,30 +14,255 @@ namespace ap_rtl {
 
 const sc_logic sha256::ap_const_logic_1 = sc_dt::Log_1;
 const sc_logic sha256::ap_const_logic_0 = sc_dt::Log_0;
-const sc_lv<6> sha256::ap_ST_fsm_state1 = "1";
-const sc_lv<6> sha256::ap_ST_fsm_state2 = "10";
-const sc_lv<6> sha256::ap_ST_fsm_state3 = "100";
-const sc_lv<6> sha256::ap_ST_fsm_state4 = "1000";
-const sc_lv<6> sha256::ap_ST_fsm_state5 = "10000";
-const sc_lv<6> sha256::ap_ST_fsm_state6 = "100000";
+const sc_lv<7> sha256::ap_ST_fsm_state1 = "1";
+const sc_lv<7> sha256::ap_ST_fsm_state2 = "10";
+const sc_lv<7> sha256::ap_ST_fsm_state3 = "100";
+const sc_lv<7> sha256::ap_ST_fsm_state4 = "1000";
+const sc_lv<7> sha256::ap_ST_fsm_state5 = "10000";
+const sc_lv<7> sha256::ap_ST_fsm_state6 = "100000";
+const sc_lv<7> sha256::ap_ST_fsm_state7 = "1000000";
 const sc_lv<32> sha256::ap_const_lv32_0 = "00000000000000000000000000000000";
+const int sha256::C_S_AXI_DATA_WIDTH = "100000";
+const int sha256::C_M_AXI_INPUT_R_USER_VALUE = "0000000000000000000000000000000000000000000000000000000000000000";
+const int sha256::C_M_AXI_INPUT_R_PROT_VALUE = "0000000000000000000000000000000000000000000000000000000000000000";
+const int sha256::C_M_AXI_INPUT_R_CACHE_VALUE = "11";
+const int sha256::C_M_AXI_DATA_WIDTH = "100000";
+const int sha256::C_M_AXI_OUTPUT_R_USER_VALUE = "0000000000000000000000000000000000000000000000000000000000000000";
+const int sha256::C_M_AXI_OUTPUT_R_PROT_VALUE = "0000000000000000000000000000000000000000000000000000000000000000";
+const int sha256::C_M_AXI_OUTPUT_R_CACHE_VALUE = "11";
 const sc_lv<32> sha256::ap_const_lv32_1 = "1";
-const sc_lv<32> sha256::ap_const_lv32_3 = "11";
+const sc_lv<32> sha256::ap_const_lv32_2 = "10";
+const sc_lv<32> sha256::ap_const_lv32_4 = "100";
 const sc_lv<6> sha256::ap_const_lv6_0 = "000000";
 const sc_lv<1> sha256::ap_const_lv1_0 = "0";
-const sc_lv<32> sha256::ap_const_lv32_4 = "100";
 const sc_lv<32> sha256::ap_const_lv32_5 = "101";
-const sc_lv<32> sha256::ap_const_lv32_2 = "10";
+const sc_lv<32> sha256::ap_const_lv32_6 = "110";
+const sc_lv<32> sha256::ap_const_lv32_3 = "11";
 const sc_lv<8> sha256::ap_const_lv8_0 = "00000000";
 const sc_lv<6> sha256::ap_const_lv6_1 = "1";
 const sc_lv<6> sha256::ap_const_lv6_3F = "111111";
 const sc_lv<1> sha256::ap_const_lv1_1 = "1";
+const sc_lv<3> sha256::ap_const_lv3_0 = "000";
+const sc_lv<2> sha256::ap_const_lv2_0 = "00";
+const sc_lv<4> sha256::ap_const_lv4_0 = "0000";
 const bool sha256::ap_const_boolean_1 = true;
 
 sha256::sha256(sc_module_name name) : sc_module(name), mVcdFile(0) {
+    sha256_ctrl_bus_s_axi_U = new sha256_ctrl_bus_s_axi<C_S_AXI_CTRL_BUS_ADDR_WIDTH,C_S_AXI_CTRL_BUS_DATA_WIDTH>("sha256_ctrl_bus_s_axi_U");
+    sha256_ctrl_bus_s_axi_U->AWVALID(s_axi_ctrl_bus_AWVALID);
+    sha256_ctrl_bus_s_axi_U->AWREADY(s_axi_ctrl_bus_AWREADY);
+    sha256_ctrl_bus_s_axi_U->AWADDR(s_axi_ctrl_bus_AWADDR);
+    sha256_ctrl_bus_s_axi_U->WVALID(s_axi_ctrl_bus_WVALID);
+    sha256_ctrl_bus_s_axi_U->WREADY(s_axi_ctrl_bus_WREADY);
+    sha256_ctrl_bus_s_axi_U->WDATA(s_axi_ctrl_bus_WDATA);
+    sha256_ctrl_bus_s_axi_U->WSTRB(s_axi_ctrl_bus_WSTRB);
+    sha256_ctrl_bus_s_axi_U->ARVALID(s_axi_ctrl_bus_ARVALID);
+    sha256_ctrl_bus_s_axi_U->ARREADY(s_axi_ctrl_bus_ARREADY);
+    sha256_ctrl_bus_s_axi_U->ARADDR(s_axi_ctrl_bus_ARADDR);
+    sha256_ctrl_bus_s_axi_U->RVALID(s_axi_ctrl_bus_RVALID);
+    sha256_ctrl_bus_s_axi_U->RREADY(s_axi_ctrl_bus_RREADY);
+    sha256_ctrl_bus_s_axi_U->RDATA(s_axi_ctrl_bus_RDATA);
+    sha256_ctrl_bus_s_axi_U->RRESP(s_axi_ctrl_bus_RRESP);
+    sha256_ctrl_bus_s_axi_U->BVALID(s_axi_ctrl_bus_BVALID);
+    sha256_ctrl_bus_s_axi_U->BREADY(s_axi_ctrl_bus_BREADY);
+    sha256_ctrl_bus_s_axi_U->BRESP(s_axi_ctrl_bus_BRESP);
+    sha256_ctrl_bus_s_axi_U->ACLK(ap_clk);
+    sha256_ctrl_bus_s_axi_U->ARESET(ap_rst_n_inv);
+    sha256_ctrl_bus_s_axi_U->ACLK_EN(ap_var_for_const0);
+    sha256_ctrl_bus_s_axi_U->msg(msg);
+    sha256_ctrl_bus_s_axi_U->len(len);
+    sha256_ctrl_bus_s_axi_U->hash(hash);
+    sha256_INPUT_r_m_axi_U = new sha256_INPUT_r_m_axi<0,8,32,5,16,16,16,16,C_M_AXI_INPUT_R_ID_WIDTH,C_M_AXI_INPUT_R_ADDR_WIDTH,C_M_AXI_INPUT_R_DATA_WIDTH,C_M_AXI_INPUT_R_AWUSER_WIDTH,C_M_AXI_INPUT_R_ARUSER_WIDTH,C_M_AXI_INPUT_R_WUSER_WIDTH,C_M_AXI_INPUT_R_RUSER_WIDTH,C_M_AXI_INPUT_R_BUSER_WIDTH,C_M_AXI_INPUT_R_USER_VALUE,C_M_AXI_INPUT_R_PROT_VALUE,C_M_AXI_INPUT_R_CACHE_VALUE>("sha256_INPUT_r_m_axi_U");
+    sha256_INPUT_r_m_axi_U->AWVALID(m_axi_INPUT_r_AWVALID);
+    sha256_INPUT_r_m_axi_U->AWREADY(m_axi_INPUT_r_AWREADY);
+    sha256_INPUT_r_m_axi_U->AWADDR(m_axi_INPUT_r_AWADDR);
+    sha256_INPUT_r_m_axi_U->AWID(m_axi_INPUT_r_AWID);
+    sha256_INPUT_r_m_axi_U->AWLEN(m_axi_INPUT_r_AWLEN);
+    sha256_INPUT_r_m_axi_U->AWSIZE(m_axi_INPUT_r_AWSIZE);
+    sha256_INPUT_r_m_axi_U->AWBURST(m_axi_INPUT_r_AWBURST);
+    sha256_INPUT_r_m_axi_U->AWLOCK(m_axi_INPUT_r_AWLOCK);
+    sha256_INPUT_r_m_axi_U->AWCACHE(m_axi_INPUT_r_AWCACHE);
+    sha256_INPUT_r_m_axi_U->AWPROT(m_axi_INPUT_r_AWPROT);
+    sha256_INPUT_r_m_axi_U->AWQOS(m_axi_INPUT_r_AWQOS);
+    sha256_INPUT_r_m_axi_U->AWREGION(m_axi_INPUT_r_AWREGION);
+    sha256_INPUT_r_m_axi_U->AWUSER(m_axi_INPUT_r_AWUSER);
+    sha256_INPUT_r_m_axi_U->WVALID(m_axi_INPUT_r_WVALID);
+    sha256_INPUT_r_m_axi_U->WREADY(m_axi_INPUT_r_WREADY);
+    sha256_INPUT_r_m_axi_U->WDATA(m_axi_INPUT_r_WDATA);
+    sha256_INPUT_r_m_axi_U->WSTRB(m_axi_INPUT_r_WSTRB);
+    sha256_INPUT_r_m_axi_U->WLAST(m_axi_INPUT_r_WLAST);
+    sha256_INPUT_r_m_axi_U->WID(m_axi_INPUT_r_WID);
+    sha256_INPUT_r_m_axi_U->WUSER(m_axi_INPUT_r_WUSER);
+    sha256_INPUT_r_m_axi_U->ARVALID(m_axi_INPUT_r_ARVALID);
+    sha256_INPUT_r_m_axi_U->ARREADY(m_axi_INPUT_r_ARREADY);
+    sha256_INPUT_r_m_axi_U->ARADDR(m_axi_INPUT_r_ARADDR);
+    sha256_INPUT_r_m_axi_U->ARID(m_axi_INPUT_r_ARID);
+    sha256_INPUT_r_m_axi_U->ARLEN(m_axi_INPUT_r_ARLEN);
+    sha256_INPUT_r_m_axi_U->ARSIZE(m_axi_INPUT_r_ARSIZE);
+    sha256_INPUT_r_m_axi_U->ARBURST(m_axi_INPUT_r_ARBURST);
+    sha256_INPUT_r_m_axi_U->ARLOCK(m_axi_INPUT_r_ARLOCK);
+    sha256_INPUT_r_m_axi_U->ARCACHE(m_axi_INPUT_r_ARCACHE);
+    sha256_INPUT_r_m_axi_U->ARPROT(m_axi_INPUT_r_ARPROT);
+    sha256_INPUT_r_m_axi_U->ARQOS(m_axi_INPUT_r_ARQOS);
+    sha256_INPUT_r_m_axi_U->ARREGION(m_axi_INPUT_r_ARREGION);
+    sha256_INPUT_r_m_axi_U->ARUSER(m_axi_INPUT_r_ARUSER);
+    sha256_INPUT_r_m_axi_U->RVALID(m_axi_INPUT_r_RVALID);
+    sha256_INPUT_r_m_axi_U->RREADY(m_axi_INPUT_r_RREADY);
+    sha256_INPUT_r_m_axi_U->RDATA(m_axi_INPUT_r_RDATA);
+    sha256_INPUT_r_m_axi_U->RLAST(m_axi_INPUT_r_RLAST);
+    sha256_INPUT_r_m_axi_U->RID(m_axi_INPUT_r_RID);
+    sha256_INPUT_r_m_axi_U->RUSER(m_axi_INPUT_r_RUSER);
+    sha256_INPUT_r_m_axi_U->RRESP(m_axi_INPUT_r_RRESP);
+    sha256_INPUT_r_m_axi_U->BVALID(m_axi_INPUT_r_BVALID);
+    sha256_INPUT_r_m_axi_U->BREADY(m_axi_INPUT_r_BREADY);
+    sha256_INPUT_r_m_axi_U->BRESP(m_axi_INPUT_r_BRESP);
+    sha256_INPUT_r_m_axi_U->BID(m_axi_INPUT_r_BID);
+    sha256_INPUT_r_m_axi_U->BUSER(m_axi_INPUT_r_BUSER);
+    sha256_INPUT_r_m_axi_U->ACLK(ap_clk);
+    sha256_INPUT_r_m_axi_U->ARESET(ap_rst_n_inv);
+    sha256_INPUT_r_m_axi_U->ACLK_EN(ap_var_for_const0);
+    sha256_INPUT_r_m_axi_U->I_ARVALID(INPUT_r_ARVALID);
+    sha256_INPUT_r_m_axi_U->I_ARREADY(INPUT_r_ARREADY);
+    sha256_INPUT_r_m_axi_U->I_ARADDR(grp_sha256_hash_fu_135_m_axi_data_ARADDR);
+    sha256_INPUT_r_m_axi_U->I_ARID(grp_sha256_hash_fu_135_m_axi_data_ARID);
+    sha256_INPUT_r_m_axi_U->I_ARLEN(grp_sha256_hash_fu_135_m_axi_data_ARLEN);
+    sha256_INPUT_r_m_axi_U->I_ARSIZE(grp_sha256_hash_fu_135_m_axi_data_ARSIZE);
+    sha256_INPUT_r_m_axi_U->I_ARLOCK(grp_sha256_hash_fu_135_m_axi_data_ARLOCK);
+    sha256_INPUT_r_m_axi_U->I_ARCACHE(grp_sha256_hash_fu_135_m_axi_data_ARCACHE);
+    sha256_INPUT_r_m_axi_U->I_ARQOS(grp_sha256_hash_fu_135_m_axi_data_ARQOS);
+    sha256_INPUT_r_m_axi_U->I_ARPROT(grp_sha256_hash_fu_135_m_axi_data_ARPROT);
+    sha256_INPUT_r_m_axi_U->I_ARUSER(grp_sha256_hash_fu_135_m_axi_data_ARUSER);
+    sha256_INPUT_r_m_axi_U->I_ARBURST(grp_sha256_hash_fu_135_m_axi_data_ARBURST);
+    sha256_INPUT_r_m_axi_U->I_ARREGION(grp_sha256_hash_fu_135_m_axi_data_ARREGION);
+    sha256_INPUT_r_m_axi_U->I_RVALID(INPUT_r_RVALID);
+    sha256_INPUT_r_m_axi_U->I_RREADY(INPUT_r_RREADY);
+    sha256_INPUT_r_m_axi_U->I_RDATA(INPUT_r_RDATA);
+    sha256_INPUT_r_m_axi_U->I_RID(INPUT_r_RID);
+    sha256_INPUT_r_m_axi_U->I_RUSER(INPUT_r_RUSER);
+    sha256_INPUT_r_m_axi_U->I_RRESP(INPUT_r_RRESP);
+    sha256_INPUT_r_m_axi_U->I_RLAST(INPUT_r_RLAST);
+    sha256_INPUT_r_m_axi_U->I_AWVALID(ap_var_for_const1);
+    sha256_INPUT_r_m_axi_U->I_AWREADY(INPUT_r_AWREADY);
+    sha256_INPUT_r_m_axi_U->I_AWADDR(ap_var_for_const2);
+    sha256_INPUT_r_m_axi_U->I_AWID(ap_var_for_const3);
+    sha256_INPUT_r_m_axi_U->I_AWLEN(ap_var_for_const2);
+    sha256_INPUT_r_m_axi_U->I_AWSIZE(ap_var_for_const4);
+    sha256_INPUT_r_m_axi_U->I_AWLOCK(ap_var_for_const5);
+    sha256_INPUT_r_m_axi_U->I_AWCACHE(ap_var_for_const6);
+    sha256_INPUT_r_m_axi_U->I_AWQOS(ap_var_for_const6);
+    sha256_INPUT_r_m_axi_U->I_AWPROT(ap_var_for_const4);
+    sha256_INPUT_r_m_axi_U->I_AWUSER(ap_var_for_const3);
+    sha256_INPUT_r_m_axi_U->I_AWBURST(ap_var_for_const5);
+    sha256_INPUT_r_m_axi_U->I_AWREGION(ap_var_for_const6);
+    sha256_INPUT_r_m_axi_U->I_WVALID(ap_var_for_const1);
+    sha256_INPUT_r_m_axi_U->I_WREADY(INPUT_r_WREADY);
+    sha256_INPUT_r_m_axi_U->I_WDATA(ap_var_for_const7);
+    sha256_INPUT_r_m_axi_U->I_WID(ap_var_for_const3);
+    sha256_INPUT_r_m_axi_U->I_WUSER(ap_var_for_const3);
+    sha256_INPUT_r_m_axi_U->I_WLAST(ap_var_for_const1);
+    sha256_INPUT_r_m_axi_U->I_WSTRB(ap_var_for_const3);
+    sha256_INPUT_r_m_axi_U->I_BVALID(INPUT_r_BVALID);
+    sha256_INPUT_r_m_axi_U->I_BREADY(ap_var_for_const1);
+    sha256_INPUT_r_m_axi_U->I_BRESP(INPUT_r_BRESP);
+    sha256_INPUT_r_m_axi_U->I_BID(INPUT_r_BID);
+    sha256_INPUT_r_m_axi_U->I_BUSER(INPUT_r_BUSER);
+    sha256_OUTPUT_r_m_axi_U = new sha256_OUTPUT_r_m_axi<0,8,32,5,16,16,16,16,C_M_AXI_OUTPUT_R_ID_WIDTH,C_M_AXI_OUTPUT_R_ADDR_WIDTH,C_M_AXI_OUTPUT_R_DATA_WIDTH,C_M_AXI_OUTPUT_R_AWUSER_WIDTH,C_M_AXI_OUTPUT_R_ARUSER_WIDTH,C_M_AXI_OUTPUT_R_WUSER_WIDTH,C_M_AXI_OUTPUT_R_RUSER_WIDTH,C_M_AXI_OUTPUT_R_BUSER_WIDTH,C_M_AXI_OUTPUT_R_USER_VALUE,C_M_AXI_OUTPUT_R_PROT_VALUE,C_M_AXI_OUTPUT_R_CACHE_VALUE>("sha256_OUTPUT_r_m_axi_U");
+    sha256_OUTPUT_r_m_axi_U->AWVALID(m_axi_OUTPUT_r_AWVALID);
+    sha256_OUTPUT_r_m_axi_U->AWREADY(m_axi_OUTPUT_r_AWREADY);
+    sha256_OUTPUT_r_m_axi_U->AWADDR(m_axi_OUTPUT_r_AWADDR);
+    sha256_OUTPUT_r_m_axi_U->AWID(m_axi_OUTPUT_r_AWID);
+    sha256_OUTPUT_r_m_axi_U->AWLEN(m_axi_OUTPUT_r_AWLEN);
+    sha256_OUTPUT_r_m_axi_U->AWSIZE(m_axi_OUTPUT_r_AWSIZE);
+    sha256_OUTPUT_r_m_axi_U->AWBURST(m_axi_OUTPUT_r_AWBURST);
+    sha256_OUTPUT_r_m_axi_U->AWLOCK(m_axi_OUTPUT_r_AWLOCK);
+    sha256_OUTPUT_r_m_axi_U->AWCACHE(m_axi_OUTPUT_r_AWCACHE);
+    sha256_OUTPUT_r_m_axi_U->AWPROT(m_axi_OUTPUT_r_AWPROT);
+    sha256_OUTPUT_r_m_axi_U->AWQOS(m_axi_OUTPUT_r_AWQOS);
+    sha256_OUTPUT_r_m_axi_U->AWREGION(m_axi_OUTPUT_r_AWREGION);
+    sha256_OUTPUT_r_m_axi_U->AWUSER(m_axi_OUTPUT_r_AWUSER);
+    sha256_OUTPUT_r_m_axi_U->WVALID(m_axi_OUTPUT_r_WVALID);
+    sha256_OUTPUT_r_m_axi_U->WREADY(m_axi_OUTPUT_r_WREADY);
+    sha256_OUTPUT_r_m_axi_U->WDATA(m_axi_OUTPUT_r_WDATA);
+    sha256_OUTPUT_r_m_axi_U->WSTRB(m_axi_OUTPUT_r_WSTRB);
+    sha256_OUTPUT_r_m_axi_U->WLAST(m_axi_OUTPUT_r_WLAST);
+    sha256_OUTPUT_r_m_axi_U->WID(m_axi_OUTPUT_r_WID);
+    sha256_OUTPUT_r_m_axi_U->WUSER(m_axi_OUTPUT_r_WUSER);
+    sha256_OUTPUT_r_m_axi_U->ARVALID(m_axi_OUTPUT_r_ARVALID);
+    sha256_OUTPUT_r_m_axi_U->ARREADY(m_axi_OUTPUT_r_ARREADY);
+    sha256_OUTPUT_r_m_axi_U->ARADDR(m_axi_OUTPUT_r_ARADDR);
+    sha256_OUTPUT_r_m_axi_U->ARID(m_axi_OUTPUT_r_ARID);
+    sha256_OUTPUT_r_m_axi_U->ARLEN(m_axi_OUTPUT_r_ARLEN);
+    sha256_OUTPUT_r_m_axi_U->ARSIZE(m_axi_OUTPUT_r_ARSIZE);
+    sha256_OUTPUT_r_m_axi_U->ARBURST(m_axi_OUTPUT_r_ARBURST);
+    sha256_OUTPUT_r_m_axi_U->ARLOCK(m_axi_OUTPUT_r_ARLOCK);
+    sha256_OUTPUT_r_m_axi_U->ARCACHE(m_axi_OUTPUT_r_ARCACHE);
+    sha256_OUTPUT_r_m_axi_U->ARPROT(m_axi_OUTPUT_r_ARPROT);
+    sha256_OUTPUT_r_m_axi_U->ARQOS(m_axi_OUTPUT_r_ARQOS);
+    sha256_OUTPUT_r_m_axi_U->ARREGION(m_axi_OUTPUT_r_ARREGION);
+    sha256_OUTPUT_r_m_axi_U->ARUSER(m_axi_OUTPUT_r_ARUSER);
+    sha256_OUTPUT_r_m_axi_U->RVALID(m_axi_OUTPUT_r_RVALID);
+    sha256_OUTPUT_r_m_axi_U->RREADY(m_axi_OUTPUT_r_RREADY);
+    sha256_OUTPUT_r_m_axi_U->RDATA(m_axi_OUTPUT_r_RDATA);
+    sha256_OUTPUT_r_m_axi_U->RLAST(m_axi_OUTPUT_r_RLAST);
+    sha256_OUTPUT_r_m_axi_U->RID(m_axi_OUTPUT_r_RID);
+    sha256_OUTPUT_r_m_axi_U->RUSER(m_axi_OUTPUT_r_RUSER);
+    sha256_OUTPUT_r_m_axi_U->RRESP(m_axi_OUTPUT_r_RRESP);
+    sha256_OUTPUT_r_m_axi_U->BVALID(m_axi_OUTPUT_r_BVALID);
+    sha256_OUTPUT_r_m_axi_U->BREADY(m_axi_OUTPUT_r_BREADY);
+    sha256_OUTPUT_r_m_axi_U->BRESP(m_axi_OUTPUT_r_BRESP);
+    sha256_OUTPUT_r_m_axi_U->BID(m_axi_OUTPUT_r_BID);
+    sha256_OUTPUT_r_m_axi_U->BUSER(m_axi_OUTPUT_r_BUSER);
+    sha256_OUTPUT_r_m_axi_U->ACLK(ap_clk);
+    sha256_OUTPUT_r_m_axi_U->ARESET(ap_rst_n_inv);
+    sha256_OUTPUT_r_m_axi_U->ACLK_EN(ap_var_for_const0);
+    sha256_OUTPUT_r_m_axi_U->I_ARVALID(ap_var_for_const1);
+    sha256_OUTPUT_r_m_axi_U->I_ARREADY(OUTPUT_r_ARREADY);
+    sha256_OUTPUT_r_m_axi_U->I_ARADDR(ap_var_for_const2);
+    sha256_OUTPUT_r_m_axi_U->I_ARID(ap_var_for_const3);
+    sha256_OUTPUT_r_m_axi_U->I_ARLEN(ap_var_for_const2);
+    sha256_OUTPUT_r_m_axi_U->I_ARSIZE(ap_var_for_const4);
+    sha256_OUTPUT_r_m_axi_U->I_ARLOCK(ap_var_for_const5);
+    sha256_OUTPUT_r_m_axi_U->I_ARCACHE(ap_var_for_const6);
+    sha256_OUTPUT_r_m_axi_U->I_ARQOS(ap_var_for_const6);
+    sha256_OUTPUT_r_m_axi_U->I_ARPROT(ap_var_for_const4);
+    sha256_OUTPUT_r_m_axi_U->I_ARUSER(ap_var_for_const3);
+    sha256_OUTPUT_r_m_axi_U->I_ARBURST(ap_var_for_const5);
+    sha256_OUTPUT_r_m_axi_U->I_ARREGION(ap_var_for_const6);
+    sha256_OUTPUT_r_m_axi_U->I_RVALID(OUTPUT_r_RVALID);
+    sha256_OUTPUT_r_m_axi_U->I_RREADY(ap_var_for_const1);
+    sha256_OUTPUT_r_m_axi_U->I_RDATA(OUTPUT_r_RDATA);
+    sha256_OUTPUT_r_m_axi_U->I_RID(OUTPUT_r_RID);
+    sha256_OUTPUT_r_m_axi_U->I_RUSER(OUTPUT_r_RUSER);
+    sha256_OUTPUT_r_m_axi_U->I_RRESP(OUTPUT_r_RRESP);
+    sha256_OUTPUT_r_m_axi_U->I_RLAST(OUTPUT_r_RLAST);
+    sha256_OUTPUT_r_m_axi_U->I_AWVALID(OUTPUT_r_AWVALID);
+    sha256_OUTPUT_r_m_axi_U->I_AWREADY(OUTPUT_r_AWREADY);
+    sha256_OUTPUT_r_m_axi_U->I_AWADDR(grp_sha256_done_fu_114_m_axi_hash_AWADDR);
+    sha256_OUTPUT_r_m_axi_U->I_AWID(grp_sha256_done_fu_114_m_axi_hash_AWID);
+    sha256_OUTPUT_r_m_axi_U->I_AWLEN(grp_sha256_done_fu_114_m_axi_hash_AWLEN);
+    sha256_OUTPUT_r_m_axi_U->I_AWSIZE(grp_sha256_done_fu_114_m_axi_hash_AWSIZE);
+    sha256_OUTPUT_r_m_axi_U->I_AWLOCK(grp_sha256_done_fu_114_m_axi_hash_AWLOCK);
+    sha256_OUTPUT_r_m_axi_U->I_AWCACHE(grp_sha256_done_fu_114_m_axi_hash_AWCACHE);
+    sha256_OUTPUT_r_m_axi_U->I_AWQOS(grp_sha256_done_fu_114_m_axi_hash_AWQOS);
+    sha256_OUTPUT_r_m_axi_U->I_AWPROT(grp_sha256_done_fu_114_m_axi_hash_AWPROT);
+    sha256_OUTPUT_r_m_axi_U->I_AWUSER(grp_sha256_done_fu_114_m_axi_hash_AWUSER);
+    sha256_OUTPUT_r_m_axi_U->I_AWBURST(grp_sha256_done_fu_114_m_axi_hash_AWBURST);
+    sha256_OUTPUT_r_m_axi_U->I_AWREGION(grp_sha256_done_fu_114_m_axi_hash_AWREGION);
+    sha256_OUTPUT_r_m_axi_U->I_WVALID(OUTPUT_r_WVALID);
+    sha256_OUTPUT_r_m_axi_U->I_WREADY(OUTPUT_r_WREADY);
+    sha256_OUTPUT_r_m_axi_U->I_WDATA(grp_sha256_done_fu_114_m_axi_hash_WDATA);
+    sha256_OUTPUT_r_m_axi_U->I_WID(grp_sha256_done_fu_114_m_axi_hash_WID);
+    sha256_OUTPUT_r_m_axi_U->I_WUSER(grp_sha256_done_fu_114_m_axi_hash_WUSER);
+    sha256_OUTPUT_r_m_axi_U->I_WLAST(grp_sha256_done_fu_114_m_axi_hash_WLAST);
+    sha256_OUTPUT_r_m_axi_U->I_WSTRB(grp_sha256_done_fu_114_m_axi_hash_WSTRB);
+    sha256_OUTPUT_r_m_axi_U->I_BVALID(OUTPUT_r_BVALID);
+    sha256_OUTPUT_r_m_axi_U->I_BREADY(OUTPUT_r_BREADY);
+    sha256_OUTPUT_r_m_axi_U->I_BRESP(OUTPUT_r_BRESP);
+    sha256_OUTPUT_r_m_axi_U->I_BID(OUTPUT_r_BID);
+    sha256_OUTPUT_r_m_axi_U->I_BUSER(OUTPUT_r_BUSER);
     sha256_buf_U = new sha256_sha256_buf("sha256_buf_U");
     sha256_buf_U->clk(ap_clk);
-    sha256_buf_U->reset(ap_rst);
+    sha256_buf_U->reset(ap_rst_n_inv);
     sha256_buf_U->address0(sha256_buf_address0);
     sha256_buf_U->ce0(sha256_buf_ce0);
     sha256_buf_U->we0(sha256_buf_we0);
@@ -46,78 +271,184 @@ sha256::sha256(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sha256_buf_U->address1(sha256_buf_address1);
     sha256_buf_U->ce1(sha256_buf_ce1);
     sha256_buf_U->we1(sha256_buf_we1);
-    sha256_buf_U->d1(grp_sha256_done_fu_72_sha256_buf_d1);
+    sha256_buf_U->d1(grp_sha256_done_fu_114_sha256_buf_d1);
     sha256_buf_U->q1(sha256_buf_q1);
-    grp_sha256_done_fu_72 = new sha256_done("grp_sha256_done_fu_72");
-    grp_sha256_done_fu_72->ap_clk(ap_clk);
-    grp_sha256_done_fu_72->ap_rst(ap_rst);
-    grp_sha256_done_fu_72->ap_start(grp_sha256_done_fu_72_ap_start);
-    grp_sha256_done_fu_72->ap_done(grp_sha256_done_fu_72_ap_done);
-    grp_sha256_done_fu_72->ap_idle(grp_sha256_done_fu_72_ap_idle);
-    grp_sha256_done_fu_72->ap_ready(grp_sha256_done_fu_72_ap_ready);
-    grp_sha256_done_fu_72->sha256_buf_address0(grp_sha256_done_fu_72_sha256_buf_address0);
-    grp_sha256_done_fu_72->sha256_buf_ce0(grp_sha256_done_fu_72_sha256_buf_ce0);
-    grp_sha256_done_fu_72->sha256_buf_we0(grp_sha256_done_fu_72_sha256_buf_we0);
-    grp_sha256_done_fu_72->sha256_buf_d0(grp_sha256_done_fu_72_sha256_buf_d0);
-    grp_sha256_done_fu_72->sha256_buf_q0(sha256_buf_q0);
-    grp_sha256_done_fu_72->sha256_buf_address1(grp_sha256_done_fu_72_sha256_buf_address1);
-    grp_sha256_done_fu_72->sha256_buf_ce1(grp_sha256_done_fu_72_sha256_buf_ce1);
-    grp_sha256_done_fu_72->sha256_buf_we1(grp_sha256_done_fu_72_sha256_buf_we1);
-    grp_sha256_done_fu_72->sha256_buf_d1(grp_sha256_done_fu_72_sha256_buf_d1);
-    grp_sha256_done_fu_72->sha256_buf_q1(sha256_buf_q1);
-    grp_sha256_done_fu_72->sha256hash_0_read(sha256hash_0_reg_182);
-    grp_sha256_done_fu_72->sha256hash_1_read(sha256hash_1_reg_187);
-    grp_sha256_done_fu_72->sha256hash_2_read(sha256hash_2_reg_192);
-    grp_sha256_done_fu_72->sha256hash_3_read(sha256hash_3_reg_197);
-    grp_sha256_done_fu_72->sha256hash_4_read(sha256hash_4_reg_202);
-    grp_sha256_done_fu_72->sha256hash_5_read(sha256hash_5_reg_207);
-    grp_sha256_done_fu_72->sha256hash_6_read(sha256hash_6_reg_212);
-    grp_sha256_done_fu_72->sha256hash_7_read(sha256hash_7_reg_217);
-    grp_sha256_done_fu_72->sha256_bits_0_read(sha256_bits_0_reg_222);
-    grp_sha256_done_fu_72->sha256_bits_1_read(sha256_bits_1_reg_172);
-    grp_sha256_done_fu_72->sha256_len(sha256_len_0_reg_177);
-    grp_sha256_done_fu_72->hash_address0(grp_sha256_done_fu_72_hash_address0);
-    grp_sha256_done_fu_72->hash_ce0(grp_sha256_done_fu_72_hash_ce0);
-    grp_sha256_done_fu_72->hash_we0(grp_sha256_done_fu_72_hash_we0);
-    grp_sha256_done_fu_72->hash_d0(grp_sha256_done_fu_72_hash_d0);
-    grp_sha256_done_fu_72->hash_address1(grp_sha256_done_fu_72_hash_address1);
-    grp_sha256_done_fu_72->hash_ce1(grp_sha256_done_fu_72_hash_ce1);
-    grp_sha256_done_fu_72->hash_we1(grp_sha256_done_fu_72_hash_we1);
-    grp_sha256_done_fu_72->hash_d1(grp_sha256_done_fu_72_hash_d1);
-    grp_sha256_hash_fu_90 = new sha256_hash("grp_sha256_hash_fu_90");
-    grp_sha256_hash_fu_90->ap_clk(ap_clk);
-    grp_sha256_hash_fu_90->ap_rst(ap_rst);
-    grp_sha256_hash_fu_90->ap_start(grp_sha256_hash_fu_90_ap_start);
-    grp_sha256_hash_fu_90->ap_done(grp_sha256_hash_fu_90_ap_done);
-    grp_sha256_hash_fu_90->ap_idle(grp_sha256_hash_fu_90_ap_idle);
-    grp_sha256_hash_fu_90->ap_ready(grp_sha256_hash_fu_90_ap_ready);
-    grp_sha256_hash_fu_90->sha256_buf_address0(grp_sha256_hash_fu_90_sha256_buf_address0);
-    grp_sha256_hash_fu_90->sha256_buf_ce0(grp_sha256_hash_fu_90_sha256_buf_ce0);
-    grp_sha256_hash_fu_90->sha256_buf_we0(grp_sha256_hash_fu_90_sha256_buf_we0);
-    grp_sha256_hash_fu_90->sha256_buf_d0(grp_sha256_hash_fu_90_sha256_buf_d0);
-    grp_sha256_hash_fu_90->sha256_buf_q0(sha256_buf_q0);
-    grp_sha256_hash_fu_90->sha256_buf_address1(grp_sha256_hash_fu_90_sha256_buf_address1);
-    grp_sha256_hash_fu_90->sha256_buf_ce1(grp_sha256_hash_fu_90_sha256_buf_ce1);
-    grp_sha256_hash_fu_90->sha256_buf_q1(sha256_buf_q1);
-    grp_sha256_hash_fu_90->data_address0(grp_sha256_hash_fu_90_data_address0);
-    grp_sha256_hash_fu_90->data_ce0(grp_sha256_hash_fu_90_data_ce0);
-    grp_sha256_hash_fu_90->data_q0(msg_q0);
-    grp_sha256_hash_fu_90->len(len);
-    grp_sha256_hash_fu_90->ap_return_0(grp_sha256_hash_fu_90_ap_return_0);
-    grp_sha256_hash_fu_90->ap_return_1(grp_sha256_hash_fu_90_ap_return_1);
-    grp_sha256_hash_fu_90->ap_return_2(grp_sha256_hash_fu_90_ap_return_2);
-    grp_sha256_hash_fu_90->ap_return_3(grp_sha256_hash_fu_90_ap_return_3);
-    grp_sha256_hash_fu_90->ap_return_4(grp_sha256_hash_fu_90_ap_return_4);
-    grp_sha256_hash_fu_90->ap_return_5(grp_sha256_hash_fu_90_ap_return_5);
-    grp_sha256_hash_fu_90->ap_return_6(grp_sha256_hash_fu_90_ap_return_6);
-    grp_sha256_hash_fu_90->ap_return_7(grp_sha256_hash_fu_90_ap_return_7);
-    grp_sha256_hash_fu_90->ap_return_8(grp_sha256_hash_fu_90_ap_return_8);
-    grp_sha256_hash_fu_90->ap_return_9(grp_sha256_hash_fu_90_ap_return_9);
-    grp_sha256_hash_fu_90->ap_return_10(grp_sha256_hash_fu_90_ap_return_10);
+    grp_sha256_done_fu_114 = new sha256_done("grp_sha256_done_fu_114");
+    grp_sha256_done_fu_114->ap_clk(ap_clk);
+    grp_sha256_done_fu_114->ap_rst(ap_rst_n_inv);
+    grp_sha256_done_fu_114->ap_start(grp_sha256_done_fu_114_ap_start);
+    grp_sha256_done_fu_114->ap_done(grp_sha256_done_fu_114_ap_done);
+    grp_sha256_done_fu_114->ap_idle(grp_sha256_done_fu_114_ap_idle);
+    grp_sha256_done_fu_114->ap_ready(grp_sha256_done_fu_114_ap_ready);
+    grp_sha256_done_fu_114->sha256_buf_address0(grp_sha256_done_fu_114_sha256_buf_address0);
+    grp_sha256_done_fu_114->sha256_buf_ce0(grp_sha256_done_fu_114_sha256_buf_ce0);
+    grp_sha256_done_fu_114->sha256_buf_we0(grp_sha256_done_fu_114_sha256_buf_we0);
+    grp_sha256_done_fu_114->sha256_buf_d0(grp_sha256_done_fu_114_sha256_buf_d0);
+    grp_sha256_done_fu_114->sha256_buf_q0(sha256_buf_q0);
+    grp_sha256_done_fu_114->sha256_buf_address1(grp_sha256_done_fu_114_sha256_buf_address1);
+    grp_sha256_done_fu_114->sha256_buf_ce1(grp_sha256_done_fu_114_sha256_buf_ce1);
+    grp_sha256_done_fu_114->sha256_buf_we1(grp_sha256_done_fu_114_sha256_buf_we1);
+    grp_sha256_done_fu_114->sha256_buf_d1(grp_sha256_done_fu_114_sha256_buf_d1);
+    grp_sha256_done_fu_114->sha256_buf_q1(sha256_buf_q1);
+    grp_sha256_done_fu_114->sha256hash_0_read(sha256hash_0_reg_240);
+    grp_sha256_done_fu_114->sha256hash_1_read(sha256hash_1_reg_245);
+    grp_sha256_done_fu_114->sha256hash_2_read(sha256hash_2_reg_250);
+    grp_sha256_done_fu_114->sha256hash_3_read(sha256hash_3_reg_255);
+    grp_sha256_done_fu_114->sha256hash_4_read(sha256hash_4_reg_260);
+    grp_sha256_done_fu_114->sha256hash_5_read(sha256hash_5_reg_265);
+    grp_sha256_done_fu_114->sha256hash_6_read(sha256hash_6_reg_270);
+    grp_sha256_done_fu_114->sha256hash_7_read(sha256hash_7_reg_275);
+    grp_sha256_done_fu_114->sha256_bits_0_read(sha256_bits_0_reg_280);
+    grp_sha256_done_fu_114->sha256_bits_1_read(sha256_bits_1_reg_230);
+    grp_sha256_done_fu_114->sha256_len(sha256_len_0_reg_235);
+    grp_sha256_done_fu_114->m_axi_hash_AWVALID(grp_sha256_done_fu_114_m_axi_hash_AWVALID);
+    grp_sha256_done_fu_114->m_axi_hash_AWREADY(OUTPUT_r_AWREADY);
+    grp_sha256_done_fu_114->m_axi_hash_AWADDR(grp_sha256_done_fu_114_m_axi_hash_AWADDR);
+    grp_sha256_done_fu_114->m_axi_hash_AWID(grp_sha256_done_fu_114_m_axi_hash_AWID);
+    grp_sha256_done_fu_114->m_axi_hash_AWLEN(grp_sha256_done_fu_114_m_axi_hash_AWLEN);
+    grp_sha256_done_fu_114->m_axi_hash_AWSIZE(grp_sha256_done_fu_114_m_axi_hash_AWSIZE);
+    grp_sha256_done_fu_114->m_axi_hash_AWBURST(grp_sha256_done_fu_114_m_axi_hash_AWBURST);
+    grp_sha256_done_fu_114->m_axi_hash_AWLOCK(grp_sha256_done_fu_114_m_axi_hash_AWLOCK);
+    grp_sha256_done_fu_114->m_axi_hash_AWCACHE(grp_sha256_done_fu_114_m_axi_hash_AWCACHE);
+    grp_sha256_done_fu_114->m_axi_hash_AWPROT(grp_sha256_done_fu_114_m_axi_hash_AWPROT);
+    grp_sha256_done_fu_114->m_axi_hash_AWQOS(grp_sha256_done_fu_114_m_axi_hash_AWQOS);
+    grp_sha256_done_fu_114->m_axi_hash_AWREGION(grp_sha256_done_fu_114_m_axi_hash_AWREGION);
+    grp_sha256_done_fu_114->m_axi_hash_AWUSER(grp_sha256_done_fu_114_m_axi_hash_AWUSER);
+    grp_sha256_done_fu_114->m_axi_hash_WVALID(grp_sha256_done_fu_114_m_axi_hash_WVALID);
+    grp_sha256_done_fu_114->m_axi_hash_WREADY(OUTPUT_r_WREADY);
+    grp_sha256_done_fu_114->m_axi_hash_WDATA(grp_sha256_done_fu_114_m_axi_hash_WDATA);
+    grp_sha256_done_fu_114->m_axi_hash_WSTRB(grp_sha256_done_fu_114_m_axi_hash_WSTRB);
+    grp_sha256_done_fu_114->m_axi_hash_WLAST(grp_sha256_done_fu_114_m_axi_hash_WLAST);
+    grp_sha256_done_fu_114->m_axi_hash_WID(grp_sha256_done_fu_114_m_axi_hash_WID);
+    grp_sha256_done_fu_114->m_axi_hash_WUSER(grp_sha256_done_fu_114_m_axi_hash_WUSER);
+    grp_sha256_done_fu_114->m_axi_hash_ARVALID(grp_sha256_done_fu_114_m_axi_hash_ARVALID);
+    grp_sha256_done_fu_114->m_axi_hash_ARREADY(ap_var_for_const1);
+    grp_sha256_done_fu_114->m_axi_hash_ARADDR(grp_sha256_done_fu_114_m_axi_hash_ARADDR);
+    grp_sha256_done_fu_114->m_axi_hash_ARID(grp_sha256_done_fu_114_m_axi_hash_ARID);
+    grp_sha256_done_fu_114->m_axi_hash_ARLEN(grp_sha256_done_fu_114_m_axi_hash_ARLEN);
+    grp_sha256_done_fu_114->m_axi_hash_ARSIZE(grp_sha256_done_fu_114_m_axi_hash_ARSIZE);
+    grp_sha256_done_fu_114->m_axi_hash_ARBURST(grp_sha256_done_fu_114_m_axi_hash_ARBURST);
+    grp_sha256_done_fu_114->m_axi_hash_ARLOCK(grp_sha256_done_fu_114_m_axi_hash_ARLOCK);
+    grp_sha256_done_fu_114->m_axi_hash_ARCACHE(grp_sha256_done_fu_114_m_axi_hash_ARCACHE);
+    grp_sha256_done_fu_114->m_axi_hash_ARPROT(grp_sha256_done_fu_114_m_axi_hash_ARPROT);
+    grp_sha256_done_fu_114->m_axi_hash_ARQOS(grp_sha256_done_fu_114_m_axi_hash_ARQOS);
+    grp_sha256_done_fu_114->m_axi_hash_ARREGION(grp_sha256_done_fu_114_m_axi_hash_ARREGION);
+    grp_sha256_done_fu_114->m_axi_hash_ARUSER(grp_sha256_done_fu_114_m_axi_hash_ARUSER);
+    grp_sha256_done_fu_114->m_axi_hash_RVALID(ap_var_for_const1);
+    grp_sha256_done_fu_114->m_axi_hash_RREADY(grp_sha256_done_fu_114_m_axi_hash_RREADY);
+    grp_sha256_done_fu_114->m_axi_hash_RDATA(ap_var_for_const7);
+    grp_sha256_done_fu_114->m_axi_hash_RLAST(ap_var_for_const1);
+    grp_sha256_done_fu_114->m_axi_hash_RID(ap_var_for_const3);
+    grp_sha256_done_fu_114->m_axi_hash_RUSER(ap_var_for_const3);
+    grp_sha256_done_fu_114->m_axi_hash_RRESP(ap_var_for_const5);
+    grp_sha256_done_fu_114->m_axi_hash_BVALID(OUTPUT_r_BVALID);
+    grp_sha256_done_fu_114->m_axi_hash_BREADY(grp_sha256_done_fu_114_m_axi_hash_BREADY);
+    grp_sha256_done_fu_114->m_axi_hash_BRESP(OUTPUT_r_BRESP);
+    grp_sha256_done_fu_114->m_axi_hash_BID(OUTPUT_r_BID);
+    grp_sha256_done_fu_114->m_axi_hash_BUSER(OUTPUT_r_BUSER);
+    grp_sha256_done_fu_114->hash_offset(hash_read_reg_207);
+    grp_sha256_hash_fu_135 = new sha256_hash("grp_sha256_hash_fu_135");
+    grp_sha256_hash_fu_135->ap_clk(ap_clk);
+    grp_sha256_hash_fu_135->ap_rst(ap_rst_n_inv);
+    grp_sha256_hash_fu_135->ap_start(grp_sha256_hash_fu_135_ap_start);
+    grp_sha256_hash_fu_135->ap_done(grp_sha256_hash_fu_135_ap_done);
+    grp_sha256_hash_fu_135->ap_idle(grp_sha256_hash_fu_135_ap_idle);
+    grp_sha256_hash_fu_135->ap_ready(grp_sha256_hash_fu_135_ap_ready);
+    grp_sha256_hash_fu_135->sha256_buf_address0(grp_sha256_hash_fu_135_sha256_buf_address0);
+    grp_sha256_hash_fu_135->sha256_buf_ce0(grp_sha256_hash_fu_135_sha256_buf_ce0);
+    grp_sha256_hash_fu_135->sha256_buf_we0(grp_sha256_hash_fu_135_sha256_buf_we0);
+    grp_sha256_hash_fu_135->sha256_buf_d0(grp_sha256_hash_fu_135_sha256_buf_d0);
+    grp_sha256_hash_fu_135->sha256_buf_q0(sha256_buf_q0);
+    grp_sha256_hash_fu_135->sha256_buf_address1(grp_sha256_hash_fu_135_sha256_buf_address1);
+    grp_sha256_hash_fu_135->sha256_buf_ce1(grp_sha256_hash_fu_135_sha256_buf_ce1);
+    grp_sha256_hash_fu_135->sha256_buf_q1(sha256_buf_q1);
+    grp_sha256_hash_fu_135->m_axi_data_AWVALID(grp_sha256_hash_fu_135_m_axi_data_AWVALID);
+    grp_sha256_hash_fu_135->m_axi_data_AWREADY(ap_var_for_const1);
+    grp_sha256_hash_fu_135->m_axi_data_AWADDR(grp_sha256_hash_fu_135_m_axi_data_AWADDR);
+    grp_sha256_hash_fu_135->m_axi_data_AWID(grp_sha256_hash_fu_135_m_axi_data_AWID);
+    grp_sha256_hash_fu_135->m_axi_data_AWLEN(grp_sha256_hash_fu_135_m_axi_data_AWLEN);
+    grp_sha256_hash_fu_135->m_axi_data_AWSIZE(grp_sha256_hash_fu_135_m_axi_data_AWSIZE);
+    grp_sha256_hash_fu_135->m_axi_data_AWBURST(grp_sha256_hash_fu_135_m_axi_data_AWBURST);
+    grp_sha256_hash_fu_135->m_axi_data_AWLOCK(grp_sha256_hash_fu_135_m_axi_data_AWLOCK);
+    grp_sha256_hash_fu_135->m_axi_data_AWCACHE(grp_sha256_hash_fu_135_m_axi_data_AWCACHE);
+    grp_sha256_hash_fu_135->m_axi_data_AWPROT(grp_sha256_hash_fu_135_m_axi_data_AWPROT);
+    grp_sha256_hash_fu_135->m_axi_data_AWQOS(grp_sha256_hash_fu_135_m_axi_data_AWQOS);
+    grp_sha256_hash_fu_135->m_axi_data_AWREGION(grp_sha256_hash_fu_135_m_axi_data_AWREGION);
+    grp_sha256_hash_fu_135->m_axi_data_AWUSER(grp_sha256_hash_fu_135_m_axi_data_AWUSER);
+    grp_sha256_hash_fu_135->m_axi_data_WVALID(grp_sha256_hash_fu_135_m_axi_data_WVALID);
+    grp_sha256_hash_fu_135->m_axi_data_WREADY(ap_var_for_const1);
+    grp_sha256_hash_fu_135->m_axi_data_WDATA(grp_sha256_hash_fu_135_m_axi_data_WDATA);
+    grp_sha256_hash_fu_135->m_axi_data_WSTRB(grp_sha256_hash_fu_135_m_axi_data_WSTRB);
+    grp_sha256_hash_fu_135->m_axi_data_WLAST(grp_sha256_hash_fu_135_m_axi_data_WLAST);
+    grp_sha256_hash_fu_135->m_axi_data_WID(grp_sha256_hash_fu_135_m_axi_data_WID);
+    grp_sha256_hash_fu_135->m_axi_data_WUSER(grp_sha256_hash_fu_135_m_axi_data_WUSER);
+    grp_sha256_hash_fu_135->m_axi_data_ARVALID(grp_sha256_hash_fu_135_m_axi_data_ARVALID);
+    grp_sha256_hash_fu_135->m_axi_data_ARREADY(INPUT_r_ARREADY);
+    grp_sha256_hash_fu_135->m_axi_data_ARADDR(grp_sha256_hash_fu_135_m_axi_data_ARADDR);
+    grp_sha256_hash_fu_135->m_axi_data_ARID(grp_sha256_hash_fu_135_m_axi_data_ARID);
+    grp_sha256_hash_fu_135->m_axi_data_ARLEN(grp_sha256_hash_fu_135_m_axi_data_ARLEN);
+    grp_sha256_hash_fu_135->m_axi_data_ARSIZE(grp_sha256_hash_fu_135_m_axi_data_ARSIZE);
+    grp_sha256_hash_fu_135->m_axi_data_ARBURST(grp_sha256_hash_fu_135_m_axi_data_ARBURST);
+    grp_sha256_hash_fu_135->m_axi_data_ARLOCK(grp_sha256_hash_fu_135_m_axi_data_ARLOCK);
+    grp_sha256_hash_fu_135->m_axi_data_ARCACHE(grp_sha256_hash_fu_135_m_axi_data_ARCACHE);
+    grp_sha256_hash_fu_135->m_axi_data_ARPROT(grp_sha256_hash_fu_135_m_axi_data_ARPROT);
+    grp_sha256_hash_fu_135->m_axi_data_ARQOS(grp_sha256_hash_fu_135_m_axi_data_ARQOS);
+    grp_sha256_hash_fu_135->m_axi_data_ARREGION(grp_sha256_hash_fu_135_m_axi_data_ARREGION);
+    grp_sha256_hash_fu_135->m_axi_data_ARUSER(grp_sha256_hash_fu_135_m_axi_data_ARUSER);
+    grp_sha256_hash_fu_135->m_axi_data_RVALID(INPUT_r_RVALID);
+    grp_sha256_hash_fu_135->m_axi_data_RREADY(grp_sha256_hash_fu_135_m_axi_data_RREADY);
+    grp_sha256_hash_fu_135->m_axi_data_RDATA(INPUT_r_RDATA);
+    grp_sha256_hash_fu_135->m_axi_data_RLAST(INPUT_r_RLAST);
+    grp_sha256_hash_fu_135->m_axi_data_RID(INPUT_r_RID);
+    grp_sha256_hash_fu_135->m_axi_data_RUSER(INPUT_r_RUSER);
+    grp_sha256_hash_fu_135->m_axi_data_RRESP(INPUT_r_RRESP);
+    grp_sha256_hash_fu_135->m_axi_data_BVALID(ap_var_for_const1);
+    grp_sha256_hash_fu_135->m_axi_data_BREADY(grp_sha256_hash_fu_135_m_axi_data_BREADY);
+    grp_sha256_hash_fu_135->m_axi_data_BRESP(ap_var_for_const5);
+    grp_sha256_hash_fu_135->m_axi_data_BID(ap_var_for_const3);
+    grp_sha256_hash_fu_135->m_axi_data_BUSER(ap_var_for_const3);
+    grp_sha256_hash_fu_135->data_offset(msg_read_reg_217);
+    grp_sha256_hash_fu_135->len(len_read_reg_212);
+    grp_sha256_hash_fu_135->ap_return_0(grp_sha256_hash_fu_135_ap_return_0);
+    grp_sha256_hash_fu_135->ap_return_1(grp_sha256_hash_fu_135_ap_return_1);
+    grp_sha256_hash_fu_135->ap_return_2(grp_sha256_hash_fu_135_ap_return_2);
+    grp_sha256_hash_fu_135->ap_return_3(grp_sha256_hash_fu_135_ap_return_3);
+    grp_sha256_hash_fu_135->ap_return_4(grp_sha256_hash_fu_135_ap_return_4);
+    grp_sha256_hash_fu_135->ap_return_5(grp_sha256_hash_fu_135_ap_return_5);
+    grp_sha256_hash_fu_135->ap_return_6(grp_sha256_hash_fu_135_ap_return_6);
+    grp_sha256_hash_fu_135->ap_return_7(grp_sha256_hash_fu_135_ap_return_7);
+    grp_sha256_hash_fu_135->ap_return_8(grp_sha256_hash_fu_135_ap_return_8);
+    grp_sha256_hash_fu_135->ap_return_9(grp_sha256_hash_fu_135_ap_return_9);
+    grp_sha256_hash_fu_135->ap_return_10(grp_sha256_hash_fu_135_ap_return_10);
 
     SC_METHOD(thread_ap_clk_no_reset_);
     dont_initialize();
     sensitive << ( ap_clk.pos() );
+
+    SC_METHOD(thread_INPUT_r_ARVALID);
+    sensitive << ( ap_CS_fsm_state5 );
+    sensitive << ( grp_sha256_hash_fu_135_m_axi_data_ARVALID );
+    sensitive << ( ap_CS_fsm_state4 );
+
+    SC_METHOD(thread_INPUT_r_RREADY);
+    sensitive << ( ap_CS_fsm_state5 );
+    sensitive << ( grp_sha256_hash_fu_135_m_axi_data_RREADY );
+    sensitive << ( ap_CS_fsm_state4 );
+
+    SC_METHOD(thread_OUTPUT_r_AWVALID);
+    sensitive << ( grp_sha256_done_fu_114_m_axi_hash_AWVALID );
+    sensitive << ( ap_CS_fsm_state6 );
+    sensitive << ( ap_CS_fsm_state7 );
+
+    SC_METHOD(thread_OUTPUT_r_BREADY);
+    sensitive << ( grp_sha256_done_fu_114_m_axi_hash_BREADY );
+    sensitive << ( ap_CS_fsm_state6 );
+    sensitive << ( ap_CS_fsm_state7 );
+
+    SC_METHOD(thread_OUTPUT_r_WVALID);
+    sensitive << ( grp_sha256_done_fu_114_m_axi_hash_WVALID );
+    sensitive << ( ap_CS_fsm_state6 );
+    sensitive << ( ap_CS_fsm_state7 );
 
     SC_METHOD(thread_ap_CS_fsm_state1);
     sensitive << ( ap_CS_fsm );
@@ -137,136 +468,136 @@ sha256::sha256(sc_module_name name) : sc_module(name), mVcdFile(0) {
     SC_METHOD(thread_ap_CS_fsm_state6);
     sensitive << ( ap_CS_fsm );
 
+    SC_METHOD(thread_ap_CS_fsm_state7);
+    sensitive << ( ap_CS_fsm );
+
     SC_METHOD(thread_ap_done);
-    sensitive << ( grp_sha256_done_fu_72_ap_done );
-    sensitive << ( ap_CS_fsm_state6 );
+    sensitive << ( grp_sha256_done_fu_114_ap_done );
+    sensitive << ( ap_CS_fsm_state7 );
 
     SC_METHOD(thread_ap_idle);
     sensitive << ( ap_start );
     sensitive << ( ap_CS_fsm_state1 );
 
     SC_METHOD(thread_ap_ready);
-    sensitive << ( grp_sha256_done_fu_72_ap_done );
-    sensitive << ( ap_CS_fsm_state6 );
+    sensitive << ( grp_sha256_done_fu_114_ap_done );
+    sensitive << ( ap_CS_fsm_state7 );
 
-    SC_METHOD(thread_grp_sha256_done_fu_72_ap_start);
-    sensitive << ( grp_sha256_done_fu_72_ap_start_reg );
+    SC_METHOD(thread_ap_rst_n_inv);
+    sensitive << ( ap_rst_n );
 
-    SC_METHOD(thread_grp_sha256_hash_fu_90_ap_start);
-    sensitive << ( grp_sha256_hash_fu_90_ap_start_reg );
+    SC_METHOD(thread_grp_sha256_done_fu_114_ap_start);
+    sensitive << ( grp_sha256_done_fu_114_ap_start_reg );
 
-    SC_METHOD(thread_hash_address0);
-    sensitive << ( grp_sha256_done_fu_72_hash_address0 );
-    sensitive << ( ap_CS_fsm_state6 );
+    SC_METHOD(thread_grp_sha256_hash_fu_135_ap_start);
+    sensitive << ( grp_sha256_hash_fu_135_ap_start_reg );
 
-    SC_METHOD(thread_hash_address1);
-    sensitive << ( grp_sha256_done_fu_72_hash_address1 );
-    sensitive << ( ap_CS_fsm_state6 );
+    SC_METHOD(thread_hash_0_ack_out);
+    sensitive << ( grp_sha256_done_fu_114_ap_done );
+    sensitive << ( ap_CS_fsm_state7 );
 
-    SC_METHOD(thread_hash_ce0);
-    sensitive << ( grp_sha256_done_fu_72_hash_ce0 );
-    sensitive << ( ap_CS_fsm_state6 );
+    SC_METHOD(thread_indvarinc_fu_146_p2);
+    sensitive << ( invdar_reg_103 );
 
-    SC_METHOD(thread_hash_ce1);
-    sensitive << ( grp_sha256_done_fu_72_hash_ce1 );
-    sensitive << ( ap_CS_fsm_state6 );
+    SC_METHOD(thread_len_0_ack_out);
+    sensitive << ( grp_sha256_done_fu_114_ap_done );
+    sensitive << ( ap_CS_fsm_state7 );
 
-    SC_METHOD(thread_hash_d0);
-    sensitive << ( grp_sha256_done_fu_72_hash_d0 );
-    sensitive << ( ap_CS_fsm_state6 );
-
-    SC_METHOD(thread_hash_d1);
-    sensitive << ( grp_sha256_done_fu_72_hash_d1 );
-    sensitive << ( ap_CS_fsm_state6 );
-
-    SC_METHOD(thread_hash_we0);
-    sensitive << ( grp_sha256_done_fu_72_hash_we0 );
-    sensitive << ( ap_CS_fsm_state6 );
-
-    SC_METHOD(thread_hash_we1);
-    sensitive << ( grp_sha256_done_fu_72_hash_we1 );
-    sensitive << ( ap_CS_fsm_state6 );
-
-    SC_METHOD(thread_indvarinc_fu_98_p2);
-    sensitive << ( invdar_reg_61 );
-
-    SC_METHOD(thread_msg_address0);
-    sensitive << ( ap_CS_fsm_state4 );
-    sensitive << ( grp_sha256_hash_fu_90_data_address0 );
-
-    SC_METHOD(thread_msg_ce0);
-    sensitive << ( ap_CS_fsm_state4 );
-    sensitive << ( grp_sha256_hash_fu_90_data_ce0 );
+    SC_METHOD(thread_msg_0_ack_out);
+    sensitive << ( grp_sha256_done_fu_114_ap_done );
+    sensitive << ( ap_CS_fsm_state7 );
 
     SC_METHOD(thread_sha256_buf_address0);
-    sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( ap_CS_fsm_state4 );
-    sensitive << ( grp_sha256_done_fu_72_sha256_buf_address0 );
-    sensitive << ( grp_sha256_hash_fu_90_sha256_buf_address0 );
-    sensitive << ( ap_CS_fsm_state6 );
-    sensitive << ( tmp_fu_104_p1 );
+    sensitive << ( ap_CS_fsm_state3 );
+    sensitive << ( ap_CS_fsm_state5 );
+    sensitive << ( grp_sha256_done_fu_114_sha256_buf_address0 );
+    sensitive << ( grp_sha256_hash_fu_135_sha256_buf_address0 );
+    sensitive << ( ap_CS_fsm_state7 );
+    sensitive << ( tmp_fu_152_p1 );
 
     SC_METHOD(thread_sha256_buf_address1);
-    sensitive << ( ap_CS_fsm_state4 );
-    sensitive << ( grp_sha256_done_fu_72_sha256_buf_address1 );
-    sensitive << ( grp_sha256_hash_fu_90_sha256_buf_address1 );
-    sensitive << ( ap_CS_fsm_state6 );
+    sensitive << ( ap_CS_fsm_state5 );
+    sensitive << ( grp_sha256_done_fu_114_sha256_buf_address1 );
+    sensitive << ( grp_sha256_hash_fu_135_sha256_buf_address1 );
+    sensitive << ( ap_CS_fsm_state7 );
 
     SC_METHOD(thread_sha256_buf_ce0);
-    sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( ap_CS_fsm_state4 );
-    sensitive << ( grp_sha256_done_fu_72_sha256_buf_ce0 );
-    sensitive << ( grp_sha256_hash_fu_90_sha256_buf_ce0 );
-    sensitive << ( ap_CS_fsm_state6 );
+    sensitive << ( ap_CS_fsm_state3 );
+    sensitive << ( ap_CS_fsm_state5 );
+    sensitive << ( grp_sha256_done_fu_114_sha256_buf_ce0 );
+    sensitive << ( grp_sha256_hash_fu_135_sha256_buf_ce0 );
+    sensitive << ( ap_CS_fsm_state7 );
 
     SC_METHOD(thread_sha256_buf_ce1);
-    sensitive << ( ap_CS_fsm_state4 );
-    sensitive << ( grp_sha256_done_fu_72_sha256_buf_ce1 );
-    sensitive << ( grp_sha256_hash_fu_90_sha256_buf_ce1 );
-    sensitive << ( ap_CS_fsm_state6 );
+    sensitive << ( ap_CS_fsm_state5 );
+    sensitive << ( grp_sha256_done_fu_114_sha256_buf_ce1 );
+    sensitive << ( grp_sha256_hash_fu_135_sha256_buf_ce1 );
+    sensitive << ( ap_CS_fsm_state7 );
 
     SC_METHOD(thread_sha256_buf_d0);
-    sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( ap_CS_fsm_state4 );
-    sensitive << ( grp_sha256_done_fu_72_sha256_buf_d0 );
-    sensitive << ( grp_sha256_hash_fu_90_sha256_buf_d0 );
-    sensitive << ( ap_CS_fsm_state6 );
+    sensitive << ( ap_CS_fsm_state3 );
+    sensitive << ( ap_CS_fsm_state5 );
+    sensitive << ( grp_sha256_done_fu_114_sha256_buf_d0 );
+    sensitive << ( grp_sha256_hash_fu_135_sha256_buf_d0 );
+    sensitive << ( ap_CS_fsm_state7 );
 
     SC_METHOD(thread_sha256_buf_we0);
-    sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( ap_CS_fsm_state4 );
-    sensitive << ( grp_sha256_done_fu_72_sha256_buf_we0 );
-    sensitive << ( grp_sha256_hash_fu_90_sha256_buf_we0 );
-    sensitive << ( ap_CS_fsm_state6 );
+    sensitive << ( ap_CS_fsm_state3 );
+    sensitive << ( ap_CS_fsm_state5 );
+    sensitive << ( grp_sha256_done_fu_114_sha256_buf_we0 );
+    sensitive << ( grp_sha256_hash_fu_135_sha256_buf_we0 );
+    sensitive << ( ap_CS_fsm_state7 );
 
     SC_METHOD(thread_sha256_buf_we1);
-    sensitive << ( grp_sha256_done_fu_72_sha256_buf_we1 );
-    sensitive << ( ap_CS_fsm_state6 );
+    sensitive << ( grp_sha256_done_fu_114_sha256_buf_we1 );
+    sensitive << ( ap_CS_fsm_state7 );
 
-    SC_METHOD(thread_tmp_fu_104_p1);
-    sensitive << ( invdar_reg_61 );
+    SC_METHOD(thread_tmp_fu_152_p1);
+    sensitive << ( invdar_reg_103 );
 
-    SC_METHOD(thread_tmp_s_fu_109_p2);
-    sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( invdar_reg_61 );
+    SC_METHOD(thread_tmp_s_fu_157_p2);
+    sensitive << ( ap_CS_fsm_state3 );
+    sensitive << ( invdar_reg_103 );
 
     SC_METHOD(thread_ap_NS_fsm);
     sensitive << ( ap_start );
     sensitive << ( ap_CS_fsm );
     sensitive << ( ap_CS_fsm_state1 );
-    sensitive << ( ap_CS_fsm_state2 );
-    sensitive << ( ap_CS_fsm_state4 );
-    sensitive << ( grp_sha256_hash_fu_90_ap_done );
-    sensitive << ( grp_sha256_done_fu_72_ap_done );
-    sensitive << ( tmp_s_fu_109_p2 );
-    sensitive << ( ap_CS_fsm_state6 );
+    sensitive << ( ap_CS_fsm_state3 );
+    sensitive << ( ap_CS_fsm_state5 );
+    sensitive << ( grp_sha256_hash_fu_135_ap_done );
+    sensitive << ( grp_sha256_done_fu_114_ap_done );
+    sensitive << ( tmp_s_fu_157_p2 );
+    sensitive << ( ap_CS_fsm_state7 );
 
     SC_THREAD(thread_hdltv_gen);
     sensitive << ( ap_clk.pos() );
 
-    ap_CS_fsm = "000001";
-    grp_sha256_done_fu_72_ap_start_reg = SC_LOGIC_0;
-    grp_sha256_hash_fu_90_ap_start_reg = SC_LOGIC_0;
+    SC_THREAD(thread_ap_var_for_const0);
+
+    SC_THREAD(thread_ap_var_for_const1);
+
+    SC_THREAD(thread_ap_var_for_const2);
+
+    SC_THREAD(thread_ap_var_for_const3);
+
+    SC_THREAD(thread_ap_var_for_const7);
+
+    SC_THREAD(thread_ap_var_for_const4);
+
+    SC_THREAD(thread_ap_var_for_const5);
+
+    SC_THREAD(thread_ap_var_for_const6);
+
+    ap_CS_fsm = "0000001";
+    msg_0_data_reg = "00000000000000000000000000000000";
+    msg_0_vld_reg = SC_LOGIC_0;
+    len_0_data_reg = "00000000000000000000000000000000";
+    len_0_vld_reg = SC_LOGIC_0;
+    hash_0_data_reg = "00000000000000000000000000000000";
+    hash_0_vld_reg = SC_LOGIC_0;
+    grp_sha256_done_fu_114_ap_start_reg = SC_LOGIC_0;
+    grp_sha256_hash_fu_135_ap_start_reg = SC_LOGIC_0;
     static int apTFileNum = 0;
     stringstream apTFilenSS;
     apTFilenSS << "sha256_sc_trace_" << apTFileNum ++;
@@ -276,43 +607,186 @@ sha256::sha256(sc_module_name name) : sc_module(name), mVcdFile(0) {
     if (1) {
 #ifdef __HLS_TRACE_LEVEL_PORT__
     sc_trace(mVcdFile, ap_clk, "(port)ap_clk");
-    sc_trace(mVcdFile, ap_rst, "(port)ap_rst");
+    sc_trace(mVcdFile, ap_rst_n, "(port)ap_rst_n");
     sc_trace(mVcdFile, ap_start, "(port)ap_start");
     sc_trace(mVcdFile, ap_done, "(port)ap_done");
     sc_trace(mVcdFile, ap_idle, "(port)ap_idle");
     sc_trace(mVcdFile, ap_ready, "(port)ap_ready");
-    sc_trace(mVcdFile, msg_address0, "(port)msg_address0");
-    sc_trace(mVcdFile, msg_ce0, "(port)msg_ce0");
-    sc_trace(mVcdFile, msg_q0, "(port)msg_q0");
-    sc_trace(mVcdFile, len, "(port)len");
-    sc_trace(mVcdFile, hash_address0, "(port)hash_address0");
-    sc_trace(mVcdFile, hash_ce0, "(port)hash_ce0");
-    sc_trace(mVcdFile, hash_we0, "(port)hash_we0");
-    sc_trace(mVcdFile, hash_d0, "(port)hash_d0");
-    sc_trace(mVcdFile, hash_address1, "(port)hash_address1");
-    sc_trace(mVcdFile, hash_ce1, "(port)hash_ce1");
-    sc_trace(mVcdFile, hash_we1, "(port)hash_we1");
-    sc_trace(mVcdFile, hash_d1, "(port)hash_d1");
+    sc_trace(mVcdFile, m_axi_INPUT_r_AWVALID, "(port)m_axi_INPUT_r_AWVALID");
+    sc_trace(mVcdFile, m_axi_INPUT_r_AWREADY, "(port)m_axi_INPUT_r_AWREADY");
+    sc_trace(mVcdFile, m_axi_INPUT_r_AWADDR, "(port)m_axi_INPUT_r_AWADDR");
+    sc_trace(mVcdFile, m_axi_INPUT_r_AWID, "(port)m_axi_INPUT_r_AWID");
+    sc_trace(mVcdFile, m_axi_INPUT_r_AWLEN, "(port)m_axi_INPUT_r_AWLEN");
+    sc_trace(mVcdFile, m_axi_INPUT_r_AWSIZE, "(port)m_axi_INPUT_r_AWSIZE");
+    sc_trace(mVcdFile, m_axi_INPUT_r_AWBURST, "(port)m_axi_INPUT_r_AWBURST");
+    sc_trace(mVcdFile, m_axi_INPUT_r_AWLOCK, "(port)m_axi_INPUT_r_AWLOCK");
+    sc_trace(mVcdFile, m_axi_INPUT_r_AWCACHE, "(port)m_axi_INPUT_r_AWCACHE");
+    sc_trace(mVcdFile, m_axi_INPUT_r_AWPROT, "(port)m_axi_INPUT_r_AWPROT");
+    sc_trace(mVcdFile, m_axi_INPUT_r_AWQOS, "(port)m_axi_INPUT_r_AWQOS");
+    sc_trace(mVcdFile, m_axi_INPUT_r_AWREGION, "(port)m_axi_INPUT_r_AWREGION");
+    sc_trace(mVcdFile, m_axi_INPUT_r_AWUSER, "(port)m_axi_INPUT_r_AWUSER");
+    sc_trace(mVcdFile, m_axi_INPUT_r_WVALID, "(port)m_axi_INPUT_r_WVALID");
+    sc_trace(mVcdFile, m_axi_INPUT_r_WREADY, "(port)m_axi_INPUT_r_WREADY");
+    sc_trace(mVcdFile, m_axi_INPUT_r_WDATA, "(port)m_axi_INPUT_r_WDATA");
+    sc_trace(mVcdFile, m_axi_INPUT_r_WSTRB, "(port)m_axi_INPUT_r_WSTRB");
+    sc_trace(mVcdFile, m_axi_INPUT_r_WLAST, "(port)m_axi_INPUT_r_WLAST");
+    sc_trace(mVcdFile, m_axi_INPUT_r_WID, "(port)m_axi_INPUT_r_WID");
+    sc_trace(mVcdFile, m_axi_INPUT_r_WUSER, "(port)m_axi_INPUT_r_WUSER");
+    sc_trace(mVcdFile, m_axi_INPUT_r_ARVALID, "(port)m_axi_INPUT_r_ARVALID");
+    sc_trace(mVcdFile, m_axi_INPUT_r_ARREADY, "(port)m_axi_INPUT_r_ARREADY");
+    sc_trace(mVcdFile, m_axi_INPUT_r_ARADDR, "(port)m_axi_INPUT_r_ARADDR");
+    sc_trace(mVcdFile, m_axi_INPUT_r_ARID, "(port)m_axi_INPUT_r_ARID");
+    sc_trace(mVcdFile, m_axi_INPUT_r_ARLEN, "(port)m_axi_INPUT_r_ARLEN");
+    sc_trace(mVcdFile, m_axi_INPUT_r_ARSIZE, "(port)m_axi_INPUT_r_ARSIZE");
+    sc_trace(mVcdFile, m_axi_INPUT_r_ARBURST, "(port)m_axi_INPUT_r_ARBURST");
+    sc_trace(mVcdFile, m_axi_INPUT_r_ARLOCK, "(port)m_axi_INPUT_r_ARLOCK");
+    sc_trace(mVcdFile, m_axi_INPUT_r_ARCACHE, "(port)m_axi_INPUT_r_ARCACHE");
+    sc_trace(mVcdFile, m_axi_INPUT_r_ARPROT, "(port)m_axi_INPUT_r_ARPROT");
+    sc_trace(mVcdFile, m_axi_INPUT_r_ARQOS, "(port)m_axi_INPUT_r_ARQOS");
+    sc_trace(mVcdFile, m_axi_INPUT_r_ARREGION, "(port)m_axi_INPUT_r_ARREGION");
+    sc_trace(mVcdFile, m_axi_INPUT_r_ARUSER, "(port)m_axi_INPUT_r_ARUSER");
+    sc_trace(mVcdFile, m_axi_INPUT_r_RVALID, "(port)m_axi_INPUT_r_RVALID");
+    sc_trace(mVcdFile, m_axi_INPUT_r_RREADY, "(port)m_axi_INPUT_r_RREADY");
+    sc_trace(mVcdFile, m_axi_INPUT_r_RDATA, "(port)m_axi_INPUT_r_RDATA");
+    sc_trace(mVcdFile, m_axi_INPUT_r_RLAST, "(port)m_axi_INPUT_r_RLAST");
+    sc_trace(mVcdFile, m_axi_INPUT_r_RID, "(port)m_axi_INPUT_r_RID");
+    sc_trace(mVcdFile, m_axi_INPUT_r_RUSER, "(port)m_axi_INPUT_r_RUSER");
+    sc_trace(mVcdFile, m_axi_INPUT_r_RRESP, "(port)m_axi_INPUT_r_RRESP");
+    sc_trace(mVcdFile, m_axi_INPUT_r_BVALID, "(port)m_axi_INPUT_r_BVALID");
+    sc_trace(mVcdFile, m_axi_INPUT_r_BREADY, "(port)m_axi_INPUT_r_BREADY");
+    sc_trace(mVcdFile, m_axi_INPUT_r_BRESP, "(port)m_axi_INPUT_r_BRESP");
+    sc_trace(mVcdFile, m_axi_INPUT_r_BID, "(port)m_axi_INPUT_r_BID");
+    sc_trace(mVcdFile, m_axi_INPUT_r_BUSER, "(port)m_axi_INPUT_r_BUSER");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_AWVALID, "(port)m_axi_OUTPUT_r_AWVALID");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_AWREADY, "(port)m_axi_OUTPUT_r_AWREADY");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_AWADDR, "(port)m_axi_OUTPUT_r_AWADDR");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_AWID, "(port)m_axi_OUTPUT_r_AWID");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_AWLEN, "(port)m_axi_OUTPUT_r_AWLEN");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_AWSIZE, "(port)m_axi_OUTPUT_r_AWSIZE");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_AWBURST, "(port)m_axi_OUTPUT_r_AWBURST");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_AWLOCK, "(port)m_axi_OUTPUT_r_AWLOCK");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_AWCACHE, "(port)m_axi_OUTPUT_r_AWCACHE");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_AWPROT, "(port)m_axi_OUTPUT_r_AWPROT");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_AWQOS, "(port)m_axi_OUTPUT_r_AWQOS");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_AWREGION, "(port)m_axi_OUTPUT_r_AWREGION");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_AWUSER, "(port)m_axi_OUTPUT_r_AWUSER");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_WVALID, "(port)m_axi_OUTPUT_r_WVALID");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_WREADY, "(port)m_axi_OUTPUT_r_WREADY");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_WDATA, "(port)m_axi_OUTPUT_r_WDATA");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_WSTRB, "(port)m_axi_OUTPUT_r_WSTRB");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_WLAST, "(port)m_axi_OUTPUT_r_WLAST");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_WID, "(port)m_axi_OUTPUT_r_WID");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_WUSER, "(port)m_axi_OUTPUT_r_WUSER");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_ARVALID, "(port)m_axi_OUTPUT_r_ARVALID");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_ARREADY, "(port)m_axi_OUTPUT_r_ARREADY");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_ARADDR, "(port)m_axi_OUTPUT_r_ARADDR");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_ARID, "(port)m_axi_OUTPUT_r_ARID");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_ARLEN, "(port)m_axi_OUTPUT_r_ARLEN");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_ARSIZE, "(port)m_axi_OUTPUT_r_ARSIZE");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_ARBURST, "(port)m_axi_OUTPUT_r_ARBURST");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_ARLOCK, "(port)m_axi_OUTPUT_r_ARLOCK");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_ARCACHE, "(port)m_axi_OUTPUT_r_ARCACHE");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_ARPROT, "(port)m_axi_OUTPUT_r_ARPROT");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_ARQOS, "(port)m_axi_OUTPUT_r_ARQOS");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_ARREGION, "(port)m_axi_OUTPUT_r_ARREGION");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_ARUSER, "(port)m_axi_OUTPUT_r_ARUSER");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_RVALID, "(port)m_axi_OUTPUT_r_RVALID");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_RREADY, "(port)m_axi_OUTPUT_r_RREADY");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_RDATA, "(port)m_axi_OUTPUT_r_RDATA");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_RLAST, "(port)m_axi_OUTPUT_r_RLAST");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_RID, "(port)m_axi_OUTPUT_r_RID");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_RUSER, "(port)m_axi_OUTPUT_r_RUSER");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_RRESP, "(port)m_axi_OUTPUT_r_RRESP");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_BVALID, "(port)m_axi_OUTPUT_r_BVALID");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_BREADY, "(port)m_axi_OUTPUT_r_BREADY");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_BRESP, "(port)m_axi_OUTPUT_r_BRESP");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_BID, "(port)m_axi_OUTPUT_r_BID");
+    sc_trace(mVcdFile, m_axi_OUTPUT_r_BUSER, "(port)m_axi_OUTPUT_r_BUSER");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_AWVALID, "(port)s_axi_ctrl_bus_AWVALID");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_AWREADY, "(port)s_axi_ctrl_bus_AWREADY");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_AWADDR, "(port)s_axi_ctrl_bus_AWADDR");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_WVALID, "(port)s_axi_ctrl_bus_WVALID");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_WREADY, "(port)s_axi_ctrl_bus_WREADY");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_WDATA, "(port)s_axi_ctrl_bus_WDATA");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_WSTRB, "(port)s_axi_ctrl_bus_WSTRB");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_ARVALID, "(port)s_axi_ctrl_bus_ARVALID");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_ARREADY, "(port)s_axi_ctrl_bus_ARREADY");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_ARADDR, "(port)s_axi_ctrl_bus_ARADDR");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_RVALID, "(port)s_axi_ctrl_bus_RVALID");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_RREADY, "(port)s_axi_ctrl_bus_RREADY");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_RDATA, "(port)s_axi_ctrl_bus_RDATA");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_RRESP, "(port)s_axi_ctrl_bus_RRESP");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_BVALID, "(port)s_axi_ctrl_bus_BVALID");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_BREADY, "(port)s_axi_ctrl_bus_BREADY");
+    sc_trace(mVcdFile, s_axi_ctrl_bus_BRESP, "(port)s_axi_ctrl_bus_BRESP");
 #endif
 #ifdef __HLS_TRACE_LEVEL_INT__
+    sc_trace(mVcdFile, ap_rst_n_inv, "ap_rst_n_inv");
     sc_trace(mVcdFile, ap_CS_fsm, "ap_CS_fsm");
     sc_trace(mVcdFile, ap_CS_fsm_state1, "ap_CS_fsm_state1");
-    sc_trace(mVcdFile, indvarinc_fu_98_p2, "indvarinc_fu_98_p2");
+    sc_trace(mVcdFile, msg, "msg");
+    sc_trace(mVcdFile, msg_0_data_reg, "msg_0_data_reg");
+    sc_trace(mVcdFile, msg_0_vld_reg, "msg_0_vld_reg");
+    sc_trace(mVcdFile, msg_0_ack_out, "msg_0_ack_out");
+    sc_trace(mVcdFile, len, "len");
+    sc_trace(mVcdFile, len_0_data_reg, "len_0_data_reg");
+    sc_trace(mVcdFile, len_0_vld_reg, "len_0_vld_reg");
+    sc_trace(mVcdFile, len_0_ack_out, "len_0_ack_out");
+    sc_trace(mVcdFile, hash, "hash");
+    sc_trace(mVcdFile, hash_0_data_reg, "hash_0_data_reg");
+    sc_trace(mVcdFile, hash_0_vld_reg, "hash_0_vld_reg");
+    sc_trace(mVcdFile, hash_0_ack_out, "hash_0_ack_out");
+    sc_trace(mVcdFile, INPUT_r_AWREADY, "INPUT_r_AWREADY");
+    sc_trace(mVcdFile, INPUT_r_WREADY, "INPUT_r_WREADY");
+    sc_trace(mVcdFile, INPUT_r_ARVALID, "INPUT_r_ARVALID");
+    sc_trace(mVcdFile, INPUT_r_ARREADY, "INPUT_r_ARREADY");
+    sc_trace(mVcdFile, INPUT_r_RVALID, "INPUT_r_RVALID");
+    sc_trace(mVcdFile, INPUT_r_RREADY, "INPUT_r_RREADY");
+    sc_trace(mVcdFile, INPUT_r_RDATA, "INPUT_r_RDATA");
+    sc_trace(mVcdFile, INPUT_r_RLAST, "INPUT_r_RLAST");
+    sc_trace(mVcdFile, INPUT_r_RID, "INPUT_r_RID");
+    sc_trace(mVcdFile, INPUT_r_RUSER, "INPUT_r_RUSER");
+    sc_trace(mVcdFile, INPUT_r_RRESP, "INPUT_r_RRESP");
+    sc_trace(mVcdFile, INPUT_r_BVALID, "INPUT_r_BVALID");
+    sc_trace(mVcdFile, INPUT_r_BRESP, "INPUT_r_BRESP");
+    sc_trace(mVcdFile, INPUT_r_BID, "INPUT_r_BID");
+    sc_trace(mVcdFile, INPUT_r_BUSER, "INPUT_r_BUSER");
+    sc_trace(mVcdFile, OUTPUT_r_AWVALID, "OUTPUT_r_AWVALID");
+    sc_trace(mVcdFile, OUTPUT_r_AWREADY, "OUTPUT_r_AWREADY");
+    sc_trace(mVcdFile, OUTPUT_r_WVALID, "OUTPUT_r_WVALID");
+    sc_trace(mVcdFile, OUTPUT_r_WREADY, "OUTPUT_r_WREADY");
+    sc_trace(mVcdFile, OUTPUT_r_ARREADY, "OUTPUT_r_ARREADY");
+    sc_trace(mVcdFile, OUTPUT_r_RVALID, "OUTPUT_r_RVALID");
+    sc_trace(mVcdFile, OUTPUT_r_RDATA, "OUTPUT_r_RDATA");
+    sc_trace(mVcdFile, OUTPUT_r_RLAST, "OUTPUT_r_RLAST");
+    sc_trace(mVcdFile, OUTPUT_r_RID, "OUTPUT_r_RID");
+    sc_trace(mVcdFile, OUTPUT_r_RUSER, "OUTPUT_r_RUSER");
+    sc_trace(mVcdFile, OUTPUT_r_RRESP, "OUTPUT_r_RRESP");
+    sc_trace(mVcdFile, OUTPUT_r_BVALID, "OUTPUT_r_BVALID");
+    sc_trace(mVcdFile, OUTPUT_r_BREADY, "OUTPUT_r_BREADY");
+    sc_trace(mVcdFile, OUTPUT_r_BRESP, "OUTPUT_r_BRESP");
+    sc_trace(mVcdFile, OUTPUT_r_BID, "OUTPUT_r_BID");
+    sc_trace(mVcdFile, OUTPUT_r_BUSER, "OUTPUT_r_BUSER");
+    sc_trace(mVcdFile, hash_read_reg_207, "hash_read_reg_207");
     sc_trace(mVcdFile, ap_CS_fsm_state2, "ap_CS_fsm_state2");
-    sc_trace(mVcdFile, sha256_bits_1_reg_172, "sha256_bits_1_reg_172");
-    sc_trace(mVcdFile, ap_CS_fsm_state4, "ap_CS_fsm_state4");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_ready, "grp_sha256_hash_fu_90_ap_ready");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_done, "grp_sha256_hash_fu_90_ap_done");
-    sc_trace(mVcdFile, sha256_len_0_reg_177, "sha256_len_0_reg_177");
-    sc_trace(mVcdFile, sha256hash_0_reg_182, "sha256hash_0_reg_182");
-    sc_trace(mVcdFile, sha256hash_1_reg_187, "sha256hash_1_reg_187");
-    sc_trace(mVcdFile, sha256hash_2_reg_192, "sha256hash_2_reg_192");
-    sc_trace(mVcdFile, sha256hash_3_reg_197, "sha256hash_3_reg_197");
-    sc_trace(mVcdFile, sha256hash_4_reg_202, "sha256hash_4_reg_202");
-    sc_trace(mVcdFile, sha256hash_5_reg_207, "sha256hash_5_reg_207");
-    sc_trace(mVcdFile, sha256hash_6_reg_212, "sha256hash_6_reg_212");
-    sc_trace(mVcdFile, sha256hash_7_reg_217, "sha256hash_7_reg_217");
-    sc_trace(mVcdFile, sha256_bits_0_reg_222, "sha256_bits_0_reg_222");
+    sc_trace(mVcdFile, len_read_reg_212, "len_read_reg_212");
+    sc_trace(mVcdFile, msg_read_reg_217, "msg_read_reg_217");
+    sc_trace(mVcdFile, indvarinc_fu_146_p2, "indvarinc_fu_146_p2");
+    sc_trace(mVcdFile, ap_CS_fsm_state3, "ap_CS_fsm_state3");
+    sc_trace(mVcdFile, sha256_bits_1_reg_230, "sha256_bits_1_reg_230");
+    sc_trace(mVcdFile, ap_CS_fsm_state5, "ap_CS_fsm_state5");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_ready, "grp_sha256_hash_fu_135_ap_ready");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_done, "grp_sha256_hash_fu_135_ap_done");
+    sc_trace(mVcdFile, sha256_len_0_reg_235, "sha256_len_0_reg_235");
+    sc_trace(mVcdFile, sha256hash_0_reg_240, "sha256hash_0_reg_240");
+    sc_trace(mVcdFile, sha256hash_1_reg_245, "sha256hash_1_reg_245");
+    sc_trace(mVcdFile, sha256hash_2_reg_250, "sha256hash_2_reg_250");
+    sc_trace(mVcdFile, sha256hash_3_reg_255, "sha256hash_3_reg_255");
+    sc_trace(mVcdFile, sha256hash_4_reg_260, "sha256hash_4_reg_260");
+    sc_trace(mVcdFile, sha256hash_5_reg_265, "sha256hash_5_reg_265");
+    sc_trace(mVcdFile, sha256hash_6_reg_270, "sha256hash_6_reg_270");
+    sc_trace(mVcdFile, sha256hash_7_reg_275, "sha256hash_7_reg_275");
+    sc_trace(mVcdFile, sha256_bits_0_reg_280, "sha256_bits_0_reg_280");
     sc_trace(mVcdFile, sha256_buf_address0, "sha256_buf_address0");
     sc_trace(mVcdFile, sha256_buf_ce0, "sha256_buf_ce0");
     sc_trace(mVcdFile, sha256_buf_we0, "sha256_buf_we0");
@@ -322,55 +796,109 @@ sha256::sha256(sc_module_name name) : sc_module(name), mVcdFile(0) {
     sc_trace(mVcdFile, sha256_buf_ce1, "sha256_buf_ce1");
     sc_trace(mVcdFile, sha256_buf_we1, "sha256_buf_we1");
     sc_trace(mVcdFile, sha256_buf_q1, "sha256_buf_q1");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_ap_start, "grp_sha256_done_fu_72_ap_start");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_ap_done, "grp_sha256_done_fu_72_ap_done");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_ap_idle, "grp_sha256_done_fu_72_ap_idle");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_ap_ready, "grp_sha256_done_fu_72_ap_ready");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_sha256_buf_address0, "grp_sha256_done_fu_72_sha256_buf_address0");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_sha256_buf_ce0, "grp_sha256_done_fu_72_sha256_buf_ce0");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_sha256_buf_we0, "grp_sha256_done_fu_72_sha256_buf_we0");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_sha256_buf_d0, "grp_sha256_done_fu_72_sha256_buf_d0");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_sha256_buf_address1, "grp_sha256_done_fu_72_sha256_buf_address1");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_sha256_buf_ce1, "grp_sha256_done_fu_72_sha256_buf_ce1");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_sha256_buf_we1, "grp_sha256_done_fu_72_sha256_buf_we1");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_sha256_buf_d1, "grp_sha256_done_fu_72_sha256_buf_d1");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_hash_address0, "grp_sha256_done_fu_72_hash_address0");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_hash_ce0, "grp_sha256_done_fu_72_hash_ce0");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_hash_we0, "grp_sha256_done_fu_72_hash_we0");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_hash_d0, "grp_sha256_done_fu_72_hash_d0");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_hash_address1, "grp_sha256_done_fu_72_hash_address1");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_hash_ce1, "grp_sha256_done_fu_72_hash_ce1");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_hash_we1, "grp_sha256_done_fu_72_hash_we1");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_hash_d1, "grp_sha256_done_fu_72_hash_d1");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_start, "grp_sha256_hash_fu_90_ap_start");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_idle, "grp_sha256_hash_fu_90_ap_idle");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_sha256_buf_address0, "grp_sha256_hash_fu_90_sha256_buf_address0");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_sha256_buf_ce0, "grp_sha256_hash_fu_90_sha256_buf_ce0");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_sha256_buf_we0, "grp_sha256_hash_fu_90_sha256_buf_we0");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_sha256_buf_d0, "grp_sha256_hash_fu_90_sha256_buf_d0");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_sha256_buf_address1, "grp_sha256_hash_fu_90_sha256_buf_address1");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_sha256_buf_ce1, "grp_sha256_hash_fu_90_sha256_buf_ce1");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_data_address0, "grp_sha256_hash_fu_90_data_address0");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_data_ce0, "grp_sha256_hash_fu_90_data_ce0");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_return_0, "grp_sha256_hash_fu_90_ap_return_0");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_return_1, "grp_sha256_hash_fu_90_ap_return_1");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_return_2, "grp_sha256_hash_fu_90_ap_return_2");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_return_3, "grp_sha256_hash_fu_90_ap_return_3");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_return_4, "grp_sha256_hash_fu_90_ap_return_4");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_return_5, "grp_sha256_hash_fu_90_ap_return_5");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_return_6, "grp_sha256_hash_fu_90_ap_return_6");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_return_7, "grp_sha256_hash_fu_90_ap_return_7");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_return_8, "grp_sha256_hash_fu_90_ap_return_8");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_return_9, "grp_sha256_hash_fu_90_ap_return_9");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_return_10, "grp_sha256_hash_fu_90_ap_return_10");
-    sc_trace(mVcdFile, invdar_reg_61, "invdar_reg_61");
-    sc_trace(mVcdFile, tmp_s_fu_109_p2, "tmp_s_fu_109_p2");
-    sc_trace(mVcdFile, grp_sha256_done_fu_72_ap_start_reg, "grp_sha256_done_fu_72_ap_start_reg");
-    sc_trace(mVcdFile, ap_CS_fsm_state5, "ap_CS_fsm_state5");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_ap_start, "grp_sha256_done_fu_114_ap_start");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_ap_done, "grp_sha256_done_fu_114_ap_done");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_ap_idle, "grp_sha256_done_fu_114_ap_idle");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_ap_ready, "grp_sha256_done_fu_114_ap_ready");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_sha256_buf_address0, "grp_sha256_done_fu_114_sha256_buf_address0");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_sha256_buf_ce0, "grp_sha256_done_fu_114_sha256_buf_ce0");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_sha256_buf_we0, "grp_sha256_done_fu_114_sha256_buf_we0");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_sha256_buf_d0, "grp_sha256_done_fu_114_sha256_buf_d0");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_sha256_buf_address1, "grp_sha256_done_fu_114_sha256_buf_address1");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_sha256_buf_ce1, "grp_sha256_done_fu_114_sha256_buf_ce1");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_sha256_buf_we1, "grp_sha256_done_fu_114_sha256_buf_we1");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_sha256_buf_d1, "grp_sha256_done_fu_114_sha256_buf_d1");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_AWVALID, "grp_sha256_done_fu_114_m_axi_hash_AWVALID");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_AWADDR, "grp_sha256_done_fu_114_m_axi_hash_AWADDR");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_AWID, "grp_sha256_done_fu_114_m_axi_hash_AWID");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_AWLEN, "grp_sha256_done_fu_114_m_axi_hash_AWLEN");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_AWSIZE, "grp_sha256_done_fu_114_m_axi_hash_AWSIZE");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_AWBURST, "grp_sha256_done_fu_114_m_axi_hash_AWBURST");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_AWLOCK, "grp_sha256_done_fu_114_m_axi_hash_AWLOCK");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_AWCACHE, "grp_sha256_done_fu_114_m_axi_hash_AWCACHE");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_AWPROT, "grp_sha256_done_fu_114_m_axi_hash_AWPROT");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_AWQOS, "grp_sha256_done_fu_114_m_axi_hash_AWQOS");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_AWREGION, "grp_sha256_done_fu_114_m_axi_hash_AWREGION");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_AWUSER, "grp_sha256_done_fu_114_m_axi_hash_AWUSER");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_WVALID, "grp_sha256_done_fu_114_m_axi_hash_WVALID");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_WDATA, "grp_sha256_done_fu_114_m_axi_hash_WDATA");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_WSTRB, "grp_sha256_done_fu_114_m_axi_hash_WSTRB");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_WLAST, "grp_sha256_done_fu_114_m_axi_hash_WLAST");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_WID, "grp_sha256_done_fu_114_m_axi_hash_WID");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_WUSER, "grp_sha256_done_fu_114_m_axi_hash_WUSER");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_ARVALID, "grp_sha256_done_fu_114_m_axi_hash_ARVALID");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_ARADDR, "grp_sha256_done_fu_114_m_axi_hash_ARADDR");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_ARID, "grp_sha256_done_fu_114_m_axi_hash_ARID");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_ARLEN, "grp_sha256_done_fu_114_m_axi_hash_ARLEN");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_ARSIZE, "grp_sha256_done_fu_114_m_axi_hash_ARSIZE");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_ARBURST, "grp_sha256_done_fu_114_m_axi_hash_ARBURST");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_ARLOCK, "grp_sha256_done_fu_114_m_axi_hash_ARLOCK");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_ARCACHE, "grp_sha256_done_fu_114_m_axi_hash_ARCACHE");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_ARPROT, "grp_sha256_done_fu_114_m_axi_hash_ARPROT");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_ARQOS, "grp_sha256_done_fu_114_m_axi_hash_ARQOS");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_ARREGION, "grp_sha256_done_fu_114_m_axi_hash_ARREGION");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_ARUSER, "grp_sha256_done_fu_114_m_axi_hash_ARUSER");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_RREADY, "grp_sha256_done_fu_114_m_axi_hash_RREADY");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_m_axi_hash_BREADY, "grp_sha256_done_fu_114_m_axi_hash_BREADY");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_start, "grp_sha256_hash_fu_135_ap_start");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_idle, "grp_sha256_hash_fu_135_ap_idle");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_sha256_buf_address0, "grp_sha256_hash_fu_135_sha256_buf_address0");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_sha256_buf_ce0, "grp_sha256_hash_fu_135_sha256_buf_ce0");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_sha256_buf_we0, "grp_sha256_hash_fu_135_sha256_buf_we0");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_sha256_buf_d0, "grp_sha256_hash_fu_135_sha256_buf_d0");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_sha256_buf_address1, "grp_sha256_hash_fu_135_sha256_buf_address1");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_sha256_buf_ce1, "grp_sha256_hash_fu_135_sha256_buf_ce1");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_AWVALID, "grp_sha256_hash_fu_135_m_axi_data_AWVALID");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_AWADDR, "grp_sha256_hash_fu_135_m_axi_data_AWADDR");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_AWID, "grp_sha256_hash_fu_135_m_axi_data_AWID");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_AWLEN, "grp_sha256_hash_fu_135_m_axi_data_AWLEN");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_AWSIZE, "grp_sha256_hash_fu_135_m_axi_data_AWSIZE");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_AWBURST, "grp_sha256_hash_fu_135_m_axi_data_AWBURST");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_AWLOCK, "grp_sha256_hash_fu_135_m_axi_data_AWLOCK");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_AWCACHE, "grp_sha256_hash_fu_135_m_axi_data_AWCACHE");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_AWPROT, "grp_sha256_hash_fu_135_m_axi_data_AWPROT");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_AWQOS, "grp_sha256_hash_fu_135_m_axi_data_AWQOS");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_AWREGION, "grp_sha256_hash_fu_135_m_axi_data_AWREGION");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_AWUSER, "grp_sha256_hash_fu_135_m_axi_data_AWUSER");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_WVALID, "grp_sha256_hash_fu_135_m_axi_data_WVALID");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_WDATA, "grp_sha256_hash_fu_135_m_axi_data_WDATA");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_WSTRB, "grp_sha256_hash_fu_135_m_axi_data_WSTRB");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_WLAST, "grp_sha256_hash_fu_135_m_axi_data_WLAST");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_WID, "grp_sha256_hash_fu_135_m_axi_data_WID");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_WUSER, "grp_sha256_hash_fu_135_m_axi_data_WUSER");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_ARVALID, "grp_sha256_hash_fu_135_m_axi_data_ARVALID");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_ARADDR, "grp_sha256_hash_fu_135_m_axi_data_ARADDR");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_ARID, "grp_sha256_hash_fu_135_m_axi_data_ARID");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_ARLEN, "grp_sha256_hash_fu_135_m_axi_data_ARLEN");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_ARSIZE, "grp_sha256_hash_fu_135_m_axi_data_ARSIZE");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_ARBURST, "grp_sha256_hash_fu_135_m_axi_data_ARBURST");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_ARLOCK, "grp_sha256_hash_fu_135_m_axi_data_ARLOCK");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_ARCACHE, "grp_sha256_hash_fu_135_m_axi_data_ARCACHE");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_ARPROT, "grp_sha256_hash_fu_135_m_axi_data_ARPROT");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_ARQOS, "grp_sha256_hash_fu_135_m_axi_data_ARQOS");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_ARREGION, "grp_sha256_hash_fu_135_m_axi_data_ARREGION");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_ARUSER, "grp_sha256_hash_fu_135_m_axi_data_ARUSER");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_RREADY, "grp_sha256_hash_fu_135_m_axi_data_RREADY");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_m_axi_data_BREADY, "grp_sha256_hash_fu_135_m_axi_data_BREADY");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_return_0, "grp_sha256_hash_fu_135_ap_return_0");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_return_1, "grp_sha256_hash_fu_135_ap_return_1");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_return_2, "grp_sha256_hash_fu_135_ap_return_2");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_return_3, "grp_sha256_hash_fu_135_ap_return_3");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_return_4, "grp_sha256_hash_fu_135_ap_return_4");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_return_5, "grp_sha256_hash_fu_135_ap_return_5");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_return_6, "grp_sha256_hash_fu_135_ap_return_6");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_return_7, "grp_sha256_hash_fu_135_ap_return_7");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_return_8, "grp_sha256_hash_fu_135_ap_return_8");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_return_9, "grp_sha256_hash_fu_135_ap_return_9");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_return_10, "grp_sha256_hash_fu_135_ap_return_10");
+    sc_trace(mVcdFile, invdar_reg_103, "invdar_reg_103");
+    sc_trace(mVcdFile, tmp_s_fu_157_p2, "tmp_s_fu_157_p2");
+    sc_trace(mVcdFile, grp_sha256_done_fu_114_ap_start_reg, "grp_sha256_done_fu_114_ap_start_reg");
     sc_trace(mVcdFile, ap_CS_fsm_state6, "ap_CS_fsm_state6");
-    sc_trace(mVcdFile, grp_sha256_hash_fu_90_ap_start_reg, "grp_sha256_hash_fu_90_ap_start_reg");
-    sc_trace(mVcdFile, ap_CS_fsm_state3, "ap_CS_fsm_state3");
-    sc_trace(mVcdFile, tmp_fu_104_p1, "tmp_fu_104_p1");
+    sc_trace(mVcdFile, ap_CS_fsm_state7, "ap_CS_fsm_state7");
+    sc_trace(mVcdFile, grp_sha256_hash_fu_135_ap_start_reg, "grp_sha256_hash_fu_135_ap_start_reg");
+    sc_trace(mVcdFile, ap_CS_fsm_state4, "ap_CS_fsm_state4");
+    sc_trace(mVcdFile, tmp_fu_152_p1, "tmp_fu_152_p1");
     sc_trace(mVcdFile, ap_NS_fsm, "ap_NS_fsm");
 #endif
 
@@ -387,54 +915,162 @@ sha256::~sha256() {
     mHdltvoutHandle << "] " << endl;
     mHdltvinHandle.close();
     mHdltvoutHandle.close();
+    delete sha256_ctrl_bus_s_axi_U;
+    delete sha256_INPUT_r_m_axi_U;
+    delete sha256_OUTPUT_r_m_axi_U;
     delete sha256_buf_U;
-    delete grp_sha256_done_fu_72;
-    delete grp_sha256_hash_fu_90;
+    delete grp_sha256_done_fu_114;
+    delete grp_sha256_hash_fu_135;
+}
+
+void sha256::thread_ap_var_for_const0() {
+    ap_var_for_const0 = ap_const_logic_1;
+}
+
+void sha256::thread_ap_var_for_const1() {
+    ap_var_for_const1 = ap_const_logic_0;
+}
+
+void sha256::thread_ap_var_for_const2() {
+    ap_var_for_const2 = ap_const_lv32_0;
+}
+
+void sha256::thread_ap_var_for_const3() {
+    ap_var_for_const3 = ap_const_lv1_0;
+}
+
+void sha256::thread_ap_var_for_const7() {
+    ap_var_for_const7 = ap_const_lv8_0;
+}
+
+void sha256::thread_ap_var_for_const4() {
+    ap_var_for_const4 = ap_const_lv3_0;
+}
+
+void sha256::thread_ap_var_for_const5() {
+    ap_var_for_const5 = ap_const_lv2_0;
+}
+
+void sha256::thread_ap_var_for_const6() {
+    ap_var_for_const6 = ap_const_lv4_0;
 }
 
 void sha256::thread_ap_clk_no_reset_() {
-    if ( ap_rst.read() == ap_const_logic_1) {
+    if ( ap_rst_n_inv.read() == ap_const_logic_1) {
         ap_CS_fsm = ap_ST_fsm_state1;
     } else {
         ap_CS_fsm = ap_NS_fsm.read();
     }
-    if ( ap_rst.read() == ap_const_logic_1) {
-        grp_sha256_done_fu_72_ap_start_reg = ap_const_logic_0;
+    if ( ap_rst_n_inv.read() == ap_const_logic_1) {
+        grp_sha256_done_fu_114_ap_start_reg = ap_const_logic_0;
     } else {
-        if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read())) {
-            grp_sha256_done_fu_72_ap_start_reg = ap_const_logic_1;
-        } else if (esl_seteq<1,1,1>(ap_const_logic_1, grp_sha256_done_fu_72_ap_ready.read())) {
-            grp_sha256_done_fu_72_ap_start_reg = ap_const_logic_0;
+        if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read())) {
+            grp_sha256_done_fu_114_ap_start_reg = ap_const_logic_1;
+        } else if (esl_seteq<1,1,1>(ap_const_logic_1, grp_sha256_done_fu_114_ap_ready.read())) {
+            grp_sha256_done_fu_114_ap_start_reg = ap_const_logic_0;
         }
     }
-    if ( ap_rst.read() == ap_const_logic_1) {
-        grp_sha256_hash_fu_90_ap_start_reg = ap_const_logic_0;
+    if ( ap_rst_n_inv.read() == ap_const_logic_1) {
+        grp_sha256_hash_fu_135_ap_start_reg = ap_const_logic_0;
     } else {
-        if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read())) {
-            grp_sha256_hash_fu_90_ap_start_reg = ap_const_logic_1;
-        } else if (esl_seteq<1,1,1>(ap_const_logic_1, grp_sha256_hash_fu_90_ap_ready.read())) {
-            grp_sha256_hash_fu_90_ap_start_reg = ap_const_logic_0;
+        if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read())) {
+            grp_sha256_hash_fu_135_ap_start_reg = ap_const_logic_1;
+        } else if (esl_seteq<1,1,1>(ap_const_logic_1, grp_sha256_hash_fu_135_ap_ready.read())) {
+            grp_sha256_hash_fu_135_ap_start_reg = ap_const_logic_0;
         }
     }
-    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && 
-         esl_seteq<1,1,1>(tmp_s_fu_109_p2.read(), ap_const_lv1_0))) {
-        invdar_reg_61 = indvarinc_fu_98_p2.read();
-    } else if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read()) && 
-                esl_seteq<1,1,1>(ap_start.read(), ap_const_logic_1))) {
-        invdar_reg_61 = ap_const_lv6_0;
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read()) && 
+         esl_seteq<1,1,1>(tmp_s_fu_157_p2.read(), ap_const_lv1_0))) {
+        invdar_reg_103 = indvarinc_fu_146_p2.read();
+    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read())) {
+        invdar_reg_103 = ap_const_lv6_0;
     }
-    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read()) && esl_seteq<1,1,1>(grp_sha256_hash_fu_90_ap_done.read(), ap_const_logic_1))) {
-        sha256_bits_0_reg_222 = grp_sha256_hash_fu_90_ap_return_10.read();
-        sha256_bits_1_reg_172 = grp_sha256_hash_fu_90_ap_return_1.read();
-        sha256_len_0_reg_177 = grp_sha256_hash_fu_90_ap_return_0.read();
-        sha256hash_0_reg_182 = grp_sha256_hash_fu_90_ap_return_2.read();
-        sha256hash_1_reg_187 = grp_sha256_hash_fu_90_ap_return_3.read();
-        sha256hash_2_reg_192 = grp_sha256_hash_fu_90_ap_return_4.read();
-        sha256hash_3_reg_197 = grp_sha256_hash_fu_90_ap_return_5.read();
-        sha256hash_4_reg_202 = grp_sha256_hash_fu_90_ap_return_6.read();
-        sha256hash_5_reg_207 = grp_sha256_hash_fu_90_ap_return_7.read();
-        sha256hash_6_reg_212 = grp_sha256_hash_fu_90_ap_return_8.read();
-        sha256hash_7_reg_217 = grp_sha256_hash_fu_90_ap_return_9.read();
+    if (((!(esl_seteq<1,1,1>(ap_const_logic_0, ap_start.read()) && esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read())) && 
+  esl_seteq<1,1,1>(ap_const_logic_1, ap_const_logic_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, hash_0_vld_reg.read())) || (!(esl_seteq<1,1,1>(ap_const_logic_0, ap_start.read()) && esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read())) && 
+  esl_seteq<1,1,1>(ap_const_logic_1, ap_const_logic_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_1, hash_0_vld_reg.read()) && 
+  esl_seteq<1,1,1>(ap_const_logic_1, hash_0_ack_out.read())))) {
+        hash_0_data_reg = hash.read();
+    }
+    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read())) {
+        hash_read_reg_207 = hash_0_data_reg.read();
+        len_read_reg_212 = len_0_data_reg.read();
+        msg_read_reg_217 = msg_0_data_reg.read();
+    }
+    if (((!(esl_seteq<1,1,1>(ap_const_logic_0, ap_start.read()) && esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read())) && 
+  esl_seteq<1,1,1>(ap_const_logic_1, ap_const_logic_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, len_0_vld_reg.read())) || (!(esl_seteq<1,1,1>(ap_const_logic_0, ap_start.read()) && esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read())) && 
+  esl_seteq<1,1,1>(ap_const_logic_1, ap_const_logic_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_1, len_0_vld_reg.read()) && 
+  esl_seteq<1,1,1>(ap_const_logic_1, len_0_ack_out.read())))) {
+        len_0_data_reg = len.read();
+    }
+    if (((!(esl_seteq<1,1,1>(ap_const_logic_0, ap_start.read()) && esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read())) && 
+  esl_seteq<1,1,1>(ap_const_logic_1, ap_const_logic_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_0, msg_0_vld_reg.read())) || (!(esl_seteq<1,1,1>(ap_const_logic_0, ap_start.read()) && esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state1.read())) && 
+  esl_seteq<1,1,1>(ap_const_logic_1, ap_const_logic_1) && 
+  esl_seteq<1,1,1>(ap_const_logic_1, msg_0_vld_reg.read()) && 
+  esl_seteq<1,1,1>(ap_const_logic_1, msg_0_ack_out.read())))) {
+        msg_0_data_reg = msg.read();
+    }
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read()) && esl_seteq<1,1,1>(grp_sha256_hash_fu_135_ap_done.read(), ap_const_logic_1))) {
+        sha256_bits_0_reg_280 = grp_sha256_hash_fu_135_ap_return_10.read();
+        sha256_bits_1_reg_230 = grp_sha256_hash_fu_135_ap_return_1.read();
+        sha256_len_0_reg_235 = grp_sha256_hash_fu_135_ap_return_0.read();
+        sha256hash_0_reg_240 = grp_sha256_hash_fu_135_ap_return_2.read();
+        sha256hash_1_reg_245 = grp_sha256_hash_fu_135_ap_return_3.read();
+        sha256hash_2_reg_250 = grp_sha256_hash_fu_135_ap_return_4.read();
+        sha256hash_3_reg_255 = grp_sha256_hash_fu_135_ap_return_5.read();
+        sha256hash_4_reg_260 = grp_sha256_hash_fu_135_ap_return_6.read();
+        sha256hash_5_reg_265 = grp_sha256_hash_fu_135_ap_return_7.read();
+        sha256hash_6_reg_270 = grp_sha256_hash_fu_135_ap_return_8.read();
+        sha256hash_7_reg_275 = grp_sha256_hash_fu_135_ap_return_9.read();
+    }
+}
+
+void sha256::thread_INPUT_r_ARVALID() {
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read()) || 
+         esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read()))) {
+        INPUT_r_ARVALID = grp_sha256_hash_fu_135_m_axi_data_ARVALID.read();
+    } else {
+        INPUT_r_ARVALID = ap_const_logic_0;
+    }
+}
+
+void sha256::thread_INPUT_r_RREADY() {
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read()) || 
+         esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read()))) {
+        INPUT_r_RREADY = grp_sha256_hash_fu_135_m_axi_data_RREADY.read();
+    } else {
+        INPUT_r_RREADY = ap_const_logic_0;
+    }
+}
+
+void sha256::thread_OUTPUT_r_AWVALID() {
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read()) || 
+         esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read()))) {
+        OUTPUT_r_AWVALID = grp_sha256_done_fu_114_m_axi_hash_AWVALID.read();
+    } else {
+        OUTPUT_r_AWVALID = ap_const_logic_0;
+    }
+}
+
+void sha256::thread_OUTPUT_r_BREADY() {
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read()) || 
+         esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read()))) {
+        OUTPUT_r_BREADY = grp_sha256_done_fu_114_m_axi_hash_BREADY.read();
+    } else {
+        OUTPUT_r_BREADY = ap_const_logic_0;
+    }
+}
+
+void sha256::thread_OUTPUT_r_WVALID() {
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read()) || 
+         esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read()))) {
+        OUTPUT_r_WVALID = grp_sha256_done_fu_114_m_axi_hash_WVALID.read();
+    } else {
+        OUTPUT_r_WVALID = ap_const_logic_0;
     }
 }
 
@@ -462,9 +1098,13 @@ void sha256::thread_ap_CS_fsm_state6() {
     ap_CS_fsm_state6 = ap_CS_fsm.read()[5];
 }
 
+void sha256::thread_ap_CS_fsm_state7() {
+    ap_CS_fsm_state7 = ap_CS_fsm.read()[6];
+}
+
 void sha256::thread_ap_done() {
-    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read()) && 
-         esl_seteq<1,1,1>(grp_sha256_done_fu_72_ap_done.read(), ap_const_logic_1))) {
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read()) && 
+         esl_seteq<1,1,1>(grp_sha256_done_fu_114_ap_done.read(), ap_const_logic_1))) {
         ap_done = ap_const_logic_1;
     } else {
         ap_done = ap_const_logic_0;
@@ -481,148 +1121,139 @@ void sha256::thread_ap_idle() {
 }
 
 void sha256::thread_ap_ready() {
-    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read()) && 
-         esl_seteq<1,1,1>(grp_sha256_done_fu_72_ap_done.read(), ap_const_logic_1))) {
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read()) && 
+         esl_seteq<1,1,1>(grp_sha256_done_fu_114_ap_done.read(), ap_const_logic_1))) {
         ap_ready = ap_const_logic_1;
     } else {
         ap_ready = ap_const_logic_0;
     }
 }
 
-void sha256::thread_grp_sha256_done_fu_72_ap_start() {
-    grp_sha256_done_fu_72_ap_start = grp_sha256_done_fu_72_ap_start_reg.read();
+void sha256::thread_ap_rst_n_inv() {
+    ap_rst_n_inv =  (sc_logic) (~ap_rst_n.read());
 }
 
-void sha256::thread_grp_sha256_hash_fu_90_ap_start() {
-    grp_sha256_hash_fu_90_ap_start = grp_sha256_hash_fu_90_ap_start_reg.read();
+void sha256::thread_grp_sha256_done_fu_114_ap_start() {
+    grp_sha256_done_fu_114_ap_start = grp_sha256_done_fu_114_ap_start_reg.read();
 }
 
-void sha256::thread_hash_address0() {
-    hash_address0 = grp_sha256_done_fu_72_hash_address0.read();
+void sha256::thread_grp_sha256_hash_fu_135_ap_start() {
+    grp_sha256_hash_fu_135_ap_start = grp_sha256_hash_fu_135_ap_start_reg.read();
 }
 
-void sha256::thread_hash_address1() {
-    hash_address1 = grp_sha256_done_fu_72_hash_address1.read();
+void sha256::thread_hash_0_ack_out() {
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read()) && 
+         esl_seteq<1,1,1>(grp_sha256_done_fu_114_ap_done.read(), ap_const_logic_1))) {
+        hash_0_ack_out = ap_const_logic_1;
+    } else {
+        hash_0_ack_out = ap_const_logic_0;
+    }
 }
 
-void sha256::thread_hash_ce0() {
-    hash_ce0 = grp_sha256_done_fu_72_hash_ce0.read();
+void sha256::thread_indvarinc_fu_146_p2() {
+    indvarinc_fu_146_p2 = (!invdar_reg_103.read().is_01() || !ap_const_lv6_1.is_01())? sc_lv<6>(): (sc_biguint<6>(invdar_reg_103.read()) + sc_biguint<6>(ap_const_lv6_1));
 }
 
-void sha256::thread_hash_ce1() {
-    hash_ce1 = grp_sha256_done_fu_72_hash_ce1.read();
+void sha256::thread_len_0_ack_out() {
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read()) && 
+         esl_seteq<1,1,1>(grp_sha256_done_fu_114_ap_done.read(), ap_const_logic_1))) {
+        len_0_ack_out = ap_const_logic_1;
+    } else {
+        len_0_ack_out = ap_const_logic_0;
+    }
 }
 
-void sha256::thread_hash_d0() {
-    hash_d0 = grp_sha256_done_fu_72_hash_d0.read();
-}
-
-void sha256::thread_hash_d1() {
-    hash_d1 = grp_sha256_done_fu_72_hash_d1.read();
-}
-
-void sha256::thread_hash_we0() {
-    hash_we0 = grp_sha256_done_fu_72_hash_we0.read();
-}
-
-void sha256::thread_hash_we1() {
-    hash_we1 = grp_sha256_done_fu_72_hash_we1.read();
-}
-
-void sha256::thread_indvarinc_fu_98_p2() {
-    indvarinc_fu_98_p2 = (!invdar_reg_61.read().is_01() || !ap_const_lv6_1.is_01())? sc_lv<6>(): (sc_biguint<6>(invdar_reg_61.read()) + sc_biguint<6>(ap_const_lv6_1));
-}
-
-void sha256::thread_msg_address0() {
-    msg_address0 = grp_sha256_hash_fu_90_data_address0.read();
-}
-
-void sha256::thread_msg_ce0() {
-    msg_ce0 = grp_sha256_hash_fu_90_data_ce0.read();
+void sha256::thread_msg_0_ack_out() {
+    if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read()) && 
+         esl_seteq<1,1,1>(grp_sha256_done_fu_114_ap_done.read(), ap_const_logic_1))) {
+        msg_0_ack_out = ap_const_logic_1;
+    } else {
+        msg_0_ack_out = ap_const_logic_0;
+    }
 }
 
 void sha256::thread_sha256_buf_address0() {
-    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read())) {
-        sha256_buf_address0 =  (sc_lv<6>) (tmp_fu_104_p1.read());
-    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read())) {
-        sha256_buf_address0 = grp_sha256_hash_fu_90_sha256_buf_address0.read();
-    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read())) {
-        sha256_buf_address0 = grp_sha256_done_fu_72_sha256_buf_address0.read();
+    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read())) {
+        sha256_buf_address0 =  (sc_lv<6>) (tmp_fu_152_p1.read());
+    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read())) {
+        sha256_buf_address0 = grp_sha256_hash_fu_135_sha256_buf_address0.read();
+    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read())) {
+        sha256_buf_address0 = grp_sha256_done_fu_114_sha256_buf_address0.read();
     } else {
         sha256_buf_address0 = "XXXXXX";
     }
 }
 
 void sha256::thread_sha256_buf_address1() {
-    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read())) {
-        sha256_buf_address1 = grp_sha256_hash_fu_90_sha256_buf_address1.read();
-    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read())) {
-        sha256_buf_address1 = grp_sha256_done_fu_72_sha256_buf_address1.read();
+    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read())) {
+        sha256_buf_address1 = grp_sha256_hash_fu_135_sha256_buf_address1.read();
+    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read())) {
+        sha256_buf_address1 = grp_sha256_done_fu_114_sha256_buf_address1.read();
     } else {
         sha256_buf_address1 = "XXXXXX";
     }
 }
 
 void sha256::thread_sha256_buf_ce0() {
-    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read())) {
+    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read())) {
         sha256_buf_ce0 = ap_const_logic_1;
-    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read())) {
-        sha256_buf_ce0 = grp_sha256_hash_fu_90_sha256_buf_ce0.read();
-    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read())) {
-        sha256_buf_ce0 = grp_sha256_done_fu_72_sha256_buf_ce0.read();
+    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read())) {
+        sha256_buf_ce0 = grp_sha256_hash_fu_135_sha256_buf_ce0.read();
+    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read())) {
+        sha256_buf_ce0 = grp_sha256_done_fu_114_sha256_buf_ce0.read();
     } else {
         sha256_buf_ce0 = ap_const_logic_0;
     }
 }
 
 void sha256::thread_sha256_buf_ce1() {
-    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read())) {
-        sha256_buf_ce1 = grp_sha256_hash_fu_90_sha256_buf_ce1.read();
-    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read())) {
-        sha256_buf_ce1 = grp_sha256_done_fu_72_sha256_buf_ce1.read();
+    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read())) {
+        sha256_buf_ce1 = grp_sha256_hash_fu_135_sha256_buf_ce1.read();
+    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read())) {
+        sha256_buf_ce1 = grp_sha256_done_fu_114_sha256_buf_ce1.read();
     } else {
         sha256_buf_ce1 = ap_const_logic_0;
     }
 }
 
 void sha256::thread_sha256_buf_d0() {
-    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read())) {
+    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read())) {
         sha256_buf_d0 = ap_const_lv8_0;
-    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read())) {
-        sha256_buf_d0 = grp_sha256_hash_fu_90_sha256_buf_d0.read();
-    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read())) {
-        sha256_buf_d0 = grp_sha256_done_fu_72_sha256_buf_d0.read();
+    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read())) {
+        sha256_buf_d0 = grp_sha256_hash_fu_135_sha256_buf_d0.read();
+    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read())) {
+        sha256_buf_d0 = grp_sha256_done_fu_114_sha256_buf_d0.read();
     } else {
         sha256_buf_d0 =  (sc_lv<8>) ("XXXXXXXX");
     }
 }
 
 void sha256::thread_sha256_buf_we0() {
-    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read())) {
+    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read())) {
         sha256_buf_we0 = ap_const_logic_1;
-    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read())) {
-        sha256_buf_we0 = grp_sha256_hash_fu_90_sha256_buf_we0.read();
-    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read())) {
-        sha256_buf_we0 = grp_sha256_done_fu_72_sha256_buf_we0.read();
+    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read())) {
+        sha256_buf_we0 = grp_sha256_hash_fu_135_sha256_buf_we0.read();
+    } else if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read())) {
+        sha256_buf_we0 = grp_sha256_done_fu_114_sha256_buf_we0.read();
     } else {
         sha256_buf_we0 = ap_const_logic_0;
     }
 }
 
 void sha256::thread_sha256_buf_we1() {
-    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read())) {
-        sha256_buf_we1 = grp_sha256_done_fu_72_sha256_buf_we1.read();
+    if (esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read())) {
+        sha256_buf_we1 = grp_sha256_done_fu_114_sha256_buf_we1.read();
     } else {
         sha256_buf_we1 = ap_const_logic_0;
     }
 }
 
-void sha256::thread_tmp_fu_104_p1() {
-    tmp_fu_104_p1 = esl_zext<64,6>(invdar_reg_61.read());
+void sha256::thread_tmp_fu_152_p1() {
+    tmp_fu_152_p1 = esl_zext<64,6>(invdar_reg_103.read());
 }
 
-void sha256::thread_tmp_s_fu_109_p2() {
-    tmp_s_fu_109_p2 = (!invdar_reg_61.read().is_01() || !ap_const_lv6_3F.is_01())? sc_lv<1>(): sc_lv<1>(invdar_reg_61.read() == ap_const_lv6_3F);
+void sha256::thread_tmp_s_fu_157_p2() {
+    tmp_s_fu_157_p2 = (!invdar_reg_103.read().is_01() || !ap_const_lv6_3F.is_01())? sc_lv<1>(): sc_lv<1>(invdar_reg_103.read() == ap_const_lv6_3F);
 }
 
 void sha256::thread_ap_NS_fsm() {
@@ -635,34 +1266,37 @@ void sha256::thread_ap_NS_fsm() {
             }
             break;
         case 2 : 
-            if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state2.read()) && esl_seteq<1,1,1>(tmp_s_fu_109_p2.read(), ap_const_lv1_1))) {
-                ap_NS_fsm = ap_ST_fsm_state3;
-            } else {
-                ap_NS_fsm = ap_ST_fsm_state2;
-            }
+            ap_NS_fsm = ap_ST_fsm_state3;
             break;
         case 4 : 
-            ap_NS_fsm = ap_ST_fsm_state4;
-            break;
-        case 8 : 
-            if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state4.read()) && esl_seteq<1,1,1>(grp_sha256_hash_fu_90_ap_done.read(), ap_const_logic_1))) {
-                ap_NS_fsm = ap_ST_fsm_state5;
-            } else {
+            if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state3.read()) && esl_seteq<1,1,1>(tmp_s_fu_157_p2.read(), ap_const_lv1_1))) {
                 ap_NS_fsm = ap_ST_fsm_state4;
+            } else {
+                ap_NS_fsm = ap_ST_fsm_state3;
             }
             break;
+        case 8 : 
+            ap_NS_fsm = ap_ST_fsm_state5;
+            break;
         case 16 : 
-            ap_NS_fsm = ap_ST_fsm_state6;
+            if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state5.read()) && esl_seteq<1,1,1>(grp_sha256_hash_fu_135_ap_done.read(), ap_const_logic_1))) {
+                ap_NS_fsm = ap_ST_fsm_state6;
+            } else {
+                ap_NS_fsm = ap_ST_fsm_state5;
+            }
             break;
         case 32 : 
-            if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state6.read()) && esl_seteq<1,1,1>(grp_sha256_done_fu_72_ap_done.read(), ap_const_logic_1))) {
+            ap_NS_fsm = ap_ST_fsm_state7;
+            break;
+        case 64 : 
+            if ((esl_seteq<1,1,1>(ap_const_logic_1, ap_CS_fsm_state7.read()) && esl_seteq<1,1,1>(grp_sha256_done_fu_114_ap_done.read(), ap_const_logic_1))) {
                 ap_NS_fsm = ap_ST_fsm_state1;
             } else {
-                ap_NS_fsm = ap_ST_fsm_state6;
+                ap_NS_fsm = ap_ST_fsm_state7;
             }
             break;
         default : 
-            ap_NS_fsm = "XXXXXX";
+            ap_NS_fsm =  (sc_lv<7>) ("XXXXXXX");
             break;
     }
 }
@@ -679,23 +1313,118 @@ void sha256::thread_hdltv_gen() {
     while (1) {
         wait();
         const char* mComma = ap_cycleNo == 0 ? " " : ", " ;
-        mHdltvinHandle << mComma << "{"  <<  " \"ap_rst\" :  \"" << ap_rst.read() << "\" ";
+        mHdltvinHandle << mComma << "{"  <<  " \"ap_rst_n\" :  \"" << ap_rst_n.read() << "\" ";
         mHdltvinHandle << " , " <<  " \"ap_start\" :  \"" << ap_start.read() << "\" ";
         mHdltvoutHandle << mComma << "{"  <<  " \"ap_done\" :  \"" << ap_done.read() << "\" ";
         mHdltvoutHandle << " , " <<  " \"ap_idle\" :  \"" << ap_idle.read() << "\" ";
         mHdltvoutHandle << " , " <<  " \"ap_ready\" :  \"" << ap_ready.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"msg_address0\" :  \"" << msg_address0.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"msg_ce0\" :  \"" << msg_ce0.read() << "\" ";
-        mHdltvinHandle << " , " <<  " \"msg_q0\" :  \"" << msg_q0.read() << "\" ";
-        mHdltvinHandle << " , " <<  " \"len\" :  \"" << len.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"hash_address0\" :  \"" << hash_address0.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"hash_ce0\" :  \"" << hash_ce0.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"hash_we0\" :  \"" << hash_we0.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"hash_d0\" :  \"" << hash_d0.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"hash_address1\" :  \"" << hash_address1.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"hash_ce1\" :  \"" << hash_ce1.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"hash_we1\" :  \"" << hash_we1.read() << "\" ";
-        mHdltvoutHandle << " , " <<  " \"hash_d1\" :  \"" << hash_d1.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_AWVALID\" :  \"" << m_axi_INPUT_r_AWVALID.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_INPUT_r_AWREADY\" :  \"" << m_axi_INPUT_r_AWREADY.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_AWADDR\" :  \"" << m_axi_INPUT_r_AWADDR.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_AWID\" :  \"" << m_axi_INPUT_r_AWID.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_AWLEN\" :  \"" << m_axi_INPUT_r_AWLEN.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_AWSIZE\" :  \"" << m_axi_INPUT_r_AWSIZE.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_AWBURST\" :  \"" << m_axi_INPUT_r_AWBURST.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_AWLOCK\" :  \"" << m_axi_INPUT_r_AWLOCK.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_AWCACHE\" :  \"" << m_axi_INPUT_r_AWCACHE.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_AWPROT\" :  \"" << m_axi_INPUT_r_AWPROT.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_AWQOS\" :  \"" << m_axi_INPUT_r_AWQOS.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_AWREGION\" :  \"" << m_axi_INPUT_r_AWREGION.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_AWUSER\" :  \"" << m_axi_INPUT_r_AWUSER.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_WVALID\" :  \"" << m_axi_INPUT_r_WVALID.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_INPUT_r_WREADY\" :  \"" << m_axi_INPUT_r_WREADY.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_WDATA\" :  \"" << m_axi_INPUT_r_WDATA.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_WSTRB\" :  \"" << m_axi_INPUT_r_WSTRB.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_WLAST\" :  \"" << m_axi_INPUT_r_WLAST.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_WID\" :  \"" << m_axi_INPUT_r_WID.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_WUSER\" :  \"" << m_axi_INPUT_r_WUSER.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_ARVALID\" :  \"" << m_axi_INPUT_r_ARVALID.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_INPUT_r_ARREADY\" :  \"" << m_axi_INPUT_r_ARREADY.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_ARADDR\" :  \"" << m_axi_INPUT_r_ARADDR.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_ARID\" :  \"" << m_axi_INPUT_r_ARID.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_ARLEN\" :  \"" << m_axi_INPUT_r_ARLEN.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_ARSIZE\" :  \"" << m_axi_INPUT_r_ARSIZE.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_ARBURST\" :  \"" << m_axi_INPUT_r_ARBURST.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_ARLOCK\" :  \"" << m_axi_INPUT_r_ARLOCK.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_ARCACHE\" :  \"" << m_axi_INPUT_r_ARCACHE.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_ARPROT\" :  \"" << m_axi_INPUT_r_ARPROT.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_ARQOS\" :  \"" << m_axi_INPUT_r_ARQOS.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_ARREGION\" :  \"" << m_axi_INPUT_r_ARREGION.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_ARUSER\" :  \"" << m_axi_INPUT_r_ARUSER.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_INPUT_r_RVALID\" :  \"" << m_axi_INPUT_r_RVALID.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_RREADY\" :  \"" << m_axi_INPUT_r_RREADY.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_INPUT_r_RDATA\" :  \"" << m_axi_INPUT_r_RDATA.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_INPUT_r_RLAST\" :  \"" << m_axi_INPUT_r_RLAST.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_INPUT_r_RID\" :  \"" << m_axi_INPUT_r_RID.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_INPUT_r_RUSER\" :  \"" << m_axi_INPUT_r_RUSER.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_INPUT_r_RRESP\" :  \"" << m_axi_INPUT_r_RRESP.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_INPUT_r_BVALID\" :  \"" << m_axi_INPUT_r_BVALID.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_INPUT_r_BREADY\" :  \"" << m_axi_INPUT_r_BREADY.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_INPUT_r_BRESP\" :  \"" << m_axi_INPUT_r_BRESP.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_INPUT_r_BID\" :  \"" << m_axi_INPUT_r_BID.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_INPUT_r_BUSER\" :  \"" << m_axi_INPUT_r_BUSER.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_AWVALID\" :  \"" << m_axi_OUTPUT_r_AWVALID.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_OUTPUT_r_AWREADY\" :  \"" << m_axi_OUTPUT_r_AWREADY.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_AWADDR\" :  \"" << m_axi_OUTPUT_r_AWADDR.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_AWID\" :  \"" << m_axi_OUTPUT_r_AWID.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_AWLEN\" :  \"" << m_axi_OUTPUT_r_AWLEN.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_AWSIZE\" :  \"" << m_axi_OUTPUT_r_AWSIZE.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_AWBURST\" :  \"" << m_axi_OUTPUT_r_AWBURST.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_AWLOCK\" :  \"" << m_axi_OUTPUT_r_AWLOCK.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_AWCACHE\" :  \"" << m_axi_OUTPUT_r_AWCACHE.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_AWPROT\" :  \"" << m_axi_OUTPUT_r_AWPROT.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_AWQOS\" :  \"" << m_axi_OUTPUT_r_AWQOS.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_AWREGION\" :  \"" << m_axi_OUTPUT_r_AWREGION.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_AWUSER\" :  \"" << m_axi_OUTPUT_r_AWUSER.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_WVALID\" :  \"" << m_axi_OUTPUT_r_WVALID.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_OUTPUT_r_WREADY\" :  \"" << m_axi_OUTPUT_r_WREADY.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_WDATA\" :  \"" << m_axi_OUTPUT_r_WDATA.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_WSTRB\" :  \"" << m_axi_OUTPUT_r_WSTRB.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_WLAST\" :  \"" << m_axi_OUTPUT_r_WLAST.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_WID\" :  \"" << m_axi_OUTPUT_r_WID.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_WUSER\" :  \"" << m_axi_OUTPUT_r_WUSER.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_ARVALID\" :  \"" << m_axi_OUTPUT_r_ARVALID.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_OUTPUT_r_ARREADY\" :  \"" << m_axi_OUTPUT_r_ARREADY.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_ARADDR\" :  \"" << m_axi_OUTPUT_r_ARADDR.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_ARID\" :  \"" << m_axi_OUTPUT_r_ARID.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_ARLEN\" :  \"" << m_axi_OUTPUT_r_ARLEN.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_ARSIZE\" :  \"" << m_axi_OUTPUT_r_ARSIZE.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_ARBURST\" :  \"" << m_axi_OUTPUT_r_ARBURST.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_ARLOCK\" :  \"" << m_axi_OUTPUT_r_ARLOCK.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_ARCACHE\" :  \"" << m_axi_OUTPUT_r_ARCACHE.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_ARPROT\" :  \"" << m_axi_OUTPUT_r_ARPROT.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_ARQOS\" :  \"" << m_axi_OUTPUT_r_ARQOS.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_ARREGION\" :  \"" << m_axi_OUTPUT_r_ARREGION.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_ARUSER\" :  \"" << m_axi_OUTPUT_r_ARUSER.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_OUTPUT_r_RVALID\" :  \"" << m_axi_OUTPUT_r_RVALID.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_RREADY\" :  \"" << m_axi_OUTPUT_r_RREADY.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_OUTPUT_r_RDATA\" :  \"" << m_axi_OUTPUT_r_RDATA.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_OUTPUT_r_RLAST\" :  \"" << m_axi_OUTPUT_r_RLAST.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_OUTPUT_r_RID\" :  \"" << m_axi_OUTPUT_r_RID.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_OUTPUT_r_RUSER\" :  \"" << m_axi_OUTPUT_r_RUSER.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_OUTPUT_r_RRESP\" :  \"" << m_axi_OUTPUT_r_RRESP.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_OUTPUT_r_BVALID\" :  \"" << m_axi_OUTPUT_r_BVALID.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"m_axi_OUTPUT_r_BREADY\" :  \"" << m_axi_OUTPUT_r_BREADY.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_OUTPUT_r_BRESP\" :  \"" << m_axi_OUTPUT_r_BRESP.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_OUTPUT_r_BID\" :  \"" << m_axi_OUTPUT_r_BID.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"m_axi_OUTPUT_r_BUSER\" :  \"" << m_axi_OUTPUT_r_BUSER.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"s_axi_ctrl_bus_AWVALID\" :  \"" << s_axi_ctrl_bus_AWVALID.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"s_axi_ctrl_bus_AWREADY\" :  \"" << s_axi_ctrl_bus_AWREADY.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"s_axi_ctrl_bus_AWADDR\" :  \"" << s_axi_ctrl_bus_AWADDR.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"s_axi_ctrl_bus_WVALID\" :  \"" << s_axi_ctrl_bus_WVALID.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"s_axi_ctrl_bus_WREADY\" :  \"" << s_axi_ctrl_bus_WREADY.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"s_axi_ctrl_bus_WDATA\" :  \"" << s_axi_ctrl_bus_WDATA.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"s_axi_ctrl_bus_WSTRB\" :  \"" << s_axi_ctrl_bus_WSTRB.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"s_axi_ctrl_bus_ARVALID\" :  \"" << s_axi_ctrl_bus_ARVALID.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"s_axi_ctrl_bus_ARREADY\" :  \"" << s_axi_ctrl_bus_ARREADY.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"s_axi_ctrl_bus_ARADDR\" :  \"" << s_axi_ctrl_bus_ARADDR.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"s_axi_ctrl_bus_RVALID\" :  \"" << s_axi_ctrl_bus_RVALID.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"s_axi_ctrl_bus_RREADY\" :  \"" << s_axi_ctrl_bus_RREADY.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"s_axi_ctrl_bus_RDATA\" :  \"" << s_axi_ctrl_bus_RDATA.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"s_axi_ctrl_bus_RRESP\" :  \"" << s_axi_ctrl_bus_RRESP.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"s_axi_ctrl_bus_BVALID\" :  \"" << s_axi_ctrl_bus_BVALID.read() << "\" ";
+        mHdltvinHandle << " , " <<  " \"s_axi_ctrl_bus_BREADY\" :  \"" << s_axi_ctrl_bus_BREADY.read() << "\" ";
+        mHdltvoutHandle << " , " <<  " \"s_axi_ctrl_bus_BRESP\" :  \"" << s_axi_ctrl_bus_BRESP.read() << "\" ";
         mHdltvinHandle << "}" << std::endl;
         mHdltvoutHandle << "}" << std::endl;
         ap_cycleNo++;

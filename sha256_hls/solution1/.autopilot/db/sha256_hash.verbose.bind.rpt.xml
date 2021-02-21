@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'sha256_hash'" level="0">
-<item name = "Date">Sat Feb 20 20:53:55 2021
+<item name = "Date">Sun Feb 21 21:04:22 2021
 </item>
 <item name = "Version">2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)</item>
 <item name = "Project">sha256_hls</item>
@@ -15,7 +15,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="4">Clock, Target, Estimated, Uncertainty</keys>
-<column name="ap_clk">10.00, 8.742, 1.25</column>
+<column name="ap_clk">10.00, 8.750, 1.25</column>
 </table>
 </item>
 </section>
@@ -24,19 +24,19 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="6">, min, max, min, max, Type</keys>
-<column name="">2, 6402, 2, 6402, none</column>
+<column name="">7, 12103, 7, 12103, none</column>
 </table>
 </item>
 <item name = "Detail">
 <section name = "" level="1">
 <item name = "Instance"><table name="" hasTotal="0">
 <keys size="7">Instance, Module, min, max, min, max, Type</keys>
-<column name="grp_p_hash_fu_146">p_hash, 98, 98, 48, 48, function</column>
+<column name="grp_p_hash_fu_166">p_hash, 185, 185, 185, 185, none</column>
 </table>
 </item>
 <item name = "Loop"><table name="" hasTotal="0">
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
-<column name="- sha256_hash_label2">0, 6400, 101, 100, 1, 0 ~ 64, yes</column>
+<column name="- sha256_hash_label2">0, 12096, 3 ~ 189, -, -, 0 ~ 64, no</column>
 </table>
 </item>
 </section>

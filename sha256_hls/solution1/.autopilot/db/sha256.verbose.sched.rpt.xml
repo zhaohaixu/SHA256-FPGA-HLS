@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'sha256'" level="0">
-<item name = "Date">Sat Feb 20 20:53:58 2021
+<item name = "Date">Sun Feb 21 21:04:24 2021
 </item>
 <item name = "Version">2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)</item>
 <item name = "Project">sha256_hls</item>
@@ -24,7 +24,7 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="6">, min, max, min, max, Type</keys>
-<column name="">191, 6762, 191, 6762, none</column>
+<column name="">308, 12678, 308, 12678, none</column>
 </table>
 </item>
 <item name = "Detail">

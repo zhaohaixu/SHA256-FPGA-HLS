@@ -807,7 +807,7 @@ void sha256_hash(uint8_t *sha256_buf, uint32_t *sha256hash, uint32_t *sha256_bit
 
  sha256_hash_label2:
  for (i = 0; i < len; i++) {
-_ssdm_op_SpecPipeline(-1, 1, 1, 0, "");
+_ssdm_Unroll(0,0,0, "");
 # 156 "src/sha256.c"
 
 _ssdm_op_SpecLoopTripCount(0, 64, 32, "");
@@ -826,7 +826,7 @@ _ssdm_op_SpecLoopTripCount(0, 64, 32, "");
 void sha256_done(uint8_t *sha256_buf, uint32_t *sha256hash, uint32_t *sha256_bits, uint32_t sha256_len, uint8_t *hash)
 {
  uint32_t i, j;
-
+ uint8_t hash_tmp[32];
  j = (sha256_len) % sizeof(sha256_buf);
  sha256_buf[j] = 0x80;
  sha256_done_label3:
@@ -859,20 +859,32 @@ _ssdm_op_SpecLoopTripCount(0, 64, 32, "");
  if ( hash != ((void *)0) )
   sha256_done_label5:
   for (i = 0, j = 24; i < 4; i++, j -= 8) {
-   hash[i ] = _shb(sha256hash[0], j);
-   hash[i + 4] = _shb(sha256hash[1], j);
-   hash[i + 8] = _shb(sha256hash[2], j);
-   hash[i + 12] = _shb(sha256hash[3], j);
-   hash[i + 16] = _shb(sha256hash[4], j);
-   hash[i + 20] = _shb(sha256hash[5], j);
-   hash[i + 24] = _shb(sha256hash[6], j);
-   hash[i + 28] = _shb(sha256hash[7], j);
+   hash_tmp[i ] = _shb(sha256hash[0], j);
+   hash_tmp[i + 4] = _shb(sha256hash[1], j);
+   hash_tmp[i + 8] = _shb(sha256hash[2], j);
+   hash_tmp[i + 12] = _shb(sha256hash[3], j);
+   hash_tmp[i + 16] = _shb(sha256hash[4], j);
+   hash_tmp[i + 20] = _shb(sha256hash[5], j);
+   hash_tmp[i + 24] = _shb(sha256hash[6], j);
+   hash_tmp[i + 28] = _shb(sha256hash[7], j);
   }
+ sha256_done_label0:
+ for(i = 0; i < 32; i++)
+_ssdm_op_SpecPipeline(-1, 1, 1, 0, "");
+# 213 "src/sha256.c"
+
+  hash[i] = hash_tmp[i];
 }
 
 
-void sha256(uint8_t msg[64], uint32_t len, uint8_t hash[32])
-{_ssdm_SpecArrayDimSize(msg, 64);_ssdm_SpecArrayDimSize(hash, 32);
+void sha256(uint8_t msg[64], uint32_t len, uint8_t *hash)
+{_ssdm_SpecArrayDimSize(msg, 64);
+
+_ssdm_op_SpecInterface(msg, "m_axi", 0, 0, "", 0, 900000, "INPUT", "slave", "", 16, 16, 16, 16, "", "");
+_ssdm_op_SpecInterface(hash, "m_axi", 0, 0, "", 0, 900000, "OUTPUT", "slave", "", 16, 16, 16, 16, "", "");
+_ssdm_op_SpecInterface(msg, "s_axilite", 1, 1, "", 0, 0, "ctrl_bus", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(hash, "s_axilite", 1, 1, "", 0, 0, "ctrl_bus", "", "", 0, 0, 0, 0, "", "");
+_ssdm_op_SpecInterface(len, "s_axilite", 1, 1, "", 0, 0, "ctrl_bus", "", "", 0, 0, 0, 0, "", "");
 
  uint8_t sha256_buf[64] = {
   0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,

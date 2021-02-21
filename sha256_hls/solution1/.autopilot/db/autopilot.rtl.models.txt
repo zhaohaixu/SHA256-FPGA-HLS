@@ -1,11 +1,10 @@
+p_hash_K
+p_hash_W
+sha256_done_hash_bkb
 sha256_sha256_buf
-p_word
-p_S1
-p_Ch
-p_S0
-p_Ma
-p_G1
-p_G0
+sha256_ctrl_bus_s_axi
+sha256_INPUT_r_m_axi
+sha256_OUTPUT_r_m_axi
 p_hash
 sha256_hash
 sha256_done

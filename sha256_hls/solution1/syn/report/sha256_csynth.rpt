@@ -3,7 +3,7 @@
 ================================================================
 == Vivado HLS Report for 'sha256'
 ================================================================
-* Date:           Sat Feb 20 20:54:13 2021
+* Date:           Sun Feb 21 21:04:28 2021
 
 * Version:        2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)
 * Project:        sha256_hls
@@ -25,22 +25,22 @@
 
 + Latency (clock cycles): 
     * Summary: 
-    +-----+------+-----+------+---------+
-    |   Latency  |  Interval  | Pipeline|
-    | min |  max | min |  max |   Type  |
-    +-----+------+-----+------+---------+
-    |  191|  6762|  191|  6762|   none  |
-    +-----+------+-----+------+---------+
+    +-----+-------+-----+-------+---------+
+    |   Latency   |   Interval  | Pipeline|
+    | min |  max  | min |  max  |   Type  |
+    +-----+-------+-----+-------+---------+
+    |  308|  12678|  308|  12678|   none  |
+    +-----+-------+-----+-------+---------+
 
     + Detail: 
         * Instance: 
-        +-----------------------+-------------+-----+------+-----+------+---------+
-        |                       |             |   Latency  |  Interval  | Pipeline|
-        |        Instance       |    Module   | min |  max | min |  max |   Type  |
-        +-----------------------+-------------+-----+------+-----+------+---------+
-        |grp_sha256_done_fu_72  |sha256_done  |  121|   292|  121|   292|   none  |
-        |grp_sha256_hash_fu_90  |sha256_hash  |    2|  6402|    2|  6402|   none  |
-        +-----------------------+-------------+-----+------+-----+------+---------+
+        +------------------------+-------------+-----+-------+-----+-------+---------+
+        |                        |             |   Latency   |   Interval  | Pipeline|
+        |        Instance        |    Module   | min |  max  | min |  max  |   Type  |
+        +------------------------+-------------+-----+-------+-----+-------+---------+
+        |grp_sha256_done_fu_114  |sha256_done  |  232|    506|  232|    506|   none  |
+        |grp_sha256_hash_fu_135  |sha256_hash  |    7|  12103|    7|  12103|   none  |
+        +------------------------+-------------+-----+-------+-----+-------+---------+
 
         * Loop: 
         +---------------------+-----+-----+----------+-----------+-----------+------+----------+
@@ -62,28 +62,31 @@
 |DSP              |        -|      -|       -|      -|
 |Expression       |        -|      -|       0|     26|
 |FIFO             |        -|      -|       -|      -|
-|Instance         |        0|      -|   21769|  46350|
+|Instance         |       11|      -|    4499|   8530|
 |Memory           |        1|      -|       0|      0|
-|Multiplexer      |        -|      -|       -|    170|
-|Register         |        -|      -|     366|      -|
+|Multiplexer      |        -|      -|       -|    218|
+|Register         |        -|      -|     559|      -|
 +-----------------+---------+-------+--------+-------+
-|Total            |        1|      0|   22135|  46546|
+|Total            |       12|      0|    5058|   8774|
 +-----------------+---------+-------+--------+-------+
 |Available        |      280|    220|  106400|  53200|
 +-----------------+---------+-------+--------+-------+
-|Utilization (%)  |    ~0   |      0|      20|     87|
+|Utilization (%)  |        4|      0|       4|     16|
 +-----------------+---------+-------+--------+-------+
 
 + Detail: 
     * Instance: 
-    +-----------------------+-------------+---------+-------+-------+-------+
-    |        Instance       |    Module   | BRAM_18K| DSP48E|   FF  |  LUT  |
-    +-----------------------+-------------+---------+-------+-------+-------+
-    |grp_sha256_done_fu_72  |sha256_done  |        0|      0|  11056|  24043|
-    |grp_sha256_hash_fu_90  |sha256_hash  |        0|      0|  10713|  22307|
-    +-----------------------+-------------+---------+-------+-------+-------+
-    |Total                  |             |        0|      0|  21769|  46350|
-    +-----------------------+-------------+---------+-------+-------+-------+
+    +-------------------------+-----------------------+---------+-------+------+------+
+    |         Instance        |         Module        | BRAM_18K| DSP48E|  FF  |  LUT |
+    +-------------------------+-----------------------+---------+-------+------+------+
+    |sha256_INPUT_r_m_axi_U   |sha256_INPUT_r_m_axi   |        2|      0|   548|   700|
+    |sha256_OUTPUT_r_m_axi_U  |sha256_OUTPUT_r_m_axi  |        2|      0|   548|   700|
+    |sha256_ctrl_bus_s_axi_U  |sha256_ctrl_bus_s_axi  |        0|      0|   144|   232|
+    |grp_sha256_done_fu_114   |sha256_done            |        4|      0|  1661|  4175|
+    |grp_sha256_hash_fu_135   |sha256_hash            |        3|      0|  1598|  2723|
+    +-------------------------+-----------------------+---------+-------+------+------+
+    |Total                    |                       |       11|      0|  4499|  8530|
+    +-------------------------+-----------------------+---------+-------+------+------+
 
     * DSP48: 
     N/A
@@ -101,21 +104,26 @@
     N/A
 
     * Expression: 
-    +--------------------+----------+-------+---+----+------------+------------+
-    |    Variable Name   | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
-    +--------------------+----------+-------+---+----+------------+------------+
-    |indvarinc_fu_98_p2  |     +    |      0|  0|  15|           6|           1|
-    |tmp_s_fu_109_p2     |   icmp   |      0|  0|  11|           6|           2|
-    +--------------------+----------+-------+---+----+------------+------------+
-    |Total               |          |      0|  0|  26|          12|           3|
-    +--------------------+----------+-------+---+----+------------+------------+
+    +---------------------+----------+-------+---+----+------------+------------+
+    |    Variable Name    | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------+----------+-------+---+----+------------+------------+
+    |indvarinc_fu_146_p2  |     +    |      0|  0|  15|           6|           1|
+    |tmp_s_fu_157_p2      |   icmp   |      0|  0|  11|           6|           2|
+    +---------------------+----------+-------+---+----+------------+------------+
+    |Total                |          |      0|  0|  26|          12|           3|
+    +---------------------+----------+-------+---+----+------------+------------+
 
     * Multiplexer: 
     +---------------------+----+-----------+-----+-----------+
     |         Name        | LUT| Input Size| Bits| Total Bits|
     +---------------------+----+-----------+-----+-----------+
-    |ap_NS_fsm            |  38|          7|    1|          7|
-    |invdar_reg_61        |   9|          2|    6|         12|
+    |INPUT_r_ARVALID      |   9|          2|    1|          2|
+    |INPUT_r_RREADY       |   9|          2|    1|          2|
+    |OUTPUT_r_AWVALID     |   9|          2|    1|          2|
+    |OUTPUT_r_BREADY      |   9|          2|    1|          2|
+    |OUTPUT_r_WVALID      |   9|          2|    1|          2|
+    |ap_NS_fsm            |  41|          8|    1|          8|
+    |invdar_reg_103       |   9|          2|    6|         12|
     |sha256_buf_address0  |  21|          4|    6|         24|
     |sha256_buf_address1  |  15|          3|    6|         18|
     |sha256_buf_ce0       |  21|          4|    1|          4|
@@ -124,31 +132,40 @@
     |sha256_buf_we0       |  21|          4|    1|          4|
     |sha256_buf_we1       |   9|          2|    1|          2|
     +---------------------+----+-----------+-----+-----------+
-    |Total                | 170|         33|   31|        106|
+    |Total                | 218|         44|   36|        117|
     +---------------------+----+-----------+-----+-----------+
 
     * Register: 
-    +------------------------------------+----+----+-----+-----------+
-    |                Name                | FF | LUT| Bits| Const Bits|
-    +------------------------------------+----+----+-----+-----------+
-    |ap_CS_fsm                           |   6|   0|    6|          0|
-    |grp_sha256_done_fu_72_ap_start_reg  |   1|   0|    1|          0|
-    |grp_sha256_hash_fu_90_ap_start_reg  |   1|   0|    1|          0|
-    |invdar_reg_61                       |   6|   0|    6|          0|
-    |sha256_bits_0_reg_222               |  32|   0|   32|          0|
-    |sha256_bits_1_reg_172               |  32|   0|   32|          0|
-    |sha256_len_0_reg_177                |  32|   0|   32|          0|
-    |sha256hash_0_reg_182                |  32|   0|   32|          0|
-    |sha256hash_1_reg_187                |  32|   0|   32|          0|
-    |sha256hash_2_reg_192                |  32|   0|   32|          0|
-    |sha256hash_3_reg_197                |  32|   0|   32|          0|
-    |sha256hash_4_reg_202                |  32|   0|   32|          0|
-    |sha256hash_5_reg_207                |  32|   0|   32|          0|
-    |sha256hash_6_reg_212                |  32|   0|   32|          0|
-    |sha256hash_7_reg_217                |  32|   0|   32|          0|
-    +------------------------------------+----+----+-----+-----------+
-    |Total                               | 366|   0|  366|          0|
-    +------------------------------------+----+----+-----+-----------+
+    +-------------------------------------+----+----+-----+-----------+
+    |                 Name                | FF | LUT| Bits| Const Bits|
+    +-------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                            |   7|   0|    7|          0|
+    |grp_sha256_done_fu_114_ap_start_reg  |   1|   0|    1|          0|
+    |grp_sha256_hash_fu_135_ap_start_reg  |   1|   0|    1|          0|
+    |hash_0_data_reg                      |  32|   0|   32|          0|
+    |hash_0_vld_reg                       |   0|   0|    1|          1|
+    |hash_read_reg_207                    |  32|   0|   32|          0|
+    |invdar_reg_103                       |   6|   0|    6|          0|
+    |len_0_data_reg                       |  32|   0|   32|          0|
+    |len_0_vld_reg                        |   0|   0|    1|          1|
+    |len_read_reg_212                     |  32|   0|   32|          0|
+    |msg_0_data_reg                       |  32|   0|   32|          0|
+    |msg_0_vld_reg                        |   0|   0|    1|          1|
+    |msg_read_reg_217                     |  32|   0|   32|          0|
+    |sha256_bits_0_reg_280                |  32|   0|   32|          0|
+    |sha256_bits_1_reg_230                |  32|   0|   32|          0|
+    |sha256_len_0_reg_235                 |  32|   0|   32|          0|
+    |sha256hash_0_reg_240                 |  32|   0|   32|          0|
+    |sha256hash_1_reg_245                 |  32|   0|   32|          0|
+    |sha256hash_2_reg_250                 |  32|   0|   32|          0|
+    |sha256hash_3_reg_255                 |  32|   0|   32|          0|
+    |sha256hash_4_reg_260                 |  32|   0|   32|          0|
+    |sha256hash_5_reg_265                 |  32|   0|   32|          0|
+    |sha256hash_6_reg_270                 |  32|   0|   32|          0|
+    |sha256hash_7_reg_275                 |  32|   0|   32|          0|
+    +-------------------------------------+----+----+-----+-----------+
+    |Total                                | 559|   0|  562|          3|
+    +-------------------------------------+----+----+-----+-----------+
 
 
 
@@ -156,26 +173,121 @@
 == Interface
 ================================================================
 * Summary: 
-+---------------+-----+-----+------------+--------------+--------------+
-|   RTL Ports   | Dir | Bits|  Protocol  | Source Object|    C Type    |
-+---------------+-----+-----+------------+--------------+--------------+
-|ap_clk         |  in |    1| ap_ctrl_hs |    sha256    | return value |
-|ap_rst         |  in |    1| ap_ctrl_hs |    sha256    | return value |
-|ap_start       |  in |    1| ap_ctrl_hs |    sha256    | return value |
-|ap_done        | out |    1| ap_ctrl_hs |    sha256    | return value |
-|ap_idle        | out |    1| ap_ctrl_hs |    sha256    | return value |
-|ap_ready       | out |    1| ap_ctrl_hs |    sha256    | return value |
-|msg_address0   | out |    6|  ap_memory |      msg     |     array    |
-|msg_ce0        | out |    1|  ap_memory |      msg     |     array    |
-|msg_q0         |  in |    8|  ap_memory |      msg     |     array    |
-|len            |  in |   32|   ap_none  |      len     |    scalar    |
-|hash_address0  | out |    5|  ap_memory |     hash     |     array    |
-|hash_ce0       | out |    1|  ap_memory |     hash     |     array    |
-|hash_we0       | out |    1|  ap_memory |     hash     |     array    |
-|hash_d0        | out |    8|  ap_memory |     hash     |     array    |
-|hash_address1  | out |    5|  ap_memory |     hash     |     array    |
-|hash_ce1       | out |    1|  ap_memory |     hash     |     array    |
-|hash_we1       | out |    1|  ap_memory |     hash     |     array    |
-|hash_d1        | out |    8|  ap_memory |     hash     |     array    |
-+---------------+-----+-----+------------+--------------+--------------+
++-------------------------+-----+-----+------------+--------------+--------------+
+|        RTL Ports        | Dir | Bits|  Protocol  | Source Object|    C Type    |
++-------------------------+-----+-----+------------+--------------+--------------+
+|s_axi_ctrl_bus_AWVALID   |  in |    1|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_AWREADY   | out |    1|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_AWADDR    |  in |    6|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_WVALID    |  in |    1|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_WREADY    | out |    1|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_WDATA     |  in |   32|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_WSTRB     |  in |    4|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_ARVALID   |  in |    1|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_ARREADY   | out |    1|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_ARADDR    |  in |    6|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_RVALID    | out |    1|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_RREADY    |  in |    1|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_RDATA     | out |   32|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_RRESP     | out |    2|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_BVALID    | out |    1|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_BREADY    |  in |    1|    s_axi   |   ctrl_bus   |    scalar    |
+|s_axi_ctrl_bus_BRESP     | out |    2|    s_axi   |   ctrl_bus   |    scalar    |
+|ap_clk                   |  in |    1| ap_ctrl_hs |    sha256    | return value |
+|ap_rst_n                 |  in |    1| ap_ctrl_hs |    sha256    | return value |
+|ap_start                 |  in |    1| ap_ctrl_hs |    sha256    | return value |
+|ap_done                  | out |    1| ap_ctrl_hs |    sha256    | return value |
+|ap_idle                  | out |    1| ap_ctrl_hs |    sha256    | return value |
+|ap_ready                 | out |    1| ap_ctrl_hs |    sha256    | return value |
+|m_axi_INPUT_r_AWVALID    | out |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_AWREADY    |  in |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_AWADDR     | out |   32|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_AWID       | out |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_AWLEN      | out |    8|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_AWSIZE     | out |    3|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_AWBURST    | out |    2|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_AWLOCK     | out |    2|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_AWCACHE    | out |    4|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_AWPROT     | out |    3|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_AWQOS      | out |    4|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_AWREGION   | out |    4|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_AWUSER     | out |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_WVALID     | out |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_WREADY     |  in |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_WDATA      | out |   32|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_WSTRB      | out |    4|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_WLAST      | out |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_WID        | out |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_WUSER      | out |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_ARVALID    | out |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_ARREADY    |  in |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_ARADDR     | out |   32|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_ARID       | out |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_ARLEN      | out |    8|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_ARSIZE     | out |    3|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_ARBURST    | out |    2|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_ARLOCK     | out |    2|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_ARCACHE    | out |    4|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_ARPROT     | out |    3|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_ARQOS      | out |    4|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_ARREGION   | out |    4|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_ARUSER     | out |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_RVALID     |  in |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_RREADY     | out |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_RDATA      |  in |   32|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_RLAST      |  in |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_RID        |  in |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_RUSER      |  in |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_RRESP      |  in |    2|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_BVALID     |  in |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_BREADY     | out |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_BRESP      |  in |    2|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_BID        |  in |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_INPUT_r_BUSER      |  in |    1|    m_axi   |    INPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_AWVALID   | out |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_AWREADY   |  in |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_AWADDR    | out |   32|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_AWID      | out |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_AWLEN     | out |    8|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_AWSIZE    | out |    3|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_AWBURST   | out |    2|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_AWLOCK    | out |    2|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_AWCACHE   | out |    4|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_AWPROT    | out |    3|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_AWQOS     | out |    4|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_AWREGION  | out |    4|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_AWUSER    | out |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_WVALID    | out |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_WREADY    |  in |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_WDATA     | out |   32|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_WSTRB     | out |    4|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_WLAST     | out |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_WID       | out |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_WUSER     | out |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_ARVALID   | out |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_ARREADY   |  in |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_ARADDR    | out |   32|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_ARID      | out |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_ARLEN     | out |    8|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_ARSIZE    | out |    3|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_ARBURST   | out |    2|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_ARLOCK    | out |    2|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_ARCACHE   | out |    4|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_ARPROT    | out |    3|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_ARQOS     | out |    4|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_ARREGION  | out |    4|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_ARUSER    | out |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_RVALID    |  in |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_RREADY    | out |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_RDATA     |  in |   32|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_RLAST     |  in |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_RID       |  in |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_RUSER     |  in |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_RRESP     |  in |    2|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_BVALID    |  in |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_BREADY    | out |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_BRESP     |  in |    2|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_BID       |  in |    1|    m_axi   |   OUTPUT_r   |    pointer   |
+|m_axi_OUTPUT_r_BUSER     |  in |    1|    m_axi   |   OUTPUT_r   |    pointer   |
++-------------------------+-----+-----+------------+--------------+--------------+
 

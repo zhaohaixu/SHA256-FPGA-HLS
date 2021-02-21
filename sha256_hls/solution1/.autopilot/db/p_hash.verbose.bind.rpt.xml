@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'p_hash'" level="0">
-<item name = "Date">Sat Feb 20 20:53:52 2021
+<item name = "Date">Sun Feb 21 21:04:21 2021
 </item>
 <item name = "Version">2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)</item>
 <item name = "Project">sha256_hls</item>
@@ -24,28 +24,19 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="6">, min, max, min, max, Type</keys>
-<column name="">98, 98, 48, 48, function</column>
+<column name="">185, 185, 185, 185, none</column>
 </table>
 </item>
 <item name = "Detail">
 <section name = "" level="1">
 <item name = "Instance"><table name="" hasTotal="0">
 <keys size="7">Instance, Module, min, max, min, max, Type</keys>
-<column name="grp_p_word_fu_244">p_word, 2, 2, 2, 2, function</column>
-<column name="grp_p_Ch_fu_267">p_Ch, 0, 0, 1, 1, function</column>
-<column name="grp_p_Ch_fu_277">p_Ch, 0, 0, 1, 1, function</column>
-<column name="grp_p_Ma_fu_284">p_Ma, 0, 0, 1, 1, function</column>
-<column name="grp_p_Ma_fu_294">p_Ma, 0, 0, 1, 1, function</column>
-<column name="grp_p_S1_fu_301">p_S1, 0, 0, 1, 1, function</column>
-<column name="grp_p_S1_fu_307">p_S1, 0, 0, 1, 1, function</column>
-<column name="grp_p_S0_fu_312">p_S0, 0, 0, 1, 1, function</column>
-<column name="grp_p_S0_fu_318">p_S0, 0, 0, 1, 1, function</column>
-<column name="grp_p_G0_fu_323">p_G0, 0, 0, 1, 1, function</column>
-<column name="grp_p_G1_fu_329">p_G1, 0, 0, 1, 1, function</column>
 </table>
 </item>
 <item name = "Loop"><table name="" hasTotal="0">
 <keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- _hash_label0">34, 34, 4, 2, 1, 16, yes</column>
+<column name="- _hash_label1">147, 147, 6, 3, 1, 48, yes</column>
 </table>
 </item>
 </section>

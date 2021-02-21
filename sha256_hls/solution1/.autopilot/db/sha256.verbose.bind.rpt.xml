@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'sha256'" level="0">
-<item name = "Date">Sat Feb 20 20:54:00 2021
+<item name = "Date">Sun Feb 21 21:04:24 2021
 </item>
 <item name = "Version">2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)</item>
 <item name = "Project">sha256_hls</item>
@@ -24,15 +24,15 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="6">, min, max, min, max, Type</keys>
-<column name="">191, 6762, 191, 6762, none</column>
+<column name="">308, 12678, 308, 12678, none</column>
 </table>
 </item>
 <item name = "Detail">
 <section name = "" level="1">
 <item name = "Instance"><table name="" hasTotal="0">
 <keys size="7">Instance, Module, min, max, min, max, Type</keys>
-<column name="grp_sha256_done_fu_72">sha256_done, 121, 292, 121, 292, none</column>
-<column name="grp_sha256_hash_fu_90">sha256_hash, 2, 6402, 2, 6402, none</column>
+<column name="grp_sha256_done_fu_114">sha256_done, 232, 506, 232, 506, none</column>
+<column name="grp_sha256_hash_fu_135">sha256_hash, 7, 12103, 7, 12103, none</column>
 </table>
 </item>
 <item name = "Loop"><table name="" hasTotal="0">

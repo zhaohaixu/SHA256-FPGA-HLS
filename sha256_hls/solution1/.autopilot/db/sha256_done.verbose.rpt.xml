@@ -1,7 +1,7 @@
 <profile>
 
 <section name = "Vivado HLS Report for 'sha256_done'" level="0">
-<item name = "Date">Sat Feb 20 20:54:11 2021
+<item name = "Date">Sun Feb 21 21:04:27 2021
 </item>
 <item name = "Version">2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)</item>
 <item name = "Project">sha256_hls</item>
@@ -24,14 +24,14 @@
 <section name = "" level="1">
 <item name = "Summary"><table name="" hasTotal="0">
 <keys size="6">, min, max, min, max, Type</keys>
-<column name="">121, 292, 121, 292, none</column>
+<column name="">232, 506, 232, 506, none</column>
 </table>
 </item>
 <item name = "Detail">
 <section name = "" level="1">
 <item name = "Instance"><table name="" hasTotal="0">
 <keys size="7">Instance, Module, min, max, min, max, Type</keys>
-<column name="grp_p_hash_fu_507">p_hash, 98, 98, 48, 48, function</column>
+<column name="grp_p_hash_fu_579">p_hash, 185, 185, 185, 185, none</column>
 </table>
 </item>
 <item name = "Loop"><table name="" hasTotal="0">
@@ -39,6 +39,7 @@
 <column name="- sha256_done_label3">0, 64, 1, -, -, 0 ~ 64, no</column>
 <column name="- sha256_done_label4">8, 8, 1, -, -, 8, no</column>
 <column name="- sha256_done_label5">16, 16, 4, -, -, 4, no</column>
+<column name="- sha256_done_label0">33, 33, 3, 1, 1, 32, yes</column>
 </table>
 </item>
 </section>
@@ -51,21 +52,21 @@
 <item name = "Summary"><table name="" hasTotal="1">
 <keys size="5">Name, BRAM_18K, DSP48E, FF, LUT</keys>
 <column name="DSP">-, -, -, -</column>
-<column name="Expression">-, -, 0, 1191</column>
+<column name="Expression">-, -, 0, 1242</column>
 <column name="FIFO">-, -, -, -</column>
-<column name="Instance">0, -, 10190, 21443</column>
-<column name="Memory">-, -, -, -</column>
-<column name="Multiplexer">-, -, -, 1409</column>
-<column name="Register">-, -, 866, -</column>
+<column name="Instance">3, -, 904, 2250</column>
+<column name="Memory">1, -, 0, 0</column>
+<column name="Multiplexer">-, -, -, 683</column>
+<column name="Register">-, -, 757, -</column>
 <specialColumn name="Available">280, 220, 106400, 53200</specialColumn>
-<specialColumn name="Utilization (%)">0, 0, 10, 45</specialColumn>
+<specialColumn name="Utilization (%)">1, 0, 1, 7</specialColumn>
 </table>
 </item>
 <item name = "Detail">
 <section name = "" level="1">
 <item name = "Instance"><table name="" hasTotal="1">
 <keys size="6">Instance, Module, BRAM_18K, DSP48E, FF, LUT</keys>
-<column name="grp_p_hash_fu_507">p_hash, 0, 0, 10190, 21443</column>
+<column name="grp_p_hash_fu_579">p_hash, 3, 0, 904, 2250</column>
 </table>
 </item>
 <item name = "DSP48"><table name="" hasTotal="0">
@@ -74,6 +75,7 @@
 </item>
 <item name = "Memory"><table name="" hasTotal="1">
 <keys size="9">Memory, Module, BRAM_18K, FF, LUT, Words, Bits, Banks, W*Bits*Banks</keys>
+<column name="hash_tmp_U">sha256_done_hash_bkb, 1, 0, 0, 32, 8, 1, 256</column>
 </table>
 </item>
 <item name = "FIFO"><table name="" hasTotal="1">
@@ -82,110 +84,140 @@
 </item>
 <item name = "Expression"><table name="" hasTotal="1">
 <keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
-<column name="i_2_fu_823_p2">+, 0, 0, 12, 3, 1</column>
-<column name="i_fu_614_p2">+, 0, 0, 39, 32, 1</column>
-<column name="j_1_fu_642_p2">+, 0, 0, 13, 4, 1</column>
-<column name="j_2_fu_943_p2">+, 0, 0, 15, 5, 6</column>
-<column name="sha256_bits_0_write_1_fu_716_p2">+, 0, 0, 31, 24, 24</column>
-<column name="sha256_bits_0_write_2_fu_722_p2">+, 0, 0, 23, 16, 16</column>
-<column name="sha256_bits_0_write_fu_711_p2">+, 0, 0, 39, 32, 32</column>
-<column name="tmp_16_fu_975_p2">+, 0, 0, 15, 5, 5</column>
-<column name="tmp_46_i_fu_728_p2">+, 0, 0, 15, 8, 8</column>
-<column name="tmp_50_i_fu_766_p2">+, 0, 0, 39, 1, 32</column>
-<column name="exitcond_fu_620_p2">icmp, 0, 0, 18, 32, 3</column>
-<column name="tmp_2_fu_817_p2">icmp, 0, 0, 9, 3, 4</column>
-<column name="tmp_5_fu_631_p2">icmp, 0, 0, 18, 32, 6</column>
-<column name="tmp_7_fu_636_p2">icmp, 0, 0, 11, 4, 5</column>
-<column name="tmp_i_9_fu_664_p2">icmp, 0, 0, 18, 32, 32</column>
-<column name="tmp_i1_fu_893_p2">lshr, 0, 0, 101, 32, 32</column>
-<column name="tmp_i2_fu_903_p2">lshr, 0, 0, 101, 32, 32</column>
-<column name="tmp_i3_fu_913_p2">lshr, 0, 0, 101, 32, 32</column>
-<column name="tmp_i4_fu_923_p2">lshr, 0, 0, 101, 32, 32</column>
-<column name="tmp_i5_fu_933_p2">lshr, 0, 0, 101, 32, 32</column>
-<column name="tmp_i6_fu_837_p2">lshr, 0, 0, 101, 32, 32</column>
-<column name="tmp_i7_fu_847_p2">lshr, 0, 0, 101, 32, 32</column>
-<column name="tmp_i9_fu_869_p2">lshr, 0, 0, 101, 32, 32</column>
-<column name="x_assign_1_fu_771_p3">select, 0, 0, 32, 1, 32</column>
-<column name="tmp_4_fu_858_p2">xor, 0, 0, 4, 3, 4</column>
-<column name="tmp_i_fu_658_p2">xor, 0, 0, 32, 32, 2</column>
+<column name="i_3_fu_915_p2">+, 0, 0, 12, 3, 1</column>
+<column name="i_4_fu_1099_p2">+, 0, 0, 15, 6, 1</column>
+<column name="i_fu_702_p2">+, 0, 0, 39, 32, 1</column>
+<column name="j_1_fu_730_p2">+, 0, 0, 13, 4, 1</column>
+<column name="j_2_fu_1035_p2">+, 0, 0, 15, 5, 6</column>
+<column name="sha256_bits_0_write_1_fu_816_p2">+, 0, 0, 31, 24, 24</column>
+<column name="sha256_bits_0_write_2_fu_822_p2">+, 0, 0, 23, 16, 16</column>
+<column name="sha256_bits_0_write_fu_811_p2">+, 0, 0, 39, 32, 32</column>
+<column name="tmp_16_fu_1067_p2">+, 0, 0, 15, 5, 5</column>
+<column name="tmp_48_i_fu_828_p2">+, 0, 0, 15, 8, 8</column>
+<column name="tmp_89_i_fu_757_p2">+, 0, 0, 39, 1, 32</column>
+<column name="ap_block_pp0_stage0_11001">and, 0, 0, 2, 1, 1</column>
+<column name="ap_block_state10_io">and, 0, 0, 2, 1, 1</column>
+<column name="ap_block_state16_io">and, 0, 0, 2, 1, 1</column>
+<column name="exitcond_fu_708_p2">icmp, 0, 0, 18, 32, 3</column>
+<column name="ptr_cmp_fu_900_p2">icmp, 0, 0, 13, 11, 11</column>
+<column name="tmp_22_fu_1093_p2">icmp, 0, 0, 11, 6, 7</column>
+<column name="tmp_2_fu_909_p2">icmp, 0, 0, 9, 3, 4</column>
+<column name="tmp_5_fu_719_p2">icmp, 0, 0, 18, 32, 6</column>
+<column name="tmp_7_fu_724_p2">icmp, 0, 0, 11, 4, 5</column>
+<column name="tmp_i_9_fu_752_p2">icmp, 0, 0, 18, 32, 32</column>
+<column name="tmp_i1_fu_985_p2">lshr, 0, 0, 101, 32, 32</column>
+<column name="tmp_i2_fu_995_p2">lshr, 0, 0, 101, 32, 32</column>
+<column name="tmp_i3_fu_1005_p2">lshr, 0, 0, 101, 32, 32</column>
+<column name="tmp_i4_fu_1015_p2">lshr, 0, 0, 101, 32, 32</column>
+<column name="tmp_i5_fu_1025_p2">lshr, 0, 0, 101, 32, 32</column>
+<column name="tmp_i6_fu_929_p2">lshr, 0, 0, 101, 32, 32</column>
+<column name="tmp_i7_fu_939_p2">lshr, 0, 0, 101, 32, 32</column>
+<column name="tmp_i9_fu_961_p2">lshr, 0, 0, 101, 32, 32</column>
+<column name="ap_predicate_op178_writereq_state10">or, 0, 0, 2, 1, 1</column>
+<column name="x_assign_1_fu_762_p3">select, 0, 0, 32, 1, 32</column>
+<column name="ap_enable_pp0">xor, 0, 0, 2, 1, 2</column>
+<column name="ap_enable_reg_pp0_iter1">xor, 0, 0, 2, 2, 1</column>
+<column name="tmp_4_fu_950_p2">xor, 0, 0, 4, 3, 4</column>
+<column name="tmp_i_fu_746_p2">xor, 0, 0, 32, 32, 2</column>
 </table>
 </item>
 <item name = "Multiplexer"><table name="" hasTotal="1">
 <keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
-<column name="ap_NS_fsm">901, 209, 1, 209</column>
-<column name="grp_p_hash_fu_507_sha256hash_0_read">15, 3, 32, 96</column>
-<column name="grp_p_hash_fu_507_sha256hash_1_read">15, 3, 32, 96</column>
-<column name="grp_p_hash_fu_507_sha256hash_2_read">15, 3, 32, 96</column>
-<column name="grp_p_hash_fu_507_sha256hash_3_read">15, 3, 32, 96</column>
-<column name="grp_p_hash_fu_507_sha256hash_4_read">15, 3, 32, 96</column>
-<column name="grp_p_hash_fu_507_sha256hash_5_read">15, 3, 32, 96</column>
-<column name="grp_p_hash_fu_507_sha256hash_6_read">15, 3, 32, 96</column>
-<column name="grp_p_hash_fu_507_sha256hash_7_read">15, 3, 32, 96</column>
-<column name="hash_address0">27, 5, 5, 25</column>
-<column name="hash_address1">27, 5, 5, 25</column>
-<column name="hash_d0">27, 5, 8, 40</column>
-<column name="hash_d1">27, 5, 8, 40</column>
-<column name="i_0_in_reg_384">9, 2, 32, 64</column>
-<column name="i_1_reg_484">9, 2, 3, 6</column>
-<column name="j1_reg_393">9, 2, 4, 8</column>
-<column name="n_assign_1_reg_496">9, 2, 6, 12</column>
+<column name="ap_NS_fsm">97, 20, 1, 20</column>
+<column name="ap_enable_reg_pp0_iter1">9, 2, 1, 2</column>
+<column name="ap_enable_reg_pp0_iter2">9, 2, 1, 2</column>
+<column name="ap_sig_ioackin_m_axi_hash_AWREADY">9, 2, 1, 2</column>
+<column name="ap_sig_ioackin_m_axi_hash_WREADY">9, 2, 1, 2</column>
+<column name="grp_p_hash_fu_579_sha256hash_0_read">15, 3, 32, 96</column>
+<column name="grp_p_hash_fu_579_sha256hash_1_read">15, 3, 32, 96</column>
+<column name="grp_p_hash_fu_579_sha256hash_2_read">15, 3, 32, 96</column>
+<column name="grp_p_hash_fu_579_sha256hash_3_read">15, 3, 32, 96</column>
+<column name="grp_p_hash_fu_579_sha256hash_4_read">15, 3, 32, 96</column>
+<column name="grp_p_hash_fu_579_sha256hash_5_read">15, 3, 32, 96</column>
+<column name="grp_p_hash_fu_579_sha256hash_6_read">15, 3, 32, 96</column>
+<column name="grp_p_hash_fu_579_sha256hash_7_read">15, 3, 32, 96</column>
+<column name="hash_blk_n_AW">9, 2, 1, 2</column>
+<column name="hash_blk_n_B">9, 2, 1, 2</column>
+<column name="hash_blk_n_W">9, 2, 1, 2</column>
+<column name="hash_tmp_address0">33, 6, 5, 30</column>
+<column name="hash_tmp_address1">27, 5, 5, 25</column>
+<column name="hash_tmp_d0">27, 5, 8, 40</column>
+<column name="hash_tmp_d1">27, 5, 8, 40</column>
+<column name="i_0_in_reg_445">9, 2, 32, 64</column>
+<column name="i_1_reg_545">9, 2, 3, 6</column>
+<column name="i_2_reg_568">9, 2, 6, 12</column>
+<column name="j1_reg_454">9, 2, 4, 8</column>
+<column name="n_assign_1_reg_557">9, 2, 6, 12</column>
 <column name="sha256_buf_address0">44, 9, 6, 54</column>
 <column name="sha256_buf_address1">33, 6, 6, 36</column>
 <column name="sha256_buf_ce0">15, 3, 1, 3</column>
 <column name="sha256_buf_ce1">15, 3, 1, 3</column>
 <column name="sha256_buf_d0">38, 7, 8, 56</column>
 <column name="sha256_buf_d1">27, 5, 8, 40</column>
-<column name="sha256hash_1_reg_414">9, 2, 32, 64</column>
-<column name="sha256hash_2_reg_424">9, 2, 32, 64</column>
-<column name="sha256hash_3_reg_434">9, 2, 32, 64</column>
-<column name="sha256hash_4_reg_444">9, 2, 32, 64</column>
-<column name="sha256hash_5_reg_454">9, 2, 32, 64</column>
-<column name="sha256hash_6_reg_464">9, 2, 32, 64</column>
-<column name="sha256hash_7_reg_474">9, 2, 32, 64</column>
-<column name="sha256hash_reg_404">9, 2, 32, 64</column>
+<column name="sha256hash_1_reg_475">9, 2, 32, 64</column>
+<column name="sha256hash_2_reg_485">9, 2, 32, 64</column>
+<column name="sha256hash_3_reg_495">9, 2, 32, 64</column>
+<column name="sha256hash_4_reg_505">9, 2, 32, 64</column>
+<column name="sha256hash_5_reg_515">9, 2, 32, 64</column>
+<column name="sha256hash_6_reg_525">9, 2, 32, 64</column>
+<column name="sha256hash_7_reg_535">9, 2, 32, 64</column>
+<column name="sha256hash_reg_465">9, 2, 32, 64</column>
 </table>
 </item>
 <item name = "Register"><table name="" hasTotal="1">
 <keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
-<column name="ap_CS_fsm">208, 0, 208, 0</column>
-<column name="grp_p_hash_fu_507_ap_start_reg">1, 0, 1, 0</column>
-<column name="i_0_in_reg_384">32, 0, 32, 0</column>
-<column name="i_1_cast2_reg_1123">3, 0, 5, 2</column>
-<column name="i_1_reg_484">3, 0, 3, 0</column>
-<column name="i_2_reg_1131">3, 0, 3, 0</column>
-<column name="j1_reg_393">4, 0, 4, 0</column>
-<column name="j_2_reg_1177">6, 0, 6, 0</column>
-<column name="n_assign_1_reg_496">6, 0, 6, 0</column>
-<column name="reg_561">32, 0, 32, 0</column>
-<column name="reg_566">32, 0, 32, 0</column>
-<column name="reg_571">32, 0, 32, 0</column>
-<column name="reg_576">32, 0, 32, 0</column>
-<column name="reg_581">32, 0, 32, 0</column>
-<column name="reg_586">32, 0, 32, 0</column>
-<column name="reg_591">32, 0, 32, 0</column>
-<column name="reg_596">32, 0, 32, 0</column>
-<column name="sha256hash_1_reg_414">32, 0, 32, 0</column>
-<column name="sha256hash_2_reg_424">32, 0, 32, 0</column>
-<column name="sha256hash_3_reg_434">32, 0, 32, 0</column>
-<column name="sha256hash_4_reg_444">32, 0, 32, 0</column>
-<column name="sha256hash_5_reg_454">32, 0, 32, 0</column>
-<column name="sha256hash_6_reg_464">32, 0, 32, 0</column>
-<column name="sha256hash_7_reg_474">32, 0, 32, 0</column>
-<column name="sha256hash_reg_404">32, 0, 32, 0</column>
-<column name="tmp_22_reg_1147">3, 0, 4, 1</column>
-<column name="tmp_32_reg_1136">8, 0, 8, 0</column>
-<column name="tmp_35_reg_1152">8, 0, 8, 0</column>
-<column name="tmp_36_reg_1157">8, 0, 8, 0</column>
-<column name="tmp_37_reg_1162">8, 0, 8, 0</column>
-<column name="tmp_38_reg_1167">8, 0, 8, 0</column>
-<column name="tmp_39_reg_1172">8, 0, 8, 0</column>
-<column name="tmp_46_i1_reg_1113">8, 0, 8, 0</column>
-<column name="tmp_46_i3_reg_1118">8, 0, 8, 0</column>
-<column name="tmp_46_i4_reg_1103">8, 0, 8, 0</column>
-<column name="tmp_46_i6_reg_1108">8, 0, 8, 0</column>
-<column name="tmp_4_reg_1141">3, 0, 3, 0</column>
-<column name="tmp_5_reg_1086">1, 0, 1, 0</column>
-<column name="tmp_i_9_reg_1098">1, 0, 1, 0</column>
+<column name="ap_CS_fsm">19, 0, 19, 0</column>
+<column name="ap_enable_reg_pp0_iter0">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter1">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter2">1, 0, 1, 0</column>
+<column name="ap_reg_ioackin_m_axi_hash_AWREADY">1, 0, 1, 0</column>
+<column name="ap_reg_ioackin_m_axi_hash_WREADY">1, 0, 1, 0</column>
+<column name="grp_p_hash_fu_579_ap_start_reg">1, 0, 1, 0</column>
+<column name="hash_addr_reg_1187">32, 0, 32, 0</column>
+<column name="hash_tmp_load_reg_1326">8, 0, 8, 0</column>
+<column name="i_0_in_reg_445">32, 0, 32, 0</column>
+<column name="i_1_cast3_reg_1252">3, 0, 5, 2</column>
+<column name="i_1_reg_545">3, 0, 3, 0</column>
+<column name="i_2_reg_568">6, 0, 6, 0</column>
+<column name="i_3_reg_1261">3, 0, 3, 0</column>
+<column name="j1_reg_454">4, 0, 4, 0</column>
+<column name="j_2_reg_1307">6, 0, 6, 0</column>
+<column name="n_assign_1_reg_557">6, 0, 6, 0</column>
+<column name="ptr_cmp_reg_1248">1, 0, 1, 0</column>
+<column name="reg_635">32, 0, 32, 0</column>
+<column name="reg_640">32, 0, 32, 0</column>
+<column name="reg_645">32, 0, 32, 0</column>
+<column name="reg_650">32, 0, 32, 0</column>
+<column name="reg_655">32, 0, 32, 0</column>
+<column name="reg_660">32, 0, 32, 0</column>
+<column name="reg_665">32, 0, 32, 0</column>
+<column name="reg_670">32, 0, 32, 0</column>
+<column name="sha256hash_1_reg_475">32, 0, 32, 0</column>
+<column name="sha256hash_2_reg_485">32, 0, 32, 0</column>
+<column name="sha256hash_3_reg_495">32, 0, 32, 0</column>
+<column name="sha256hash_4_reg_505">32, 0, 32, 0</column>
+<column name="sha256hash_5_reg_515">32, 0, 32, 0</column>
+<column name="sha256hash_6_reg_525">32, 0, 32, 0</column>
+<column name="sha256hash_7_reg_535">32, 0, 32, 0</column>
+<column name="sha256hash_reg_465">32, 0, 32, 0</column>
+<column name="tmp_10_reg_1182">11, 0, 11, 0</column>
+<column name="tmp_22_reg_1312">1, 0, 1, 0</column>
+<column name="tmp_22_reg_1312_pp0_iter1_reg">1, 0, 1, 0</column>
+<column name="tmp_27_reg_1277">3, 0, 4, 1</column>
+<column name="tmp_34_reg_1228">8, 0, 8, 0</column>
+<column name="tmp_36_reg_1266">8, 0, 8, 0</column>
+<column name="tmp_39_reg_1282">8, 0, 8, 0</column>
+<column name="tmp_40_reg_1287">8, 0, 8, 0</column>
+<column name="tmp_41_reg_1292">8, 0, 8, 0</column>
+<column name="tmp_42_reg_1297">8, 0, 8, 0</column>
+<column name="tmp_43_reg_1302">8, 0, 8, 0</column>
+<column name="tmp_48_i1_reg_1238">8, 0, 8, 0</column>
+<column name="tmp_48_i3_reg_1243">8, 0, 8, 0</column>
+<column name="tmp_48_i4_reg_1218">8, 0, 8, 0</column>
+<column name="tmp_48_i6_reg_1223">8, 0, 8, 0</column>
+<column name="tmp_48_i9_reg_1233">8, 0, 8, 0</column>
+<column name="tmp_4_reg_1271">3, 0, 3, 0</column>
+<column name="tmp_5_reg_1206">1, 0, 1, 0</column>
 </table>
 </item>
 </section>
@@ -222,14 +254,52 @@
 <column name="sha256_bits_0_read">in, 32, ap_none, sha256_bits_0_read, scalar</column>
 <column name="sha256_bits_1_read">in, 32, ap_none, sha256_bits_1_read, scalar</column>
 <column name="sha256_len">in, 32, ap_none, sha256_len, scalar</column>
-<column name="hash_address0">out, 5, ap_memory, hash, array</column>
-<column name="hash_ce0">out, 1, ap_memory, hash, array</column>
-<column name="hash_we0">out, 1, ap_memory, hash, array</column>
-<column name="hash_d0">out, 8, ap_memory, hash, array</column>
-<column name="hash_address1">out, 5, ap_memory, hash, array</column>
-<column name="hash_ce1">out, 1, ap_memory, hash, array</column>
-<column name="hash_we1">out, 1, ap_memory, hash, array</column>
-<column name="hash_d1">out, 8, ap_memory, hash, array</column>
+<column name="m_axi_hash_AWVALID">out, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_AWREADY">in, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_AWADDR">out, 32, m_axi, hash, pointer</column>
+<column name="m_axi_hash_AWID">out, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_AWLEN">out, 32, m_axi, hash, pointer</column>
+<column name="m_axi_hash_AWSIZE">out, 3, m_axi, hash, pointer</column>
+<column name="m_axi_hash_AWBURST">out, 2, m_axi, hash, pointer</column>
+<column name="m_axi_hash_AWLOCK">out, 2, m_axi, hash, pointer</column>
+<column name="m_axi_hash_AWCACHE">out, 4, m_axi, hash, pointer</column>
+<column name="m_axi_hash_AWPROT">out, 3, m_axi, hash, pointer</column>
+<column name="m_axi_hash_AWQOS">out, 4, m_axi, hash, pointer</column>
+<column name="m_axi_hash_AWREGION">out, 4, m_axi, hash, pointer</column>
+<column name="m_axi_hash_AWUSER">out, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_WVALID">out, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_WREADY">in, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_WDATA">out, 8, m_axi, hash, pointer</column>
+<column name="m_axi_hash_WSTRB">out, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_WLAST">out, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_WID">out, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_WUSER">out, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_ARVALID">out, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_ARREADY">in, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_ARADDR">out, 32, m_axi, hash, pointer</column>
+<column name="m_axi_hash_ARID">out, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_ARLEN">out, 32, m_axi, hash, pointer</column>
+<column name="m_axi_hash_ARSIZE">out, 3, m_axi, hash, pointer</column>
+<column name="m_axi_hash_ARBURST">out, 2, m_axi, hash, pointer</column>
+<column name="m_axi_hash_ARLOCK">out, 2, m_axi, hash, pointer</column>
+<column name="m_axi_hash_ARCACHE">out, 4, m_axi, hash, pointer</column>
+<column name="m_axi_hash_ARPROT">out, 3, m_axi, hash, pointer</column>
+<column name="m_axi_hash_ARQOS">out, 4, m_axi, hash, pointer</column>
+<column name="m_axi_hash_ARREGION">out, 4, m_axi, hash, pointer</column>
+<column name="m_axi_hash_ARUSER">out, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_RVALID">in, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_RREADY">out, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_RDATA">in, 8, m_axi, hash, pointer</column>
+<column name="m_axi_hash_RLAST">in, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_RID">in, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_RUSER">in, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_RRESP">in, 2, m_axi, hash, pointer</column>
+<column name="m_axi_hash_BVALID">in, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_BREADY">out, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_BRESP">in, 2, m_axi, hash, pointer</column>
+<column name="m_axi_hash_BID">in, 1, m_axi, hash, pointer</column>
+<column name="m_axi_hash_BUSER">in, 1, m_axi, hash, pointer</column>
+<column name="hash_offset">in, 32, ap_none, hash_offset, scalar</column>
 </table>
 </item>
 </section>

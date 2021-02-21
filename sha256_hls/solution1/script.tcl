@@ -6,10 +6,11 @@
 open_project sha256_hls
 set_top sha256
 add_files src/sha256.c
-add_files -tb src/sha256_test.c
+add_files -tb src/sha256_test.c -cflags "-Wno-unknown-pragmas"
 open_solution "solution1"
 set_part {xc7z020clg400-1} -tool vivado
 create_clock -period 10 -name default
+config_export -format ip_catalog -rtl verilog
 source "./sha256_hls/solution1/directives.tcl"
 csim_design -clean -O
 csynth_design
