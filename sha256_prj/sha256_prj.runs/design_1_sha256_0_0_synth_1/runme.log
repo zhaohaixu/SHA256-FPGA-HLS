@@ -1,0 +1,1802 @@
+
+*** Running vivado
+    with args -log design_1_sha256_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_sha256_0_0.tcl
+
+
+****** Vivado v2018.3 (64-bit)
+  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
+  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source design_1_sha256_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.ip_user_files/xilinx_com_hls_sha256_1_0'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2018.3/data/ip'.
+update_ip_catalog: Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 276.980 ; gain = 23.684
+Command: synth_design -top design_1_sha256_0_0 -part xc7z020clg400-1 -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: Launching helper process for spawning children vivado processes
+INFO: Helper process launched with PID 8980 
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 400.613 ; gain = 104.770
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'design_1_sha256_0_0' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ip/design_1_sha256_0_0/synth/design_1_sha256_0_0.v:59]
+INFO: [Synth 8-6157] synthesizing module 'sha256' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256.v:12]
+	Parameter ap_ST_fsm_state1 bound to: 7'b0000001 
+	Parameter ap_ST_fsm_state2 bound to: 7'b0000010 
+	Parameter ap_ST_fsm_state3 bound to: 7'b0000100 
+	Parameter ap_ST_fsm_state4 bound to: 7'b0001000 
+	Parameter ap_ST_fsm_state5 bound to: 7'b0010000 
+	Parameter ap_ST_fsm_state6 bound to: 7'b0100000 
+	Parameter ap_ST_fsm_state7 bound to: 7'b1000000 
+	Parameter C_S_AXI_CTRL_BUS_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_CTRL_BUS_ADDR_WIDTH bound to: 6 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_INPUT_R_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_INPUT_R_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_INPUT_R_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_INPUT_R_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_INPUT_R_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_INPUT_R_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_INPUT_R_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_INPUT_R_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_INPUT_R_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_M_AXI_INPUT_R_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_M_AXI_INPUT_R_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter C_M_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_OUTPUT_R_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_OUTPUT_R_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_OUTPUT_R_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_OUTPUT_R_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_OUTPUT_R_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_OUTPUT_R_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_OUTPUT_R_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_OUTPUT_R_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_OUTPUT_R_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_M_AXI_OUTPUT_R_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_M_AXI_OUTPUT_R_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter C_S_AXI_CTRL_BUS_WSTRB_WIDTH bound to: 4 - type: integer 
+	Parameter C_S_AXI_WSTRB_WIDTH bound to: 4 - type: integer 
+	Parameter C_M_AXI_INPUT_R_WSTRB_WIDTH bound to: 4 - type: integer 
+	Parameter C_M_AXI_WSTRB_WIDTH bound to: 4 - type: integer 
+	Parameter C_M_AXI_OUTPUT_R_WSTRB_WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256.v:287]
+INFO: [Synth 8-6157] synthesizing module 'sha256_ctrl_bus_s_axi' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_ctrl_bus_s_axi.v:9]
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 6 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter ADDR_MSG_DATA_0 bound to: 6'b010000 
+	Parameter ADDR_MSG_CTRL bound to: 6'b010100 
+	Parameter ADDR_LEN_DATA_0 bound to: 6'b011000 
+	Parameter ADDR_LEN_CTRL bound to: 6'b011100 
+	Parameter ADDR_HASH_DATA_0 bound to: 6'b100000 
+	Parameter ADDR_HASH_CTRL bound to: 6'b100100 
+	Parameter WRIDLE bound to: 2'b00 
+	Parameter WRDATA bound to: 2'b01 
+	Parameter WRRESP bound to: 2'b10 
+	Parameter WRRESET bound to: 2'b11 
+	Parameter RDIDLE bound to: 2'b00 
+	Parameter RDDATA bound to: 2'b01 
+	Parameter RDRESET bound to: 2'b10 
+	Parameter ADDR_BITS bound to: 6 - type: integer 
+INFO: [Synth 8-155] case statement is not full and has no default [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_ctrl_bus_s_axi.v:179]
+INFO: [Synth 8-6155] done synthesizing module 'sha256_ctrl_bus_s_axi' (1#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_ctrl_bus_s_axi.v:9]
+INFO: [Synth 8-6157] synthesizing module 'sha256_INPUT_r_m_axi' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:10]
+	Parameter CONSERVATIVE bound to: 0 - type: integer 
+	Parameter NUM_READ_OUTSTANDING bound to: 16 - type: integer 
+	Parameter NUM_WRITE_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_READ_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter MAX_WRITE_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_TARGET_ADDR bound to: 0 - type: integer 
+	Parameter C_M_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter USER_DW bound to: 8 - type: integer 
+	Parameter USER_AW bound to: 32 - type: integer 
+	Parameter USER_MAXREQS bound to: 5 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'sha256_INPUT_r_m_axi_throttl' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:709]
+	Parameter USED_FIX bound to: 0 - type: integer 
+	Parameter FIX_VALUE bound to: 4 - type: integer 
+	Parameter ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+	Parameter USER_MAXREQS bound to: 16 - type: integer 
+	Parameter CONSERVATIVE bound to: 0 - type: integer 
+	Parameter AVERAGE_MODE bound to: 0 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_INPUT_r_m_axi_throttl' (2#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:709]
+INFO: [Synth 8-6157] synthesizing module 'sha256_INPUT_r_m_axi_write' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:1702]
+	Parameter NUM_WRITE_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_WRITE_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_TARGET_ADDR bound to: 0 - type: integer 
+	Parameter C_M_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter USER_DW bound to: 8 - type: integer 
+	Parameter USER_AW bound to: 32 - type: integer 
+	Parameter USER_MAXREQS bound to: 5 - type: integer 
+	Parameter USER_DATA_WIDTH bound to: 8 - type: integer 
+	Parameter USER_DATA_BYTES bound to: 1 - type: integer 
+	Parameter USER_ADDR_ALIGN bound to: 0 - type: integer 
+	Parameter BUS_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter BUS_DATA_BYTES bound to: 4 - type: integer 
+	Parameter BUS_ADDR_ALIGN bound to: 2 - type: integer 
+	Parameter NUM_WRITE_WIDTH bound to: 4 - type: integer 
+	Parameter TARGET_ADDR bound to: 0 - type: integer 
+	Parameter BOUNDARY_BEATS bound to: 10'b1111111111 
+INFO: [Synth 8-6157] synthesizing module 'sha256_INPUT_r_m_axi_fifo' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:419]
+	Parameter DATA_BITS bound to: 12 - type: integer 
+	Parameter DEPTH bound to: 5 - type: integer 
+	Parameter DEPTH_BITS bound to: 3 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_INPUT_r_m_axi_fifo' (3#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:419]
+INFO: [Synth 8-6157] synthesizing module 'sha256_INPUT_r_m_axi_decoder' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:693]
+	Parameter DIN_WIDTH bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_INPUT_r_m_axi_decoder' (4#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:693]
+INFO: [Synth 8-6157] synthesizing module 'sha256_INPUT_r_m_axi_reg_slice' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:315]
+	Parameter N bound to: 64 - type: integer 
+	Parameter ZERO bound to: 2'b10 
+	Parameter ONE bound to: 2'b11 
+	Parameter TWO bound to: 2'b01 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_INPUT_r_m_axi_reg_slice' (5#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:315]
+INFO: [Synth 8-6157] synthesizing module 'sha256_INPUT_r_m_axi_fifo__parameterized0' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:419]
+	Parameter DATA_BITS bound to: 64 - type: integer 
+	Parameter DEPTH bound to: 5 - type: integer 
+	Parameter DEPTH_BITS bound to: 3 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_INPUT_r_m_axi_fifo__parameterized0' (5#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:419]
+INFO: [Synth 8-6157] synthesizing module 'sha256_INPUT_r_m_axi_buffer' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:528]
+	Parameter MEM_STYLE bound to: block - type: string 
+	Parameter DATA_WIDTH bound to: 9 - type: integer 
+	Parameter ADDR_WIDTH bound to: 8 - type: integer 
+	Parameter DEPTH bound to: 256 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_INPUT_r_m_axi_buffer' (6#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:528]
+INFO: [Synth 8-6157] synthesizing module 'sha256_INPUT_r_m_axi_fifo__parameterized1' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:419]
+	Parameter DATA_BITS bound to: 2 - type: integer 
+	Parameter DEPTH bound to: 15 - type: integer 
+	Parameter DEPTH_BITS bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_INPUT_r_m_axi_fifo__parameterized1' (6#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:419]
+INFO: [Synth 8-6157] synthesizing module 'sha256_INPUT_r_m_axi_fifo__parameterized2' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:419]
+	Parameter DATA_BITS bound to: 2 - type: integer 
+	Parameter DEPTH bound to: 5 - type: integer 
+	Parameter DEPTH_BITS bound to: 3 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_INPUT_r_m_axi_fifo__parameterized2' (6#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:419]
+INFO: [Synth 8-6155] done synthesizing module 'sha256_INPUT_r_m_axi_write' (7#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:1702]
+INFO: [Synth 8-6157] synthesizing module 'sha256_INPUT_r_m_axi_read' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:905]
+	Parameter NUM_READ_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_READ_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_TARGET_ADDR bound to: 0 - type: integer 
+	Parameter C_M_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter USER_DW bound to: 8 - type: integer 
+	Parameter USER_AW bound to: 32 - type: integer 
+	Parameter USER_MAXREQS bound to: 5 - type: integer 
+	Parameter USER_DATA_WIDTH bound to: 8 - type: integer 
+	Parameter USER_DATA_BYTES bound to: 1 - type: integer 
+	Parameter USER_ADDR_ALIGN bound to: 0 - type: integer 
+	Parameter BUS_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter BUS_DATA_BYTES bound to: 4 - type: integer 
+	Parameter BUS_ADDR_ALIGN bound to: 2 - type: integer 
+	Parameter NUM_READ_WIDTH bound to: 4 - type: integer 
+	Parameter TARGET_ADDR bound to: 0 - type: integer 
+	Parameter BOUNDARY_BEATS bound to: 10'b1111111111 
+INFO: [Synth 8-6157] synthesizing module 'sha256_INPUT_r_m_axi_buffer__parameterized0' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:528]
+	Parameter MEM_STYLE bound to: block - type: string 
+	Parameter DATA_WIDTH bound to: 35 - type: integer 
+	Parameter ADDR_WIDTH bound to: 8 - type: integer 
+	Parameter DEPTH bound to: 256 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_INPUT_r_m_axi_buffer__parameterized0' (7#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:528]
+INFO: [Synth 8-6157] synthesizing module 'sha256_INPUT_r_m_axi_reg_slice__parameterized0' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:315]
+	Parameter N bound to: 10 - type: integer 
+	Parameter ZERO bound to: 2'b10 
+	Parameter ONE bound to: 2'b11 
+	Parameter TWO bound to: 2'b01 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_INPUT_r_m_axi_reg_slice__parameterized0' (7#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:315]
+INFO: [Synth 8-6155] done synthesizing module 'sha256_INPUT_r_m_axi_read' (8#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:905]
+INFO: [Synth 8-6155] done synthesizing module 'sha256_INPUT_r_m_axi' (9#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:10]
+INFO: [Synth 8-6157] synthesizing module 'sha256_OUTPUT_r_m_axi' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:10]
+	Parameter CONSERVATIVE bound to: 0 - type: integer 
+	Parameter NUM_READ_OUTSTANDING bound to: 16 - type: integer 
+	Parameter NUM_WRITE_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_READ_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter MAX_WRITE_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_TARGET_ADDR bound to: 0 - type: integer 
+	Parameter C_M_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter USER_DW bound to: 8 - type: integer 
+	Parameter USER_AW bound to: 32 - type: integer 
+	Parameter USER_MAXREQS bound to: 5 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'sha256_OUTPUT_r_m_axi_throttl' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:709]
+	Parameter USED_FIX bound to: 0 - type: integer 
+	Parameter FIX_VALUE bound to: 4 - type: integer 
+	Parameter ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter DEPTH bound to: 16 - type: integer 
+	Parameter USER_MAXREQS bound to: 16 - type: integer 
+	Parameter CONSERVATIVE bound to: 0 - type: integer 
+	Parameter AVERAGE_MODE bound to: 0 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_OUTPUT_r_m_axi_throttl' (10#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:709]
+INFO: [Synth 8-6157] synthesizing module 'sha256_OUTPUT_r_m_axi_write' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:1702]
+	Parameter NUM_WRITE_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_WRITE_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_TARGET_ADDR bound to: 0 - type: integer 
+	Parameter C_M_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_AWUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_WUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_BUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter USER_DW bound to: 8 - type: integer 
+	Parameter USER_AW bound to: 32 - type: integer 
+	Parameter USER_MAXREQS bound to: 5 - type: integer 
+	Parameter USER_DATA_WIDTH bound to: 8 - type: integer 
+	Parameter USER_DATA_BYTES bound to: 1 - type: integer 
+	Parameter USER_ADDR_ALIGN bound to: 0 - type: integer 
+	Parameter BUS_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter BUS_DATA_BYTES bound to: 4 - type: integer 
+	Parameter BUS_ADDR_ALIGN bound to: 2 - type: integer 
+	Parameter NUM_WRITE_WIDTH bound to: 4 - type: integer 
+	Parameter TARGET_ADDR bound to: 0 - type: integer 
+	Parameter BOUNDARY_BEATS bound to: 10'b1111111111 
+INFO: [Synth 8-6157] synthesizing module 'sha256_OUTPUT_r_m_axi_fifo' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:419]
+	Parameter DATA_BITS bound to: 12 - type: integer 
+	Parameter DEPTH bound to: 5 - type: integer 
+	Parameter DEPTH_BITS bound to: 3 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_OUTPUT_r_m_axi_fifo' (11#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:419]
+INFO: [Synth 8-6157] synthesizing module 'sha256_OUTPUT_r_m_axi_decoder' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:693]
+	Parameter DIN_WIDTH bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_OUTPUT_r_m_axi_decoder' (12#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:693]
+INFO: [Synth 8-6157] synthesizing module 'sha256_OUTPUT_r_m_axi_reg_slice' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:315]
+	Parameter N bound to: 64 - type: integer 
+	Parameter ZERO bound to: 2'b10 
+	Parameter ONE bound to: 2'b11 
+	Parameter TWO bound to: 2'b01 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_OUTPUT_r_m_axi_reg_slice' (13#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:315]
+INFO: [Synth 8-6157] synthesizing module 'sha256_OUTPUT_r_m_axi_fifo__parameterized0' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:419]
+	Parameter DATA_BITS bound to: 64 - type: integer 
+	Parameter DEPTH bound to: 5 - type: integer 
+	Parameter DEPTH_BITS bound to: 3 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_OUTPUT_r_m_axi_fifo__parameterized0' (13#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:419]
+INFO: [Synth 8-6157] synthesizing module 'sha256_OUTPUT_r_m_axi_buffer' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:528]
+	Parameter MEM_STYLE bound to: block - type: string 
+	Parameter DATA_WIDTH bound to: 9 - type: integer 
+	Parameter ADDR_WIDTH bound to: 8 - type: integer 
+	Parameter DEPTH bound to: 256 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_OUTPUT_r_m_axi_buffer' (14#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:528]
+INFO: [Synth 8-6157] synthesizing module 'sha256_OUTPUT_r_m_axi_fifo__parameterized1' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:419]
+	Parameter DATA_BITS bound to: 2 - type: integer 
+	Parameter DEPTH bound to: 15 - type: integer 
+	Parameter DEPTH_BITS bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_OUTPUT_r_m_axi_fifo__parameterized1' (14#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:419]
+INFO: [Synth 8-6157] synthesizing module 'sha256_OUTPUT_r_m_axi_fifo__parameterized2' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:419]
+	Parameter DATA_BITS bound to: 2 - type: integer 
+	Parameter DEPTH bound to: 5 - type: integer 
+	Parameter DEPTH_BITS bound to: 3 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_OUTPUT_r_m_axi_fifo__parameterized2' (14#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:419]
+INFO: [Synth 8-6155] done synthesizing module 'sha256_OUTPUT_r_m_axi_write' (15#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:1702]
+INFO: [Synth 8-6157] synthesizing module 'sha256_OUTPUT_r_m_axi_read' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:905]
+	Parameter NUM_READ_OUTSTANDING bound to: 16 - type: integer 
+	Parameter MAX_READ_BURST_LENGTH bound to: 16 - type: integer 
+	Parameter C_M_AXI_ID_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_ADDR_WIDTH bound to: 32 - type: integer 
+	Parameter C_TARGET_ADDR bound to: 0 - type: integer 
+	Parameter C_M_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_M_AXI_ARUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_M_AXI_RUSER_WIDTH bound to: 1 - type: integer 
+	Parameter C_USER_VALUE bound to: 0 - type: integer 
+	Parameter C_PROT_VALUE bound to: 0 - type: integer 
+	Parameter C_CACHE_VALUE bound to: 3 - type: integer 
+	Parameter USER_DW bound to: 8 - type: integer 
+	Parameter USER_AW bound to: 32 - type: integer 
+	Parameter USER_MAXREQS bound to: 5 - type: integer 
+	Parameter USER_DATA_WIDTH bound to: 8 - type: integer 
+	Parameter USER_DATA_BYTES bound to: 1 - type: integer 
+	Parameter USER_ADDR_ALIGN bound to: 0 - type: integer 
+	Parameter BUS_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter BUS_DATA_BYTES bound to: 4 - type: integer 
+	Parameter BUS_ADDR_ALIGN bound to: 2 - type: integer 
+	Parameter NUM_READ_WIDTH bound to: 4 - type: integer 
+	Parameter TARGET_ADDR bound to: 0 - type: integer 
+	Parameter BOUNDARY_BEATS bound to: 10'b1111111111 
+INFO: [Synth 8-6157] synthesizing module 'sha256_OUTPUT_r_m_axi_buffer__parameterized0' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:528]
+	Parameter MEM_STYLE bound to: block - type: string 
+	Parameter DATA_WIDTH bound to: 35 - type: integer 
+	Parameter ADDR_WIDTH bound to: 8 - type: integer 
+	Parameter DEPTH bound to: 256 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_OUTPUT_r_m_axi_buffer__parameterized0' (15#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:528]
+INFO: [Synth 8-6157] synthesizing module 'sha256_OUTPUT_r_m_axi_reg_slice__parameterized0' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:315]
+	Parameter N bound to: 10 - type: integer 
+	Parameter ZERO bound to: 2'b10 
+	Parameter ONE bound to: 2'b11 
+	Parameter TWO bound to: 2'b01 
+INFO: [Synth 8-6155] done synthesizing module 'sha256_OUTPUT_r_m_axi_reg_slice__parameterized0' (15#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:315]
+INFO: [Synth 8-6155] done synthesizing module 'sha256_OUTPUT_r_m_axi_read' (16#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:905]
+INFO: [Synth 8-6155] done synthesizing module 'sha256_OUTPUT_r_m_axi' (17#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:10]
+INFO: [Synth 8-6157] synthesizing module 'sha256_sha256_buf' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_sha256_buf.v:61]
+	Parameter DataWidth bound to: 8 - type: integer 
+	Parameter AddressRange bound to: 64 - type: integer 
+	Parameter AddressWidth bound to: 6 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'sha256_sha256_buf_ram' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_sha256_buf.v:9]
+	Parameter DWIDTH bound to: 8 - type: integer 
+	Parameter AWIDTH bound to: 6 - type: integer 
+	Parameter MEM_SIZE bound to: 64 - type: integer 
+INFO: [Synth 8-5534] Detected attribute (* ram_style = "block" *) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_sha256_buf.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'sha256_sha256_buf_ram' (18#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_sha256_buf.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'sha256_sha256_buf' (19#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_sha256_buf.v:61]
+INFO: [Synth 8-6157] synthesizing module 'sha256_done' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_done.v:10]
+	Parameter ap_ST_fsm_state1 bound to: 19'b0000000000000000001 
+	Parameter ap_ST_fsm_state2 bound to: 19'b0000000000000000010 
+	Parameter ap_ST_fsm_state3 bound to: 19'b0000000000000000100 
+	Parameter ap_ST_fsm_state4 bound to: 19'b0000000000000001000 
+	Parameter ap_ST_fsm_state5 bound to: 19'b0000000000000010000 
+	Parameter ap_ST_fsm_state6 bound to: 19'b0000000000000100000 
+	Parameter ap_ST_fsm_state7 bound to: 19'b0000000000001000000 
+	Parameter ap_ST_fsm_state8 bound to: 19'b0000000000010000000 
+	Parameter ap_ST_fsm_state9 bound to: 19'b0000000000100000000 
+	Parameter ap_ST_fsm_state10 bound to: 19'b0000000001000000000 
+	Parameter ap_ST_fsm_state11 bound to: 19'b0000000010000000000 
+	Parameter ap_ST_fsm_state12 bound to: 19'b0000000100000000000 
+	Parameter ap_ST_fsm_state13 bound to: 19'b0000001000000000000 
+	Parameter ap_ST_fsm_pp0_stage0 bound to: 19'b0000010000000000000 
+	Parameter ap_ST_fsm_state17 bound to: 19'b0000100000000000000 
+	Parameter ap_ST_fsm_state18 bound to: 19'b0001000000000000000 
+	Parameter ap_ST_fsm_state19 bound to: 19'b0010000000000000000 
+	Parameter ap_ST_fsm_state20 bound to: 19'b0100000000000000000 
+	Parameter ap_ST_fsm_state21 bound to: 19'b1000000000000000000 
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_done.v:195]
+INFO: [Synth 8-6157] synthesizing module 'sha256_done_hash_bkb' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_done_hash_bkb.v:59]
+	Parameter DataWidth bound to: 8 - type: integer 
+	Parameter AddressRange bound to: 32 - type: integer 
+	Parameter AddressWidth bound to: 5 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'sha256_done_hash_bkb_ram' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_done_hash_bkb.v:9]
+	Parameter DWIDTH bound to: 8 - type: integer 
+	Parameter AWIDTH bound to: 5 - type: integer 
+	Parameter MEM_SIZE bound to: 32 - type: integer 
+INFO: [Synth 8-5534] Detected attribute (* ram_style = "block" *) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_done_hash_bkb.v:26]
+INFO: [Synth 8-6155] done synthesizing module 'sha256_done_hash_bkb_ram' (20#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_done_hash_bkb.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'sha256_done_hash_bkb' (21#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_done_hash_bkb.v:59]
+INFO: [Synth 8-6157] synthesizing module 'p_hash' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/p_hash.v:10]
+	Parameter ap_ST_fsm_state1 bound to: 8'b00000001 
+	Parameter ap_ST_fsm_pp0_stage0 bound to: 8'b00000010 
+	Parameter ap_ST_fsm_pp0_stage1 bound to: 8'b00000100 
+	Parameter ap_ST_fsm_state6 bound to: 8'b00001000 
+	Parameter ap_ST_fsm_pp1_stage0 bound to: 8'b00010000 
+	Parameter ap_ST_fsm_pp1_stage1 bound to: 8'b00100000 
+	Parameter ap_ST_fsm_pp1_stage2 bound to: 8'b01000000 
+	Parameter ap_ST_fsm_state13 bound to: 8'b10000000 
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/p_hash.v:87]
+INFO: [Synth 8-6157] synthesizing module 'p_hash_K' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/p_hash_K.v:42]
+	Parameter DataWidth bound to: 32 - type: integer 
+	Parameter AddressRange bound to: 64 - type: integer 
+	Parameter AddressWidth bound to: 6 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'p_hash_K_rom' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/p_hash_K.v:9]
+	Parameter DWIDTH bound to: 32 - type: integer 
+	Parameter AWIDTH bound to: 6 - type: integer 
+	Parameter MEM_SIZE bound to: 64 - type: integer 
+INFO: [Synth 8-3876] $readmem data file './p_hash_K_rom.dat' is read successfully [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/p_hash_K.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'p_hash_K_rom' (22#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/p_hash_K.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'p_hash_K' (23#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/p_hash_K.v:42]
+INFO: [Synth 8-6157] synthesizing module 'p_hash_W' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/p_hash_W.v:61]
+	Parameter DataWidth bound to: 32 - type: integer 
+	Parameter AddressRange bound to: 64 - type: integer 
+	Parameter AddressWidth bound to: 6 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'p_hash_W_ram' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/p_hash_W.v:9]
+	Parameter DWIDTH bound to: 32 - type: integer 
+	Parameter AWIDTH bound to: 6 - type: integer 
+	Parameter MEM_SIZE bound to: 64 - type: integer 
+INFO: [Synth 8-5534] Detected attribute (* ram_style = "block" *) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/p_hash_W.v:27]
+INFO: [Synth 8-6155] done synthesizing module 'p_hash_W_ram' (24#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/p_hash_W.v:9]
+INFO: [Synth 8-6155] done synthesizing module 'p_hash_W' (25#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/p_hash_W.v:61]
+INFO: [Synth 8-6155] done synthesizing module 'p_hash' (26#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/p_hash.v:10]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_done.v:1462]
+INFO: [Synth 8-6155] done synthesizing module 'sha256_done' (27#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_done.v:10]
+INFO: [Synth 8-6157] synthesizing module 'sha256_hash' [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_hash.v:10]
+	Parameter ap_ST_fsm_state1 bound to: 11'b00000000001 
+	Parameter ap_ST_fsm_state2 bound to: 11'b00000000010 
+	Parameter ap_ST_fsm_state3 bound to: 11'b00000000100 
+	Parameter ap_ST_fsm_state4 bound to: 11'b00000001000 
+	Parameter ap_ST_fsm_state5 bound to: 11'b00000010000 
+	Parameter ap_ST_fsm_state6 bound to: 11'b00000100000 
+	Parameter ap_ST_fsm_state7 bound to: 11'b00001000000 
+	Parameter ap_ST_fsm_state8 bound to: 11'b00010000000 
+	Parameter ap_ST_fsm_state9 bound to: 11'b00100000000 
+	Parameter ap_ST_fsm_state10 bound to: 11'b01000000000 
+	Parameter ap_ST_fsm_state11 bound to: 11'b10000000000 
+INFO: [Synth 8-5534] Detected attribute (* fsm_encoding = "none" *) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_hash.v:180]
+WARNING: [Synth 8-589] replacing case/wildcard equality operator === with logical equality operator == [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_hash.v:725]
+INFO: [Synth 8-6155] done synthesizing module 'sha256_hash' (28#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_hash.v:10]
+INFO: [Synth 8-6155] done synthesizing module 'sha256' (29#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_sha256_0_0' (30#1) [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ip/design_1_sha256_0_0/synth/design_1_sha256_0_0.v:59]
+WARNING: [Synth 8-3331] design p_hash_W has unconnected port reset
+WARNING: [Synth 8-3331] design p_hash_K has unconnected port reset
+WARNING: [Synth 8-3331] design sha256_hash has unconnected port m_axi_data_AWREADY
+WARNING: [Synth 8-3331] design sha256_hash has unconnected port m_axi_data_WREADY
+WARNING: [Synth 8-3331] design sha256_hash has unconnected port m_axi_data_RLAST
+WARNING: [Synth 8-3331] design sha256_hash has unconnected port m_axi_data_RID[0]
+WARNING: [Synth 8-3331] design sha256_hash has unconnected port m_axi_data_RUSER[0]
+WARNING: [Synth 8-3331] design sha256_hash has unconnected port m_axi_data_RRESP[1]
+WARNING: [Synth 8-3331] design sha256_hash has unconnected port m_axi_data_RRESP[0]
+WARNING: [Synth 8-3331] design sha256_hash has unconnected port m_axi_data_BVALID
+WARNING: [Synth 8-3331] design sha256_hash has unconnected port m_axi_data_BRESP[1]
+WARNING: [Synth 8-3331] design sha256_hash has unconnected port m_axi_data_BRESP[0]
+WARNING: [Synth 8-3331] design sha256_hash has unconnected port m_axi_data_BID[0]
+WARNING: [Synth 8-3331] design sha256_hash has unconnected port m_axi_data_BUSER[0]
+WARNING: [Synth 8-3331] design sha256_done_hash_bkb has unconnected port reset
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_ARREADY
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_RVALID
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_RDATA[7]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_RDATA[6]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_RDATA[5]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_RDATA[4]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_RDATA[3]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_RDATA[2]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_RDATA[1]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_RDATA[0]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_RLAST
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_RID[0]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_RUSER[0]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_RRESP[1]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_RRESP[0]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_BRESP[1]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_BRESP[0]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_BID[0]
+WARNING: [Synth 8-3331] design sha256_done has unconnected port m_axi_hash_BUSER[0]
+WARNING: [Synth 8-3331] design sha256_sha256_buf has unconnected port reset
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_read has unconnected port RID[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_read has unconnected port RUSER[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_read has unconnected port rreq_cache[3]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_read has unconnected port rreq_cache[2]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_read has unconnected port rreq_cache[1]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_read has unconnected port rreq_cache[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_read has unconnected port rreq_prot[2]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_read has unconnected port rreq_prot[1]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_read has unconnected port rreq_prot[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_read has unconnected port rreq_user[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_write has unconnected port BID[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_write has unconnected port BUSER[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_write has unconnected port wreq_cache[3]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_write has unconnected port wreq_cache[2]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_write has unconnected port wreq_cache[1]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_write has unconnected port wreq_cache[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_write has unconnected port wreq_prot[2]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_write has unconnected port wreq_prot[1]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_write has unconnected port wreq_prot[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_write has unconnected port wreq_user[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi_write has unconnected port wdata_user[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_AWID[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_AWSIZE[2]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_AWSIZE[1]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_AWSIZE[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_AWBURST[1]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_AWBURST[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_AWLOCK[1]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_AWLOCK[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_WID[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_WLAST
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_ARID[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_ARSIZE[2]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_ARSIZE[1]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_ARSIZE[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_ARBURST[1]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_ARBURST[0]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_ARLOCK[1]
+WARNING: [Synth 8-3331] design sha256_OUTPUT_r_m_axi has unconnected port I_ARLOCK[0]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_read has unconnected port RID[0]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_read has unconnected port RUSER[0]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_read has unconnected port rreq_cache[3]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_read has unconnected port rreq_cache[2]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_read has unconnected port rreq_cache[1]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_read has unconnected port rreq_cache[0]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_read has unconnected port rreq_prot[2]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_read has unconnected port rreq_prot[1]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_read has unconnected port rreq_prot[0]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_read has unconnected port rreq_user[0]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_write has unconnected port BID[0]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_write has unconnected port BUSER[0]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_write has unconnected port wreq_cache[3]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_write has unconnected port wreq_cache[2]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_write has unconnected port wreq_cache[1]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_write has unconnected port wreq_cache[0]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_write has unconnected port wreq_prot[2]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_write has unconnected port wreq_prot[1]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_write has unconnected port wreq_prot[0]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_write has unconnected port wreq_user[0]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi_write has unconnected port wdata_user[0]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi has unconnected port I_AWID[0]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi has unconnected port I_AWSIZE[2]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi has unconnected port I_AWSIZE[1]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi has unconnected port I_AWSIZE[0]
+WARNING: [Synth 8-3331] design sha256_INPUT_r_m_axi has unconnected port I_AWBURST[1]
+INFO: [Common 17-14] Message 'Synth 8-3331' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:14 . Memory (MB): peak = 491.340 ; gain = 195.496
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 491.340 ; gain = 195.496
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 491.340 ; gain = 195.496
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ip/design_1_sha256_0_0/constraints/sha256_ooc.xdc] for cell 'inst'
+Finished Parsing XDC File [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ip/design_1_sha256_0_0/constraints/sha256_ooc.xdc] for cell 'inst'
+Parsing XDC File [E:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.runs/design_1_sha256_0_0_synth_1/dont_touch.xdc]
+Finished Parsing XDC File [E:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.runs/design_1_sha256_0_0_synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 868.168 ; gain = 0.047
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 871.293 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.417 . Memory (MB): peak = 872.859 ; gain = 4.691
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:38 ; elapsed = 00:00:46 . Memory (MB): peak = 872.859 ; gain = 577.016
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:38 ; elapsed = 00:00:46 . Memory (MB): peak = 872.859 ; gain = 577.016
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property DONT_TOUCH = true for inst. (constraint file  E:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.runs/design_1_sha256_0_0_synth_1/dont_touch.xdc, line 9).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:46 . Memory (MB): peak = 872.859 ; gain = 577.016
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'wstate_reg' in module 'sha256_ctrl_bus_s_axi'
+INFO: [Synth 8-802] inferred FSM for state register 'rstate_reg' in module 'sha256_ctrl_bus_s_axi'
+INFO: [Synth 8-5544] ROM "wnext" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "wnext" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'sha256_INPUT_r_m_axi_reg_slice'
+INFO: [Synth 8-5544] ROM "next" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:611]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:507]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_INPUT_r_m_axi.v:611]
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'sha256_INPUT_r_m_axi_reg_slice__parameterized0'
+INFO: [Synth 8-5544] ROM "next" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'sha256_OUTPUT_r_m_axi_reg_slice'
+INFO: [Synth 8-5544] ROM "next" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:611]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:507]
+INFO: [Synth 8-5818] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the output of the operator [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/sha256_OUTPUT_r_m_axi.v:611]
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'sha256_OUTPUT_r_m_axi_reg_slice__parameterized0'
+INFO: [Synth 8-5544] ROM "next" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "next" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+WARNING: [Synth 8-3936] Found unconnected internal register 'tmp_43_reg_1572_reg' and it is trimmed from '7' to '6' bits. [e:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.srcs/sources_1/bd/design_1/ipshared/08e4/hdl/verilog/p_hash.v:601]
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-5546] ROM "exitcond_fu_847_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "tmp_fu_529_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-5544] ROM "tmp_7_fu_724_p2" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "exitcond_fu_708_p2" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "tmp_2_fu_909_p2" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "tmp_22_fu_1093_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ptr_cmp_fu_900_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "tmp_7_fu_724_p2" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "exitcond_fu_708_p2" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5544] ROM "tmp_2_fu_909_p2" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "tmp_22_fu_1093_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ptr_cmp_fu_900_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "ap_NS_fsm" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-4490] FSM extraction disabled for register 'ap_CS_fsm_reg' through user attribute
+INFO: [Synth 8-5546] ROM "tmp_s_fu_157_p2" won't be mapped to RAM because it is too sparse
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                             0001 |                               11
+*
+                  WRIDLE |                             0010 |                               00
+                  WRDATA |                             0100 |                               01
+                  WRRESP |                             1000 |                               10
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'wstate_reg' using encoding 'one-hot' in module 'sha256_ctrl_bus_s_axi'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              001 |                               10
+*
+                  RDIDLE |                              010 |                               00
+                  RDDATA |                              100 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'rstate_reg' using encoding 'one-hot' in module 'sha256_ctrl_bus_s_axi'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    ZERO |                               00 |                               10
+                     ONE |                               10 |                               11
+                     TWO |                               01 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'sha256_INPUT_r_m_axi_reg_slice'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    ZERO |                               00 |                               10
+                     ONE |                               10 |                               11
+                     TWO |                               01 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'sha256_INPUT_r_m_axi_reg_slice__parameterized0'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    ZERO |                               00 |                               10
+                     ONE |                               10 |                               11
+                     TWO |                               01 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'sha256_OUTPUT_r_m_axi_reg_slice'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                    ZERO |                               00 |                               10
+                     ONE |                               10 |                               11
+                     TWO |                               01 |                               01
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'sha256_OUTPUT_r_m_axi_reg_slice__parameterized0'
+INFO: [Synth 8-3971] The signal ram_reg was recognized as a true dual port RAM template.
+INFO: [Synth 8-3971] The signal ram_reg was recognized as a true dual port RAM template.
+INFO: [Synth 8-3971] The signal ram_reg was recognized as a true dual port RAM template.
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:44 ; elapsed = 00:00:52 . Memory (MB): peak = 872.859 ; gain = 577.016
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 39    
+	   3 Input     32 Bit       Adders := 12    
+	   2 Input     24 Bit       Adders := 1     
+	   2 Input     20 Bit       Adders := 4     
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 4     
+	   2 Input      9 Bit       Adders := 4     
+	   2 Input      8 Bit       Adders := 19    
+	   2 Input      7 Bit       Adders := 2     
+	   2 Input      6 Bit       Adders := 15    
+	   2 Input      5 Bit       Adders := 3     
+	   2 Input      4 Bit       Adders := 5     
+	   2 Input      3 Bit       Adders := 21    
+	   2 Input      2 Bit       Adders := 2     
++---XORs : 
+	   3 Input     32 Bit         XORs := 12    
+	   2 Input     32 Bit         XORs := 17    
+	   2 Input      3 Bit         XORs := 1     
++---Registers : 
+	               64 Bit    Registers := 12    
+	               59 Bit    Registers := 2     
+	               35 Bit    Registers := 6     
+	               32 Bit    Registers := 140   
+	               20 Bit    Registers := 4     
+	               19 Bit    Registers := 1     
+	               12 Bit    Registers := 4     
+	               11 Bit    Registers := 2     
+	               10 Bit    Registers := 12    
+	                9 Bit    Registers := 6     
+	                8 Bit    Registers := 49    
+	                7 Bit    Registers := 5     
+	                6 Bit    Registers := 11    
+	                5 Bit    Registers := 6     
+	                4 Bit    Registers := 9     
+	                3 Bit    Registers := 15    
+	                2 Bit    Registers := 25    
+	                1 Bit    Registers := 144   
++---RAMs : 
+	               8K Bit         RAMs := 2     
+	               2K Bit         RAMs := 4     
+	              512 Bit         RAMs := 1     
+	              256 Bit         RAMs := 1     
++---ROMs : 
+	                              ROMs := 2     
++---Muxes : 
+	   2 Input     64 Bit        Muxes := 4     
+	   2 Input     35 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 75    
+	   4 Input     32 Bit        Muxes := 1     
+	   2 Input     20 Bit        Muxes := 4     
+	   2 Input     19 Bit        Muxes := 1     
+	  20 Input     19 Bit        Muxes := 1     
+	   3 Input     15 Bit        Muxes := 1     
+	   2 Input     14 Bit        Muxes := 1     
+	   4 Input     12 Bit        Muxes := 4     
+	   2 Input     11 Bit        Muxes := 3     
+	  12 Input     11 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 11    
+	   2 Input      9 Bit        Muxes := 2     
+	   3 Input      9 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 29    
+	   4 Input      8 Bit        Muxes := 4     
+	   3 Input      8 Bit        Muxes := 2     
+	   9 Input      8 Bit        Muxes := 2     
+	   2 Input      7 Bit        Muxes := 7     
+	   2 Input      6 Bit        Muxes := 19    
+	   5 Input      6 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 5     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 21    
+	   3 Input      4 Bit        Muxes := 4     
+	   3 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 13    
+	   4 Input      3 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 87    
+	   3 Input      2 Bit        Muxes := 18    
+	   5 Input      2 Bit        Muxes := 6     
+	   2 Input      1 Bit        Muxes := 190   
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module sha256_ctrl_bus_s_axi 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 4     
+	                6 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 3     
+	   4 Input     32 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 3     
+	   3 Input      3 Bit        Muxes := 1     
+	   2 Input      3 Bit        Muxes := 2     
+Module sha256_INPUT_r_m_axi_throttl 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module sha256_INPUT_r_m_axi_fifo 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	               12 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_INPUT_r_m_axi_decoder 
+Detailed RTL Component Info : 
++---Muxes : 
+	   4 Input      3 Bit        Muxes := 1     
+Module sha256_INPUT_r_m_axi_reg_slice 
+Detailed RTL Component Info : 
++---Registers : 
+	               64 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     64 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 10    
+	   3 Input      2 Bit        Muxes := 3     
+	   5 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_INPUT_r_m_axi_fifo__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	               64 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_INPUT_r_m_axi_buffer 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 3     
++---Registers : 
+	                9 Bit    Registers := 3     
+	                8 Bit    Registers := 2     
+	                1 Bit    Registers := 4     
++---RAMs : 
+	               2K Bit         RAMs := 1     
++---Muxes : 
+	   2 Input      9 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_INPUT_r_m_axi_fifo__parameterized1 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_INPUT_r_m_axi_fifo__parameterized2 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_INPUT_r_m_axi_write 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input     20 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 6     
+	               20 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
+	                8 Bit    Registers := 6     
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 16    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input     20 Bit        Muxes := 1     
+	   4 Input     12 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 2     
+	   4 Input      8 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 5     
+	   3 Input      4 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 21    
+Module sha256_INPUT_r_m_axi_buffer__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 3     
++---Registers : 
+	               35 Bit    Registers := 3     
+	                8 Bit    Registers := 2     
+	                1 Bit    Registers := 4     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   2 Input     35 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_INPUT_r_m_axi_reg_slice__parameterized0 
+Detailed RTL Component Info : 
++---Registers : 
+	               10 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     10 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 10    
+	   3 Input      2 Bit        Muxes := 3     
+	   5 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_INPUT_r_m_axi_read 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input     20 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 7     
+	               20 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
+	                8 Bit    Registers := 2     
+	                6 Bit    Registers := 1     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 6     
+	   2 Input     20 Bit        Muxes := 1     
+	   4 Input     12 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 2     
+	   4 Input      8 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 14    
+Module sha256_OUTPUT_r_m_axi_throttl 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+Module sha256_OUTPUT_r_m_axi_fifo 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	               12 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_OUTPUT_r_m_axi_decoder 
+Detailed RTL Component Info : 
++---Muxes : 
+	   4 Input      3 Bit        Muxes := 1     
+Module sha256_OUTPUT_r_m_axi_reg_slice 
+Detailed RTL Component Info : 
++---Registers : 
+	               64 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     64 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 10    
+	   3 Input      2 Bit        Muxes := 3     
+	   5 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_OUTPUT_r_m_axi_fifo__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	               64 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_OUTPUT_r_m_axi_buffer 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 3     
++---Registers : 
+	                9 Bit    Registers := 3     
+	                8 Bit    Registers := 2     
+	                1 Bit    Registers := 4     
++---RAMs : 
+	               2K Bit         RAMs := 1     
++---Muxes : 
+	   2 Input      9 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_OUTPUT_r_m_axi_fifo__parameterized1 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 1     
++---Registers : 
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_OUTPUT_r_m_axi_fifo__parameterized2 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      3 Bit       Adders := 2     
++---Registers : 
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_OUTPUT_r_m_axi_write 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input     20 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 6     
+	               20 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
+	                8 Bit    Registers := 6     
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 16    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 4     
+	   2 Input     20 Bit        Muxes := 1     
+	   4 Input     12 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 2     
+	   4 Input      8 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 5     
+	   3 Input      4 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 21    
+Module sha256_OUTPUT_r_m_axi_buffer__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 3     
++---Registers : 
+	               35 Bit    Registers := 3     
+	                8 Bit    Registers := 2     
+	                1 Bit    Registers := 4     
++---RAMs : 
+	               8K Bit         RAMs := 1     
++---Muxes : 
+	   2 Input     35 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 4     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_OUTPUT_r_m_axi_reg_slice__parameterized0 
+Detailed RTL Component Info : 
++---Registers : 
+	               10 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input     10 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 10    
+	   3 Input      2 Bit        Muxes := 3     
+	   5 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 3     
+Module sha256_OUTPUT_r_m_axi_read 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input     20 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 1     
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 7     
+	               20 Bit    Registers := 1     
+	               10 Bit    Registers := 2     
+	                8 Bit    Registers := 2     
+	                6 Bit    Registers := 1     
+	                2 Bit    Registers := 3     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 6     
+	   2 Input     20 Bit        Muxes := 1     
+	   4 Input     12 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 2     
+	   4 Input      8 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 2     
+	   2 Input      2 Bit        Muxes := 4     
+	   2 Input      1 Bit        Muxes := 14    
+Module sha256_sha256_buf_ram 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 2     
++---RAMs : 
+	              512 Bit         RAMs := 1     
+Module sha256_done_hash_bkb_ram 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
++---RAMs : 
+	              256 Bit         RAMs := 1     
+Module p_hash_K_rom 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 1     
++---ROMs : 
+	                              ROMs := 1     
+Module p_hash_W_ram 
+Detailed RTL Component Info : 
++---Registers : 
+	               32 Bit    Registers := 2     
++---RAMs : 
+	               2K Bit         RAMs := 1     
+Module p_hash 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 11    
+	   3 Input     32 Bit       Adders := 6     
+	   2 Input      7 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 4     
+	   2 Input      5 Bit       Adders := 1     
++---XORs : 
+	   3 Input     32 Bit         XORs := 6     
+	   2 Input     32 Bit         XORs := 8     
++---Registers : 
+	               59 Bit    Registers := 1     
+	               32 Bit    Registers := 26    
+	                8 Bit    Registers := 3     
+	                7 Bit    Registers := 2     
+	                6 Bit    Registers := 1     
+	                5 Bit    Registers := 3     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 8     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 14    
+	   3 Input      8 Bit        Muxes := 1     
+	   9 Input      8 Bit        Muxes := 1     
+	   2 Input      7 Bit        Muxes := 3     
+	   2 Input      6 Bit        Muxes := 7     
+	   2 Input      5 Bit        Muxes := 1     
+	   3 Input      4 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 8     
+Module sha256_done 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 3     
+	   2 Input     24 Bit       Adders := 1     
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input      8 Bit       Adders := 1     
+	   2 Input      6 Bit       Adders := 2     
+	   2 Input      5 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
+	   2 Input      3 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
+	   2 Input      3 Bit         XORs := 1     
++---Registers : 
+	               32 Bit    Registers := 17    
+	               19 Bit    Registers := 1     
+	               11 Bit    Registers := 1     
+	                8 Bit    Registers := 13    
+	                6 Bit    Registers := 3     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 5     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 11    
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 16    
+	   2 Input     19 Bit        Muxes := 1     
+	  20 Input     19 Bit        Muxes := 1     
+	   3 Input     15 Bit        Muxes := 1     
+	   2 Input     14 Bit        Muxes := 1     
+	   2 Input     11 Bit        Muxes := 1     
+	   2 Input     10 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 9     
+	   5 Input      6 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 3     
+	   2 Input      4 Bit        Muxes := 3     
+	   2 Input      3 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 17    
+Module sha256_hash 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 18    
+	               11 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input     32 Bit        Muxes := 8     
+	   2 Input     11 Bit        Muxes := 2     
+	  12 Input     11 Bit        Muxes := 1     
+	   3 Input      9 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 5     
+Module sha256 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      6 Bit       Adders := 1     
++---Registers : 
+	               32 Bit    Registers := 17    
+	                7 Bit    Registers := 1     
+	                6 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 2     
+	   2 Input      7 Bit        Muxes := 1     
+	   2 Input      6 Bit        Muxes := 4     
+	   2 Input      4 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 8     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+Warning: Parallel synthesis criteria is not met 
+INFO: [Synth 8-5544] ROM "data21" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "exitcond_fu_847_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "tmp_2_fu_909_p2" won't be mapped to Block RAM because address size (3) smaller than threshold (5)
+INFO: [Synth 8-5545] ROM "exitcond_fu_708_p2" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "ptr_cmp_fu_900_p2" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "data21" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "exitcond_fu_847_p2" won't be mapped to RAM because it is too sparse
+warning: Removed RAM bus_write/buff_wdata/mem_reg due to inactive write enable
+WARNING: [Synth 8-6014] Unused sequential element bus_write/buff_wdata/mem_reg was removed. 
+INFO: [Synth 8-3971] The signal sha256_buf_U/sha256_sha256_buf_ram_U/ram_reg was recognized as a true dual port RAM template.
+INFO: [Synth 8-3971] The signal hash_tmp_U/sha256_done_hash_bkb_ram_U/ram_reg was recognized as a true dual port RAM template.
+INFO: [Synth 8-3971] The signal W_U/p_hash_W_ram_U/ram_reg was recognized as a true dual port RAM template.
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[0]' (FDE) to 'p_hash:/tmp_i_reg_1447_reg[2]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[1]' (FDE) to 'p_hash:/tmp_i_reg_1447_reg[3]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[2]' (FDE) to 'p_hash:/tmp_i_reg_1447_reg[4]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[3]' (FDE) to 'p_hash:/tmp_i_reg_1447_reg[5]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[5]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_i_reg_1447_reg[1]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[6]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[7]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[8]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[9]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[10]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[11]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[12]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[13]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[14]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[15]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[16]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[17]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[18]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[19]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[20]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[21]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[22]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[23]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[24]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[25]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[26]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[27]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[28]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[29]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[30]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[31]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[32]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[33]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[34]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[35]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[36]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[37]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[38]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[39]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[40]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[41]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[42]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[43]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[44]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[45]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[46]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[47]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[48]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[49]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[50]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[51]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[52]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[53]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[54]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[55]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[56]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[57]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[58]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[59]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[60]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[61]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[62]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3886] merging instance 'p_hash:/tmp_26_reg_1463_reg[63]' (FD) to 'p_hash:/tmp_i_reg_1447_reg[0]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[12] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[13] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[17] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[20] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[21] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[22] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[24] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[25] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[26] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[27] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[28] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[29] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[30] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[62] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[61] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[60] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[59] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[58] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[57] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[56] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[55] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[54] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[53] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[52] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[51] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[50] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[49] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[48] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[47] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[46] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[45] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[44] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[43] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[42] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[41] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[40] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[39] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[38] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[37] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[36] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[35] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[34] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[33] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[32] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_read/rs_rreq/data_p2_reg[63] )
+INFO: [Synth 8-3886] merging instance 'inst/grp_sha256_done_fu_114/hash_addr_reg_1187_reg[0]' (FDE) to 'inst/grp_sha256_done_fu_114/tmp_10_reg_1182_reg[0]'
+INFO: [Synth 8-3886] merging instance 'inst/grp_sha256_done_fu_114/hash_addr_reg_1187_reg[1]' (FDE) to 'inst/grp_sha256_done_fu_114/tmp_10_reg_1182_reg[1]'
+INFO: [Synth 8-3886] merging instance 'inst/grp_sha256_done_fu_114/hash_addr_reg_1187_reg[2]' (FDE) to 'inst/grp_sha256_done_fu_114/tmp_10_reg_1182_reg[2]'
+INFO: [Synth 8-3886] merging instance 'inst/grp_sha256_done_fu_114/hash_addr_reg_1187_reg[3]' (FDE) to 'inst/grp_sha256_done_fu_114/tmp_10_reg_1182_reg[3]'
+INFO: [Synth 8-3886] merging instance 'inst/grp_sha256_done_fu_114/hash_addr_reg_1187_reg[4]' (FDE) to 'inst/grp_sha256_done_fu_114/tmp_10_reg_1182_reg[4]'
+INFO: [Synth 8-3886] merging instance 'inst/grp_sha256_done_fu_114/hash_addr_reg_1187_reg[5]' (FDE) to 'inst/grp_sha256_done_fu_114/tmp_10_reg_1182_reg[5]'
+INFO: [Synth 8-3886] merging instance 'inst/grp_sha256_done_fu_114/hash_addr_reg_1187_reg[6]' (FDE) to 'inst/grp_sha256_done_fu_114/tmp_10_reg_1182_reg[6]'
+INFO: [Synth 8-3886] merging instance 'inst/grp_sha256_done_fu_114/hash_addr_reg_1187_reg[7]' (FDE) to 'inst/grp_sha256_done_fu_114/tmp_10_reg_1182_reg[7]'
+INFO: [Synth 8-3886] merging instance 'inst/grp_sha256_done_fu_114/hash_addr_reg_1187_reg[8]' (FDE) to 'inst/grp_sha256_done_fu_114/tmp_10_reg_1182_reg[8]'
+INFO: [Synth 8-3886] merging instance 'inst/grp_sha256_done_fu_114/hash_addr_reg_1187_reg[9]' (FDE) to 'inst/grp_sha256_done_fu_114/tmp_10_reg_1182_reg[9]'
+INFO: [Synth 8-3886] merging instance 'inst/grp_sha256_done_fu_114/hash_addr_reg_1187_reg[10]' (FDE) to 'inst/grp_sha256_done_fu_114/tmp_10_reg_1182_reg[10]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[62]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[61]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[60]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[59]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[58]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[57]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[56]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[55]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[54]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[53]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[52]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[51]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[50]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[49]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[48]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[47]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[46]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[45]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[44]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[43]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[42]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[41]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[40]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[39]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Synth 8-3886] merging instance 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[38]' (FDE) to 'inst/sha256_OUTPUT_r_m_axi_U/bus_write/rs_wreq/data_p2_reg[32]'
+INFO: [Common 17-14] Message 'Synth 8-3886' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[37] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_OUTPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[63] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[12] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[13] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[17] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[20] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[21] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[22] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[24] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[25] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[26] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[27] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[28] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[29] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[30] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[31] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[62] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (inst/sha256_INPUT_r_m_axi_U/\bus_write/rs_wreq/data_p2_reg[61] )
+INFO: [Common 17-14] Message 'Synth 8-3333' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-3332] Sequential element (FSM_onehot_wstate_reg[0]) is unused and will be removed from module sha256_ctrl_bus_s_axi.
+WARNING: [Synth 8-3332] Sequential element (FSM_onehot_rstate_reg[0]) is unused and will be removed from module sha256_ctrl_bus_s_axi.
+WARNING: [Synth 8-3332] Sequential element (bus_write/rs_wreq/FSM_sequential_state_reg[1]) is unused and will be removed from module sha256_INPUT_r_m_axi.
+WARNING: [Synth 8-3332] Sequential element (bus_write/rs_wreq/FSM_sequential_state_reg[0]) is unused and will be removed from module sha256_INPUT_r_m_axi.
+WARNING: [Synth 8-3332] Sequential element (bus_read/rs_rreq/FSM_sequential_state_reg[1]) is unused and will be removed from module sha256_OUTPUT_r_m_axi.
+WARNING: [Synth 8-3332] Sequential element (bus_read/rs_rreq/FSM_sequential_state_reg[0]) is unused and will be removed from module sha256_OUTPUT_r_m_axi.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:24 ; elapsed = 00:01:35 . Memory (MB): peak = 872.859 ; gain = 577.016
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM:
++------------+---------------------------+---------------+----------------+
+|Module Name | RTL Object                | Depth x Width | Implemented As | 
++------------+---------------------------+---------------+----------------+
+|p_hash      | K_U/p_hash_K_rom_U/q0_reg | 64x32         | Block RAM      | 
+|p_hash      | K_U/p_hash_K_rom_U/q0_reg | 64x32         | Block RAM      | 
++------------+---------------------------+---------------+----------------+
+
+
+Block RAM: Preliminary Mapping  Report (see note below)
++---------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                                  | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++---------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|sha256_INPUT_r_m_axi_buffer__parameterized0: | mem_reg    | 256 x 35(READ_FIRST)   | W |   | 256 x 35(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|sha256_OUTPUT_r_m_axi_buffer:                | mem_reg    | 256 x 9(READ_FIRST)    | W |   | 256 x 9(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|sha256_sha256_buf_ram:                       | ram_reg    | 64 x 8(READ_FIRST)     | W | R | 64 x 8(READ_FIRST)     | W | R | Port A and B     | 1      | 0      | 
+|sha256_done_hash_bkb_ram:                    | ram_reg    | 32 x 8(READ_FIRST)     | W | R | 32 x 8(READ_FIRST)     | W |   | Port A and B     | 1      | 0      | 
+|p_hash_W_ram:                                | ram_reg    | 64 x 32(READ_FIRST)    | W | R | 64 x 32(READ_FIRST)    | W | R | Port A and B     | 0      | 1      | 
+|p_hash_W_ram:                                | ram_reg    | 64 x 32(READ_FIRST)    | W | R | 64 x 32(READ_FIRST)    | W | R | Port A and B     | 0      | 1      | 
++---------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+Note: The table above is a preliminary report that shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. 
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6837] The timing for the instance inst/sha256_INPUT_r_m_axi_U/bus_readi_6_70/bus_read/buff_rdata/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/sha256_OUTPUT_r_m_axi_U/i_6_2/bus_write/buff_wdata/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/i_6_1/sha256_buf_U/sha256_sha256_buf_ram_U/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/i_6_1/sha256_buf_U/sha256_sha256_buf_ram_U/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/grp_sha256_done_fu_114/grp_p_hash_fu_579/i_6_0/W_U/p_hash_W_ram_U/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/grp_sha256_done_fu_114/grp_p_hash_fu_579/i_6_26/K_U/p_hash_K_rom_U/q0_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/grp_sha256_done_fu_114/grp_p_hash_fu_579/i_6_26/K_U/p_hash_K_rom_U/q0_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/grp_sha256_hash_fu_135/grp_p_hash_fu_166/i_6_0/W_U/p_hash_W_ram_U/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/grp_sha256_hash_fu_135/grp_p_hash_fu_166/i_6_26/K_U/p_hash_K_rom_U/q0_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/grp_sha256_hash_fu_135/grp_p_hash_fu_166/i_6_26/K_U/p_hash_K_rom_U/q0_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:41 ; elapsed = 00:01:53 . Memory (MB): peak = 872.859 ; gain = 577.016
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:54 ; elapsed = 00:02:06 . Memory (MB): peak = 981.582 ; gain = 685.738
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Block RAM: Final Mapping  Report
++---------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|Module Name                                  | RTL Object | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | Ports driving FF | RAMB18 | RAMB36 | 
++---------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+|sha256_INPUT_r_m_axi_buffer__parameterized0: | mem_reg    | 256 x 35(READ_FIRST)   | W |   | 256 x 35(WRITE_FIRST)  |   | R | Port A and B     | 1      | 0      | 
+|sha256_OUTPUT_r_m_axi_buffer:                | mem_reg    | 256 x 9(READ_FIRST)    | W |   | 256 x 9(WRITE_FIRST)   |   | R | Port A and B     | 1      | 0      | 
+|sha256_sha256_buf_ram:                       | ram_reg    | 64 x 8(READ_FIRST)     | W | R | 64 x 8(READ_FIRST)     | W | R | Port A and B     | 1      | 0      | 
+|sha256_done_hash_bkb_ram:                    | ram_reg    | 32 x 8(READ_FIRST)     | W | R | 32 x 8(READ_FIRST)     | W |   | Port A and B     | 1      | 0      | 
+|p_hash_W_ram:                                | ram_reg    | 64 x 32(READ_FIRST)    | W | R | 64 x 32(READ_FIRST)    | W | R | Port A and B     | 0      | 1      | 
+|p_hash_W_ram:                                | ram_reg    | 64 x 32(READ_FIRST)    | W | R | 64 x 32(READ_FIRST)    | W | R | Port A and B     | 0      | 1      | 
++---------------------------------------------+------------+------------------------+---+---+------------------------+---+---+------------------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6837] The timing for the instance inst/sha256_INPUT_r_m_axi_U/bus_read/buff_rdata/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/sha256_OUTPUT_r_m_axi_U/bus_write/buff_wdata/mem_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/sha256_buf_U/sha256_sha256_buf_ram_U/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/sha256_buf_U/sha256_sha256_buf_ram_U/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/grp_sha256_done_fu_114/grp_p_hash_fu_579/W_U/p_hash_W_ram_U/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/grp_sha256_done_fu_114/grp_p_hash_fu_579/K_U/p_hash_K_rom_U/q0_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/grp_sha256_done_fu_114/grp_p_hash_fu_579/K_U/p_hash_K_rom_U/q0_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/grp_sha256_hash_fu_135/grp_p_hash_fu_166/W_U/p_hash_W_ram_U/ram_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/grp_sha256_hash_fu_135/grp_p_hash_fu_166/K_U/p_hash_K_rom_U/q0_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-6837] The timing for the instance inst/grp_sha256_hash_fu_135/grp_p_hash_fu_166/K_U/p_hash_K_rom_U/q0_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:02:04 ; elapsed = 00:02:17 . Memory (MB): peak = 981.582 ; gain = 685.738
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:02:09 ; elapsed = 00:02:22 . Memory (MB): peak = 981.582 ; gain = 685.738
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:09 ; elapsed = 00:02:22 . Memory (MB): peak = 981.582 ; gain = 685.738
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:11 ; elapsed = 00:02:24 . Memory (MB): peak = 981.582 ; gain = 685.738
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:11 ; elapsed = 00:02:24 . Memory (MB): peak = 981.582 ; gain = 685.738
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:12 ; elapsed = 00:02:25 . Memory (MB): peak = 981.582 ; gain = 685.738
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:12 ; elapsed = 00:02:26 . Memory (MB): peak = 981.582 ; gain = 685.738
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Dynamic Shift Register Report:
++------------+-------------+--------+------------+--------+---------+--------+--------+--------+
+|Module Name | RTL Name    | Length | Data Width | SRL16E | SRLC32E | Mux F7 | Mux F8 | Mux F9 | 
++------------+-------------+--------+------------+--------+---------+--------+--------+--------+
+|dsrl        | mem_reg[4]  | 12     | 12         | 12     | 0       | 0      | 0      | 0      | 
+|dsrl__1     | mem_reg[4]  | 64     | 64         | 64     | 0       | 0      | 0      | 0      | 
+|dsrl__2     | mem_reg[14] | 2      | 2          | 2      | 0       | 0      | 0      | 0      | 
+|dsrl__3     | mem_reg[4]  | 2      | 2          | 2      | 0       | 0      | 0      | 0      | 
+|dsrl__4     | mem_reg[4]  | 12     | 12         | 12     | 0       | 0      | 0      | 0      | 
+|dsrl__5     | mem_reg[4]  | 64     | 64         | 64     | 0       | 0      | 0      | 0      | 
+|dsrl__6     | mem_reg[14] | 2      | 2          | 2      | 0       | 0      | 0      | 0      | 
+|dsrl__7     | mem_reg[4]  | 2      | 2          | 2      | 0       | 0      | 0      | 0      | 
++------------+-------------+--------+------------+--------+---------+--------+--------+--------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |CARRY4     |   457|
+|2     |LUT1       |    63|
+|3     |LUT2       |   725|
+|4     |LUT3       |  1465|
+|5     |LUT4       |   883|
+|6     |LUT5       |   938|
+|7     |LUT6       |   752|
+|8     |RAMB18E1   |     1|
+|9     |RAMB18E1_1 |     1|
+|10    |RAMB18E1_2 |     1|
+|11    |RAMB18E1_3 |     2|
+|12    |RAMB18E1_4 |     1|
+|13    |RAMB36E1_1 |     2|
+|14    |SRL16E     |   115|
+|15    |FDRE       |  4813|
+|16    |FDSE       |   149|
++------+-----------+------+
+
+Report Instance Areas: 
++------+-----------------------------------+------------------------------------------------+------+
+|      |Instance                           |Module                                          |Cells |
++------+-----------------------------------+------------------------------------------------+------+
+|1     |top                                |                                                | 10368|
+|2     |  inst                             |sha256                                          | 10368|
+|3     |    grp_sha256_done_fu_114         |sha256_done                                     |  3897|
+|4     |      grp_p_hash_fu_579            |p_hash_0                                        |  2551|
+|5     |        K_U                        |p_hash_K_1                                      |    80|
+|6     |          p_hash_K_rom_U           |p_hash_K_rom_4                                  |    80|
+|7     |        W_U                        |p_hash_W_2                                      |   182|
+|8     |          p_hash_W_ram_U           |p_hash_W_ram_3                                  |   182|
+|9     |      hash_tmp_U                   |sha256_done_hash_bkb                            |    69|
+|10    |        sha256_done_hash_bkb_ram_U |sha256_done_hash_bkb_ram                        |    69|
+|11    |    grp_sha256_hash_fu_135         |sha256_hash                                     |  3340|
+|12    |      grp_p_hash_fu_166            |p_hash                                          |  2564|
+|13    |        K_U                        |p_hash_K                                        |    80|
+|14    |          p_hash_K_rom_U           |p_hash_K_rom                                    |    80|
+|15    |        W_U                        |p_hash_W                                        |   244|
+|16    |          p_hash_W_ram_U           |p_hash_W_ram                                    |   244|
+|17    |    sha256_INPUT_r_m_axi_U         |sha256_INPUT_r_m_axi                            |  1224|
+|18    |      bus_read                     |sha256_INPUT_r_m_axi_read                       |  1224|
+|19    |        buff_rdata                 |sha256_INPUT_r_m_axi_buffer__parameterized0     |   191|
+|20    |        \bus_wide_gen.fifo_burst   |sha256_INPUT_r_m_axi_fifo                       |    88|
+|21    |        fifo_rctl                  |sha256_INPUT_r_m_axi_fifo__parameterized1       |    30|
+|22    |        fifo_rreq                  |sha256_INPUT_r_m_axi_fifo__parameterized0       |   211|
+|23    |        rs_rdata                   |sha256_INPUT_r_m_axi_reg_slice__parameterized0  |    38|
+|24    |        rs_rreq                    |sha256_INPUT_r_m_axi_reg_slice                  |   203|
+|25    |    sha256_OUTPUT_r_m_axi_U        |sha256_OUTPUT_r_m_axi                           |   968|
+|26    |      bus_read                     |sha256_OUTPUT_r_m_axi_read                      |    43|
+|27    |        buff_rdata                 |sha256_OUTPUT_r_m_axi_buffer__parameterized0    |    31|
+|28    |        rs_rdata                   |sha256_OUTPUT_r_m_axi_reg_slice__parameterized0 |     7|
+|29    |      bus_write                    |sha256_OUTPUT_r_m_axi_write                     |   907|
+|30    |        buff_wdata                 |sha256_OUTPUT_r_m_axi_buffer                    |   102|
+|31    |        \bus_wide_gen.fifo_burst   |sha256_OUTPUT_r_m_axi_fifo                      |    83|
+|32    |        fifo_resp                  |sha256_OUTPUT_r_m_axi_fifo__parameterized1      |    76|
+|33    |        fifo_resp_to_user          |sha256_OUTPUT_r_m_axi_fifo__parameterized2      |    16|
+|34    |        fifo_wreq                  |sha256_OUTPUT_r_m_axi_fifo__parameterized0      |    93|
+|35    |        rs_wreq                    |sha256_OUTPUT_r_m_axi_reg_slice                 |   108|
+|36    |      wreq_throttl                 |sha256_OUTPUT_r_m_axi_throttl                   |    18|
+|37    |    sha256_buf_U                   |sha256_sha256_buf                               |    59|
+|38    |      sha256_sha256_buf_ram_U      |sha256_sha256_buf_ram                           |    59|
+|39    |    sha256_ctrl_bus_s_axi_U        |sha256_ctrl_bus_s_axi                           |   282|
++------+-----------------------------------+------------------------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:12 ; elapsed = 00:02:26 . Memory (MB): peak = 981.582 ; gain = 685.738
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 117 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:40 ; elapsed = 00:02:02 . Memory (MB): peak = 981.582 ; gain = 304.219
+Synthesis Optimization Complete : Time (s): cpu = 00:02:13 ; elapsed = 00:02:26 . Memory (MB): peak = 981.582 ; gain = 685.738
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 465 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 981.582 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+397 Infos, 110 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:02:20 ; elapsed = 00:02:34 . Memory (MB): peak = 981.582 ; gain = 693.891
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 981.582 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'E:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.runs/design_1_sha256_0_0_synth_1/design_1_sha256_0_0.dcp' has been generated.
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP design_1_sha256_0_0, cache-ID = ebc3dcff5883486e
+INFO: [Coretcl 2-1174] Renamed 38 cell refs.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 981.582 ; gain = 0.000
+WARNING: [Constraints 18-5210] No constraints selected for write.
+Resolution: This message can indicate that there are no constraints for the design, or it can indicate that the used_in flags are set such that the constraints are ignored. This later case is used when running synth_design to not write synthesis constraints to the resulting checkpoint. Instead, project constraints are read when the synthesized design is opened.
+INFO: [Common 17-1381] The checkpoint 'E:/My_File/study/SHA256-FPGA-HLS/sha256_prj/sha256_prj.runs/design_1_sha256_0_0_synth_1/design_1_sha256_0_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file design_1_sha256_0_0_utilization_synth.rpt -pb design_1_sha256_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Feb 22 10:26:42 2021...

@@ -1,0 +1,16 @@
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
+| Date         : Mon Feb 22 10:21:37 2021
+| Host         : DESKTOP-NF1GUPS running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg400-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'design_1_sha256_0_0'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of design_1_sha256_0_0 (xilinx.com:hls:sha256:1.0 (Rev. 2102212144)) to Vivado generation flows.
+

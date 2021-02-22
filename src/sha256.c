@@ -170,7 +170,7 @@ void sha256_hash(uint8_t *sha256_buf, uint32_t *sha256hash, uint32_t *sha256_bit
 void sha256_done(uint8_t *sha256_buf, uint32_t *sha256hash, uint32_t *sha256_bits, uint32_t sha256_len, uint8_t *hash)
 {
 	uint32_t i, j;
-
+	uint8_t hash_tmp[32];
 	j = (sha256_len) % sizeof(sha256_buf);
 	sha256_buf[j] = 0x80;
 	sha256_done_label3:
@@ -200,20 +200,29 @@ void sha256_done(uint8_t *sha256_buf, uint32_t *sha256hash, uint32_t *sha256_bit
 	if ( hash != NULL )
 		sha256_done_label5:
 		for (i = 0, j = 24; i < 4; i++, j -= 8) {
-			hash[i     ] = _shb(sha256hash[0], j);
-			hash[i +  4] = _shb(sha256hash[1], j);
-			hash[i +  8] = _shb(sha256hash[2], j);
-			hash[i + 12] = _shb(sha256hash[3], j);
-			hash[i + 16] = _shb(sha256hash[4], j);
-			hash[i + 20] = _shb(sha256hash[5], j);
-			hash[i + 24] = _shb(sha256hash[6], j);
-			hash[i + 28] = _shb(sha256hash[7], j);
+			hash_tmp[i     ] = _shb(sha256hash[0], j);
+			hash_tmp[i +  4] = _shb(sha256hash[1], j);
+			hash_tmp[i +  8] = _shb(sha256hash[2], j);
+			hash_tmp[i + 12] = _shb(sha256hash[3], j);
+			hash_tmp[i + 16] = _shb(sha256hash[4], j);
+			hash_tmp[i + 20] = _shb(sha256hash[5], j);
+			hash_tmp[i + 24] = _shb(sha256hash[6], j);
+			hash_tmp[i + 28] = _shb(sha256hash[7], j);
 		}
+	sha256_done_label0:
+	for(i = 0; i < 32; i++)
+		hash[i] = hash_tmp[i];
 } /* sha256_done */
 
 /* -------------------------------------------------------------------------- */
-void sha256(uint8_t msg[64], uint32_t len, uint8_t hash[32])
+void sha256(uint8_t msg[64], uint32_t len, uint8_t *hash)
 {
+
+#pragma HLS INTERFACE m_axi depth=900000 port=msg offset=slave bundle=INPUT
+#pragma HLS INTERFACE m_axi depth=900000 port=hash offset=slave bundle=OUTPUT
+#pragma HLS INTERFACE s_axilite register port=msg bundle=ctrl_bus
+#pragma HLS INTERFACE s_axilite register port=hash bundle=ctrl_bus
+#pragma HLS INTERFACE s_axilite register port=len bundle=ctrl_bus
 
 	uint8_t sha256_buf[64] = {
 		0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,

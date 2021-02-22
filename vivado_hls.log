@@ -1,5 +1,5 @@
 INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/vivado_hls.exe'
-INFO: [HLS 200-10] For user '94881' on host 'desktop-nf1gups' (Windows NT_amd64 version 6.2) on Sat Feb 20 20:56:28 +0800 2021
+INFO: [HLS 200-10] For user '94881' on host 'desktop-nf1gups' (Windows NT_amd64 version 6.2) on Sun Feb 21 21:43:15 +0800 2021
 INFO: [HLS 200-10] In directory 'E:/My_File/study/SHA256-FPGA-HLS'
 INFO: [HLS 200-10] Opening project 'E:/My_File/study/SHA256-FPGA-HLS/sha256_hls'.
 INFO: [HLS 200-10] Opening solution 'E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1'.
@@ -16,4 +16,4 @@ source run_ippack.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2018.3/data/ip'.
-INFO: [Common 17-206] Exiting Vivado at Sat Feb 20 20:57:06 2021...
+INFO: [Common 17-206] Exiting Vivado at Sun Feb 21 21:43:35 2021...
