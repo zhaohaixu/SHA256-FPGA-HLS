@@ -1,5 +1,5 @@
 # ==============================================================
-# File generated on Sun Feb 21 20:41:36 +0800 2021
+# File generated on Tue Feb 23 17:55:27 +0800 2021
 # Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2018.3 (64-bit)
 # SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
 # IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
@@ -58,6 +58,7 @@ IFLAG += -D__SIM_FIR__
 IFLAG += -D__SIM_DDS__
 
 IFLAG += -D__DSP48E1__
+IFLAG += -Wno-unknown-pragmas 
 AP_ENABLE_OPTIMIZED := 1
 IFLAG += -DNT
 LFLAG += -Wl,--enable-auto-import 
@@ -78,7 +79,7 @@ AUTOCC := cmd //c apcc.bat
 
 $(ObjDir)/sha256_test.o: ../../../../src/sha256_test.c $(ObjDir)/.dir
 	$(Echo) "   Compiling(apcc) ../../../../src/sha256_test.c in $(BuildMode) mode" $(AVE_DIR_DLOG)
-	$(Verb)  $(AUTOCC) -c -MMD  $(IFLAG) $(DFLAG) -DNDEBUG $< -o $@ ; \
+	$(Verb)  $(AUTOCC) -c -MMD -Wno-unknown-pragmas  $(IFLAG) $(DFLAG) -DNDEBUG $< -o $@ ; \
 
 -include $(ObjDir)/sha256_test.d
 

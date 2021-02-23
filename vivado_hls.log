@@ -1,19 +1,57 @@
 INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/vivado_hls.exe'
-INFO: [HLS 200-10] For user '94881' on host 'desktop-nf1gups' (Windows NT_amd64 version 6.2) on Sun Feb 21 21:43:15 +0800 2021
+INFO: [HLS 200-10] For user '94881' on host 'desktop-nf1gups' (Windows NT_amd64 version 6.2) on Tue Feb 23 17:55:26 +0800 2021
 INFO: [HLS 200-10] In directory 'E:/My_File/study/SHA256-FPGA-HLS'
 INFO: [HLS 200-10] Opening project 'E:/My_File/study/SHA256-FPGA-HLS/sha256_hls'.
 INFO: [HLS 200-10] Opening solution 'E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1'.
 INFO: [SYN 201-201] Setting up clock 'default' with a period of 10ns.
 INFO: [HLS 200-10] Setting target device to 'xc7z020clg400-1'
-INFO: [IMPL 213-8] Exporting RTL as a Vivado IP.
-
-****** Vivado v2018.3 (64-bit)
-  **** SW Build 2405991 on Thu Dec  6 23:38:27 MST 2018
-  **** IP Build 2404404 on Fri Dec  7 01:43:56 MST 2018
-    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
-
-source run_ippack.tcl -notrace
-INFO: [IP_Flow 19-234] Refreshing IP repositories
-INFO: [IP_Flow 19-1704] No user IP repositories specified
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2018.3/data/ip'.
-INFO: [Common 17-206] Exiting Vivado at Sun Feb 21 21:43:35 2021...
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling(apcc) ../../../../src/sha256_test.c in release mode
+INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/apcc.exe'
+INFO: [HLS 200-10] For user '94881' on host 'desktop-nf1gups' (Windows NT_amd64 version 6.2) on Tue Feb 23 17:55:32 +0800 2021
+INFO: [HLS 200-10] In directory 'E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/csim/build'
+../../../../src/sha256_test.c:2:23: warning: redefinition of typedef 'uint8_t' is a C11 feature [-Wtypedef-redefinition]
+typedef unsigned char uint8_t;
+                      ^
+../../../../src/sha256.h:1:23: note: previous definition is here
+typedef unsigned char uint8_t;
+                      ^
+../../../../src/sha256_test.c:3:22: warning: redefinition of typedef 'uint32_t' is a C11 feature [-Wtypedef-redefinition]
+typedef unsigned int uint32_t;
+                     ^
+../../../../src/sha256.h:2:22: note: previous definition is here
+typedef unsigned int uint32_t;
+                     ^
+../../../../src/sha256_test.c:24:2: warning: implicitly declaring library function 'printf' with type 'int (const char *, ...)'
+        printf("[hashcat:");
+        ^
+../../../../src/sha256_test.c:24:2: note: please include the header <stdio.h> or explicitly provide a declaration for 'printf'
+3 warnings generated.
+../../../../src/sha256_test.c:2:23: warning: redefinition of typedef 'uint8_t' is a C11 feature [-Wtypedef-redefinition]
+typedef unsigned char uint8_t;
+                      ^
+../../../../src/sha256.h:1:23: note: previous definition is here
+typedef unsigned char uint8_t;
+                      ^
+../../../../src/sha256_test.c:3:22: warning: redefinition of typedef 'uint32_t' is a C11 feature [-Wtypedef-redefinition]
+typedef unsigned int uint32_t;
+                     ^
+../../../../src/sha256.h:2:22: note: previous definition is here
+typedef unsigned int uint32_t;
+                     ^
+../../../../src/sha256_test.c:24:2: warning: implicitly declaring library function 'printf' with type 'int (const char *, ...)'
+        printf("[hashcat:");
+        ^
+../../../../src/sha256_test.c:24:2: note: please include the header <stdio.h> or explicitly provide a declaration for 'printf'
+3 warnings generated.
+INFO: [APCC 202-1] APCC is done.
+   Compiling(apcc) ../../../../src/sha256.c in release mode
+INFO: [HLS 200-10] Running 'D:/Xilinx/Vivado/2018.3/bin/unwrapped/win64.o/apcc.exe'
+INFO: [HLS 200-10] For user '94881' on host 'desktop-nf1gups' (Windows NT_amd64 version 6.2) on Tue Feb 23 17:55:40 +0800 2021
+INFO: [HLS 200-10] In directory 'E:/My_File/study/SHA256-FPGA-HLS/sha256_hls/solution1/csim/build'
+INFO: [APCC 202-1] APCC is done.
+   Generating csim.exe
+[hashcat:127e6fbfe24a750e72930c220a8e138275656b8e5d8f48a98c3c92df2caba935]
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
